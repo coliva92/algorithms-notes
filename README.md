@@ -2,6 +2,8 @@
 
 Este es una colección de apuntes de estudio sobre el análisis de algoritmos y otros temas relacionados. A pesar que escribí estos apuntes con el propósito de que fueran únicamente para mi uso personal, los dejo disponibles aquí para quien pudiera serles útil.
 
+Para descargar directamente estos apuntes en PDF, descargue la versión más reciente de la carpeta `pdfs.zip` que se encuentre disponible [aquí](https://github.com/coliva92/algorithms-notes/releases).
+
 ### Bibliografía consultada
 
 Cada archivo individual incluye una sección donde anoto la bibliografía consultada para ése tema particular. Sin embargo, los libros que más consulté fueron los siguientes:
@@ -11,6 +13,14 @@ Cada archivo individual incluye una sección donde anoto la bibliografía consul
 - [Motwani & Raghavan, "Randomized Algorithms"](https://www.amazon.com/Randomized-Algorithms-Rajeev-Motwani/dp/0521474655/ref=sr_1_3?crid=2R9PFR8EOW8RL&dchild=1&keywords=randomized+algorithms&qid=1603941744&s=books&sprefix=randomized+algorith%2Caps%2C235&sr=1-3)
 - [Bloch, "Proofs and Fundamentals"](https://www.amazon.com/Proofs-Fundamentals-Abstract-Mathematics-Undergraduate/dp/1441971262/ref=sr_1_1?crid=2614I0EN2UYLK&dchild=1&keywords=proofs+and+fundamentals&qid=1603941649&s=books&sprefix=Proofs+and+fund%2Cstripbooks%2C221&sr=1-1)
 - [Scheinerman, "Mathematics: A Discrete Introduction"](https://www.amazon.com/Mathematics-Discrete-Introduction-Edward-Scheinerman/dp/0840049420/ref=sr_1_2?crid=1AV4S8393EKRM&dchild=1&keywords=mathematics+a+discrete+introduction&qid=1603941662&s=books&sprefix=mathematics+a+dis%2Cstripbooks%2C208&sr=1-2)
+
+### Dependencias Latex
+
+Para poder generar los archivos PDF, se necesita tener instalados los siguientes paquetes de Latex:
+
+- [titlesec](https://www.ctan.org/pkg/titlesec)
+- [xpatch](https://www.ctan.org/pkg/xpatch)
+- [identfirst](https://www.ctan.org/pkg/indentfirst)
 
 ### Plan a largo plazo
 
