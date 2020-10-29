@@ -1,0 +1,985 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
+
+\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
+\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
+\theoremstyle{myplain}
+\newtheorem{mythm}{Teorema}[]
+\newtheorem{mylem}{Lema}[]
+\newtheorem{myprop}{Proposición}[]
+\theoremstyle{mydef}
+\newtheorem{mydef}{Definición}[]
+\newtheorem{myrmk}{Observación}[]
+\newtheorem{myex}{Ejemplo}[]
+
+\let\thm\mythm
+\let\endthm\endmythm
+\let\lem\mylem
+\let\endlem\endmylem
+\let\prop\myprop
+\let\endprop\endmyprop
+\let\defn\mydef
+\let\enddefn\endmydef
+\let\example\myex
+\let\endexample\endmyex
+\let\rem\myrmk
+\let\endrem\endmyrmk
+
+\usepackage{xpatch}
+\newcommand{\proofnamefont}{\scshape}
+\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+\end_local_layout
+\language spanish-mexico
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement tb
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.57in
+\topmargin 1.2in
+\rightmargin 1.2in
+\bottommargin 1.2in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0 2 5 -1
+\bullet 1 5 35 -1
+\bullet 2 2 11 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Análisis de la Eficiencia de un Algoritmo
+\end_layout
+
+\begin_layout Standard
+Después de demostrar que un algoritmo es correcto, el sig.
+ paso es caracterizar su tiempo de ejecución.
+ El procedimiento que se sigue para realizar esta tarea se demonima 
+\emph on
+análisis de la eficiencia
+\emph default
+ 
+\emph on
+de un algoritmo 
+\emph default
+(o, simplemente, 
+\emph on
+análisis de eficiencia
+\emph default
+).
+ En este contexto, cuando se habla del 
+\begin_inset Quotes fls
+\end_inset
+
+tiempo de ejecución
+\begin_inset Quotes frs
+\end_inset
+
+ de alguna operación o algoritmo, en realidad se está hablando de la cantidad
+ total de instrucciones que se ejecutan.
+\end_layout
+
+\begin_layout Section*
+El modelo de cómputo RAM
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+modelo de cómputo
+\emph default
+ es una representación simplificada de alguna tecnología de cómputo particular
+ que funge como una 
+\begin_inset Quotes fls
+\end_inset
+
+máquina hipotética
+\begin_inset Quotes frs
+\end_inset
+
+ donde se puede simular la ejecución de un algoritmo y, así, poder llevar
+ a cabo su análisis.
+ Para ello, el modelo debe ser lo suficientemente simple para que facilite
+ el análisis y, a la vez, lo suficientemente cercano a la tecnología que
+ representa para que refleje lo más fielmente posible el comportamiento
+ que tendría el algoritmo de ser implementado en la tecnología representada.
+ Existen varios modelos de cómputo, pero el más comúnmente utilizado para
+ analizar algoritmos secuenciales es el 
+\emph on
+modelo de cómputo RAM
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+El modelo de cómputo RAM (random access machine) simula la arquitectura
+ de von Neumann y, como tal, consiste de una unidad de procesamiento central
+ (CPU o procesador) conectada a una unidad de memoria de acceso aleatorio.
+ En la arquitectura de von Neumann, las instrucciones y los datos se almacenan
+ en la misma unidad de memoria y comparten el mismo medio de transmisión.
+ Como consecuencia, el procesador no puede ejecutar una instrucción al mismo
+ tiempo que lee o escribe un dato en la memoria.
+ Así, el 
+\emph on
+ciclo de máquina
+\emph default
+ del modelo RAM consiste de tres pasos: primero, se lee un dato de la memoria,
+ después, se ejecuta alguna instrucción sobre ése dato y, finalmente, se
+ escribe el resultado en la memoria.
+ Cada ciclo de máquina se ejecuta en tiempo constante (i.e.
+ independiente del valor o tamaño del dato de entrada).
+ 
+\end_layout
+
+\begin_layout Standard
+En términos prácticos, al simular la ejecución de un algoritmo en el modelo
+ RAM, se deben seguir las sig.
+ suposiciones:
+\end_layout
+
+\begin_layout Itemize
+Las instrucciones se pueden ejecutar únicamente de forma secuencial; no
+ se permite ejecutar instrucciones de forma concurrente.
+ 
+\end_layout
+
+\begin_layout Itemize
+Todas las operaciones lógicas, aritméticas y de comparación se ejecutan
+ en tiempo constante, con la excepción del exponente, el factorial, la raíz,
+ el logaritmo, i.a.
+\end_layout
+
+\begin_layout Itemize
+Se cuenta con una cantidad infinita de memoria.
+ 
+\end_layout
+
+\begin_layout Itemize
+Todas las operaciones de memoria (ya sea por puntero, índice o variable)
+ se ejecutan en tiempo constante; no se hace distinción entre si un dato
+ se encuentra en memoria caché, en la memoria RAM, en el disco duro, etc.
+ 
+\end_layout
+
+\begin_layout Itemize
+Invocar una rutina toma tiempo constante, pero el tiempo requerido para
+ ejecutar dicha rutina depende del tamaño de su entrada.
+\end_layout
+
+\begin_layout Section*
+Entradas a considerar
+\end_layout
+
+\begin_layout Standard
+Las clases de entrada de un algoritmo pueden categorizarse en tres casos
+ diferentes, dependiendo de cómo influyen en el tiempo de ejecución de dicho
+ algoritmo:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Mejor caso
+\emph default
+: son todos los casos específicos que provocan que el algoritmo ejecute
+ la menor cantidad total de instrucciones posible.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Peor caso
+\emph default
+: son todos los casos específicos que provocan que el algoritmo ejecute
+ la mayor cantidad total de instrucciones posible.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Caso promedio
+\emph default
+: representa la cantidad promedio de instrucciones que el algoritmo realiza
+ para todos los posibles casos específicos.
+ 
+\end_layout
+
+\begin_layout Standard
+En la práctica, se suele estudiar únicamente el peor caso.
+ Esto porque el peor caso determina cuál es la máxima cantidad de tiempo
+ que puede llegar a tardar el algoritmo.
+ Por otro lado, estudiar el caso promedio es complicado debido a que no
+ siempre es fácil ver cuáles clases de entrada constituyen el caso promedio,
+ puesto que no siempre se tiene que todas las diferentes clases ocurren
+ con la misma frecuencia.
+ Además, frecuentemente ocurre que el caso promedio es casi tan tardado
+ como el peor caso.
+ Debido a esto, sólo en algunas ocasiones es de interés estudiar el caso
+ promedio, por ejemplo, cuando el caso promedio ocurre con mayor frecuencia
+ que los otros casos o cuando se está analizando un algoritmo aleatorio.
+ 
+\end_layout
+
+\begin_layout Section*
+Procedimiento general
+\end_layout
+
+\begin_layout Standard
+El análisis de la eficiencia de un algoritmo consiste de multiplicar el
+ tiempo de ejecución de cada instrucción del algoritmo (suponiendo que se
+ ejecuta en el modelo RAM) por el número de veces que se ejecuta (dada una
+ entrada genérica de tamaño arbitrariamente grande y perteneciente a alguna
+ de las clases de entrada identificadas) y sumar los resultados obtenidos.
+ 
+\end_layout
+
+\begin_layout Standard
+El producto final del análisis es una función 
+\begin_inset Formula $T:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ que determina el número total de instrucciones que el algoritmo ejecuta
+ en proporción al tamaño 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ de la entrada, donde el significado de 
+\begin_inset Quotes fls
+\end_inset
+
+tamaño
+\begin_inset Quotes frs
+\end_inset
+
+ depende del contexto del problema que se está tratando.
+ Aunque es posible encontrar esta función de forma algebraica, es más fácil
+ trabajar con la notación asintótica y expresar dicha función por medio
+ de su orden de crecimiento.
+ Finalmente, se puede suponer, sin pérdida de generalidad, que 
+\begin_inset Formula $T$
+\end_inset
+
+ es una función asintóticamente positiva.
+ 
+\end_layout
+
+\begin_layout Section*
+Relaciones de recurrencia
+\end_layout
+
+\begin_layout Standard
+Una relación de recurrencia (o, simplemente, 
+\emph on
+recurrencia
+\emph default
+) es una función expresada en términos de sí misma pero con un valor reducido
+ para la variable independiente.
+ Las recurrencias se presentan al analizar la eficiencia de algoritmos de
+ tipo 
+\emph on
+divide y vencerás
+\emph default
+.
+ La 
+\emph on
+forma cerrada
+\emph default
+ de una recurrencia es una función equivalente a la recurrencia, pero sin
+ recursividad.
+ Resolver una recurrencia implica encontrar su forma cerrada.
+\end_layout
+
+\begin_layout Standard
+En el contexto de los algoritmos divide y vencerás, las recurrencias suelen
+ tener la sig.
+ forma general: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T(n)=\begin{cases}
+B(n) & \text{para }n\leq b\\
+\sum_{i=1}^{p}T(n_{i})+F(n) & \text{en caso contrario}
+\end{cases}
+\]
+
+\end_inset
+
+donde 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b\in\mathbb{N}$
+\end_inset
+
+ es la condición de paro (boundary condition); esto es, el tamaño de entrada
+ requerido para llegar al caso base de la recursividad, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $B:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ es el tiempo de ejecución del caso base, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p\in\mathbb{N}$
+\end_inset
+
+ es la cantidad de subproblemas en las que se dividió la entrada, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n_{i}\in\mathbb{N}$
+\end_inset
+
+, tal que 
+\begin_inset Formula $n_{i}<n$
+\end_inset
+
+, es el tamaño de la entrada para el subproblema 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ es el tiempo de ejecución para dividir la entrada en y/o combinar las solucione
+s de los 
+\begin_inset Formula $p$
+\end_inset
+
+ subproblemas 
+\end_layout
+
+\begin_layout Standard
+La función 
+\begin_inset Formula $B$
+\end_inset
+
+ suele omitirse cuando es constante.
+ A continuación se presentan tres técnicas diferentes para resolver recurrencias.
+\end_layout
+
+\begin_layout Subsection*
+Teorema maestro
+\end_layout
+
+\begin_layout Standard
+El teorema maestro (también conocido como el 
+\emph on
+método maestro
+\emph default
+) consiste simplemente en aplicar el sig.
+ teorema.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Teorema maestro
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $a,n\in\mathbb{N}$
+\end_inset
+
+ y 
+\begin_inset Formula $b\in\mathbb{R}$
+\end_inset
+
+, donde 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+ son constantes y 
+\begin_inset Formula $b>1$
+\end_inset
+
+.
+ Sea 
+\begin_inset Formula $f:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ una función asintóticamente positiva y denótese 
+\begin_inset Formula $c=\log_{b}a$
+\end_inset
+
+.
+ Si 
+\begin_inset Formula $T:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ es una recurrencia de la forma 
+\begin_inset Formula $T(n)=aT(n/b)+f(n)$
+\end_inset
+
+, entonces su forma cerrada se puede calcular de alguna de las sig.
+ maneras:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $f=O(n^{c-\varepsilon})$
+\end_inset
+
+ para alguna constante real 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, entonces 
+\begin_inset Formula $T=\Theta(n^{c})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $f=\Theta(n^{c})$
+\end_inset
+
+, entonces 
+\begin_inset Formula $T=\Theta(n^{c}\lg n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $f=\Omega(n^{c+\varepsilon})$
+\end_inset
+
+ y si, además, 
+\begin_inset Formula $af(n/b)\leq kf(n)$
+\end_inset
+
+ para alguna constante real 
+\begin_inset Formula $k<1$
+\end_inset
+
+ y todo valor de 
+\begin_inset Formula $n$
+\end_inset
+
+ pasado algún umbral, entonces 
+\begin_inset Formula $T=\Theta(f)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+Para este teorema, el término 
+\begin_inset Formula $n/b$
+\end_inset
+
+ también se puede interpretar como 
+\begin_inset Formula $\lceil n/b\rceil$
+\end_inset
+
+ o 
+\begin_inset Formula $\lfloor n/b\rfloor$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el contexto de este teorema, 
+\begin_inset Quotes fls
+\end_inset
+
+en un factor polinomial
+\begin_inset Quotes frs
+\end_inset
+
+ se refiere a que 
+\begin_inset Formula $n^{c}/f(n)$
+\end_inset
+
+ resulta en un polinomio de grado 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+ La principal desventaja del teorema maestro es que no puede aplicarse a
+ cualquier tipo de recurrencia.
+\end_layout
+
+\begin_layout Subsection*
+Método del árbol recursivo
+\end_layout
+
+\begin_layout Standard
+El método del árbol recursivo es un método gráfico e informal que consiste
+ de construir un árbol donde cada subárbol representa el tiempo requerido
+ para resolver un subproblema de una recurrencia.
+ Al sumar el tiempo total de cada nivel del árbol se obtiene la forma cerrada
+ de la recurrencia.
+ 
+\end_layout
+
+\begin_layout Standard
+Antes de estudiar el método en sí, es importante recordar algunos conceptos
+ sobre árboles.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Árbol 
+\begin_inset Formula $k$
+\end_inset
+
+-ario
+\end_layout
+
+\end_inset
+
+Sea 
+\begin_inset Formula $k\in\mathbb{N}_{0}$
+\end_inset
+
+.
+ Un árbol 
+\begin_inset Formula $k$
+\end_inset
+
+-ario es un árbol enraizado donde cada nodo tiene a lo más 
+\begin_inset Formula $k$
+\end_inset
+
+ hijos.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Árbol completo
+\end_layout
+
+\end_inset
+
+Se dice que un árbol 
+\begin_inset Formula $k$
+\end_inset
+
+-ario es completo si todos los nodos internos tienen exactamente 
+\begin_inset Formula $k$
+\end_inset
+
+ hijos y todas las hojas se encuentran en el último nivel.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Altura de un árbol
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $h,n\in\mathbb{N}$
+\end_inset
+
+.
+ La altura de un árbol 
+\begin_inset Formula $k$
+\end_inset
+
+-ario, denotada por 
+\begin_inset Formula $h$
+\end_inset
+
+, es la cantidad de niveles que tiene.
+ Se calcula como 
+\begin_inset Formula $h=\lfloor\log_{k}n\rfloor+1$
+\end_inset
+
+, donde 
+\begin_inset Formula $n$
+\end_inset
+
+ es el número total de nodos en el árbol.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+Sea 
+\begin_inset Formula $i\in\mathbb{N}_{0}$
+\end_inset
+
+.
+ Suponiendo que la raíz de un árbol 
+\begin_inset Formula $k$
+\end_inset
+
+-ario completo se encuentra en el nivel 0, la cantidad de nodos en el nivel
+ 
+\begin_inset Formula $i$
+\end_inset
+
+, denotado por 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+, se calcula como 
+\begin_inset Formula $n_{i}=k^{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El método del árbol recursivo consiste de los sig.
+ pasos:
+\end_layout
+
+\begin_layout Enumerate
+Desglozar la recurrencia en un árbol de tal forma que la raíz representa
+ el tiempo requerido para combinar y/o dividir el problema original, cada
+ nodo interno representa el tiempo requerido para combinar y/o dividir un
+ subproblema y cada hoja representa el tiempo requerido para el caso base.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Calcular la altura del árbol.
+\end_layout
+
+\begin_layout Enumerate
+Calcular la cantidad de hojas.
+\end_layout
+
+\begin_layout Enumerate
+Calcular el tiempo de ejecución de cada nivel.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Sumar el tiempo de ejecución de todos los niveles para obtener la forma
+ cerrada.
+\end_layout
+
+\begin_layout Subsection*
+Método de sustitución
+\end_layout
+
+\begin_layout Standard
+El método de sustitución es un método formal que consiste en resolver una
+ recurrencia por inducción matemática.
+ Específicamente, este método consiste de los sig.
+ pasos:
+\end_layout
+
+\begin_layout Enumerate
+Proponer una cota tentativa para la forma cerrada de la recurrencia.
+\end_layout
+
+\begin_layout Enumerate
+Utilizar inducción matemática para demostrar que la cota propuesta es correcta
+ y para encontrar las constantes de dicha cota.
+\end_layout
+
+\begin_layout Standard
+Este método se puede utilizar para calcular tanto una cota superior como
+ una inferior.
+ A continuación se presentan algunas consideraciones y consejos que se deben
+ tener en cuenta al trabajar con este método.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Proponiendo una buena solución tentativa
+\end_layout
+
+\begin_layout Standard
+Se puede utilizar el método del árbol recursivo para obtener una solución
+ tentativa para la recurrencia y después utilizar el método de sustitución
+ para demostrar que dicha solución es correcta o para ajustar la cota.
+ Si la recurrencia tiene una forma similar a alguna otra que se haya resuelto
+ anteriormente, se puede proponer la solución de la recurrencia anterior
+ como la solución tentativa de la recurrencia actual.
+ Finalmente, si no se está completamente seguro de cuál es la solución,
+ se pueden proponer dos cotas holgadas, una inferior y una superior, y ajustarla
+s gradualmente hasta que converjan en la solución correcta.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Cuidado con la notación asintótica
+\end_layout
+
+\begin_layout Standard
+Aunque la solución de una recurrencia se expresa en notación asintótica,
+ el objetivo del método de sustitución es demostrar que dicha cota se cumple
+ de forma exacta.
+ Por ejemplo, suponiendo que se desea demostrar que 
+\begin_inset Formula $T=O(n^{2})$
+\end_inset
+
+, lo que se debe hacer es calcular el valor de la constante 
+\begin_inset Formula $c$
+\end_inset
+
+ que satisfaga la expresión 
+\begin_inset Formula $T(n)\leq cn^{2}$
+\end_inset
+
+ para valores suficientemente grandes de 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Un error común es aplicar la notación asintótica prematuramente durante
+ la inducción para eliminar constantes o términos problemáticos.
+\end_layout
+
+\begin_layout Paragraph*
+Diferencias con la inducción matemática
+\end_layout
+
+\begin_layout Standard
+A diferencia de la notación matemática, en el método de sustitución el caso
+ base se realiza hasta el último.
+ Además, la hipótesis inductiva consiste de suponer que la cota propuesta
+ se cumple para 
+\begin_inset Formula $T(n_{i})$
+\end_inset
+
+, para toda 
+\begin_inset Formula $n_{i}<n$
+\end_inset
+
+.
+ Así, el paso inductivo consiste en sustituir 
+\begin_inset Formula $T(n_{i})$
+\end_inset
+
+, en la recurrencia origial, con la forma exacta de la cota propuesta, lo
+ que da origen al nombre del método.
+\end_layout
+
+\begin_layout Paragraph
+Ajustando la hipótesis inductiva
+\end_layout
+
+\begin_layout Standard
+En algunas ocasiones, puede ocurrir que la solución propuesta es, de hecho,
+ la solución correcta, pero la inducción no converge exactamente a dicho
+ resultado.
+ En estos casos, uno podría estar tentado a proponer una cota más holgada.
+ En lugar de eso, se puede simplemente proponer una nueva hipótesis inductiva,
+ que sea igual a la original pero restándole los términos de menor grado.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Uso creativo del álgebra
+\end_layout
+
+\begin_layout Standard
+En ocasiones, en lugar de utilizar cualquiera de los métodos mencionados
+ anteriormente, se puede aplicar un poco de álgebra para transformar una
+ recurrencia en alguna otra cuya solución ya se conozca.
+\end_layout
+
+\begin_layout Section*
+Notas bibliográficas
+\end_layout
+
+\begin_layout Standard
+En las págs.
+ 112 y 113 del libro de Cormen et al.
+ (2009) se proporcionan referencias a varios otros métodos que existen para
+ resolver diferentes tipos de recurrencias.
+ Uno de ellos es el método de Akra-Bazzi, el cual es una generalización
+ del teorema maestro que admite variables contínuas y permite resolver recurrenc
+ias donde los subproblemas varían substancialmente de tamaño.
+ Además, Drmota y Szpankowski (2013) proponen una extensión del método de
+ Akra-Bazzi para trabajar con variables discretas en lugar de contínuas.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cormen T.H., Leiserson C.E., Rivest R.L.
+ & Stein C., 
+\begin_inset Quotes fls
+\end_inset
+
+Introduction to Algorithms
+\begin_inset Quotes frs
+\end_inset
+
+, 3ra ed.
+ (2009), MIT Press.
+ Págs.
+ 23-29, 83-106 y 112-113.
+\end_layout
+
+\begin_layout Itemize
+Skiena S.S., 
+\begin_inset Quotes fls
+\end_inset
+
+The Algorithm Design Manual
+\begin_inset Quotes frs
+\end_inset
+
+, 2da ed.
+ (2012), Springer.
+ Págs.
+ 31-34.
+\end_layout
+
+\begin_layout Itemize
+Drmota M.
+ & Szpankowski W., 
+\begin_inset Quotes fls
+\end_inset
+
+A Master Theorem for Discrete Divide and Conquer Recurrences
+\begin_inset Quotes frs
+\end_inset
+
+, Journal of the ACM (2013), Art.
+ No.
+ 16.
+\end_layout
+
+\end_body
+\end_document

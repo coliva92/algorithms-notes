@@ -1,0 +1,600 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
+
+\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
+\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
+\theoremstyle{myplain}
+\newtheorem{mythm}{Teorema}[]
+\newtheorem{mylem}{Lema}[]
+\newtheorem{myprop}{Proposición}[]
+\theoremstyle{mydef}
+\newtheorem{mydef}{Definición}[]
+\newtheorem{myrmk}{Observación}[]
+\newtheorem{myex}{Ejemplo}[]
+
+\let\thm\mythm
+\let\endthm\endmythm
+\let\lem\mylem
+\let\endlem\endmylem
+\let\prop\myprop
+\let\endprop\endmyprop
+\let\defn\mydef
+\let\enddefn\endmydef
+\let\example\myex
+\let\endexample\endmyex
+\let\rem\myrmk
+\let\endrem\endmyrmk
+
+\usepackage{xpatch}
+\newcommand{\proofnamefont}{\scshape}
+\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+\end_local_layout
+\language spanish-mexico
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement tb
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.57in
+\topmargin 1.2in
+\rightmargin 1.2in
+\bottommargin 1.2in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0 2 5 -1
+\bullet 1 5 35 -1
+\bullet 2 2 11 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Análisis de la Exactitud de un Algoritmo
+\end_layout
+
+\begin_layout Standard
+El primer paso al analizar un algoritmo es determinar si éste es correcto
+ o incorrecto.
+ El procedimiento que se sigue para llevar a cabo esta tarea se denomina
+ 
+\emph on
+análisis de la exactitud
+\emph default
+ 
+\emph on
+de un algoritmo
+\emph default
+ (o, simplemente, 
+\emph on
+análisis de exactitud
+\emph default
+).
+\end_layout
+
+\begin_layout Section*
+Demostrando que un algoritmo es incorrecto
+\end_layout
+
+\begin_layout Standard
+Para demostrar que un algoritmo es incorrecto basta con producir un 
+\emph on
+contraejemplo
+\emph default
+; esto es, un caso específico para el cual el algoritmo no genera un resultado
+ que satisfaga los requerimientos de salida del problema o no termina su
+ ejecución.
+ Un buen contraejemplo debe tener las sig.
+ características:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Verificabilidad
+\emph default
+: debe ser posible determinar el resultado que el algoritmo producirá para
+ el contraejemplo propuesto.
+ También debe ser posible determinar el resultado correcto que el algoritmo
+ debió haber producido.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Simplicidad
+\emph default
+: el contraejemplo debe exponer claramente porqué el algoritmo es incorrecto,
+ sin recurrir a detalles innecesarios.
+ Una vez que se encuentra un contraejemplo, se recomienda simplificarlo
+ a su forma más básica.
+\end_layout
+
+\begin_layout Standard
+Algunos consejos para encontrar buenos contraejemplos:
+\end_layout
+
+\begin_layout Itemize
+Proponer casos específicos de tamaño lo más pequeño posible.
+ Esto va de la mano con el concepto de simplicidad mencionado anteriormente.
+\end_layout
+
+\begin_layout Itemize
+Considerar todas las posibles 
+\emph on
+clases de entrada
+\emph default
+; esto es, las diferentes formas en las que pueden presentarse los casos
+ específicos.
+ Por ejemplo, si la entrada de un algoritmo son dos conjuntos, entonces
+ se tienen cuatro clases de entrada diferentes: dos conjuntos disjuntos,
+ dos conjuntos que se intersectan, un subconjunto propio del otro o dos
+ conjuntos iguales.
+\end_layout
+
+\begin_layout Itemize
+Proponer casos específicos con valores de frontera.
+ Esto es, tomar los casos específicos más extremos que admite el algoritmo
+ y observar cómo se comporta.
+\end_layout
+
+\begin_layout Itemize
+En cuanto a algoritmos voraces,
+\emph on
+ 
+\emph default
+proponer casos específicos cuyos elementos sean todos del mismo valor.
+ Esto va de la mano con el punto anterior y se refiere a observar cómo se
+ comporta el algoritmo en caso de empates.
+\end_layout
+
+\begin_layout Standard
+En caso de no haberse encontrado un contraejemplo para un algoritmo determinado,
+ esto no implica que dicho algoritmo es correcto; aún es necesario presentar
+ una demostración convincente de su exactitud.
+\end_layout
+
+\begin_layout Section*
+La invariante de lazo
+\end_layout
+
+\begin_layout Standard
+Una invariante de lazo es una proposición lógica que se cumple inmediatamente
+ antes e inmediatamente después de la ejecución de cada iteración de un
+ bucle.
+ Algunos consejos para elegir una buena invariante de lazo son:
+\end_layout
+
+\begin_layout Itemize
+Comenzar por realizar una 
+\begin_inset Quotes fls
+\end_inset
+
+prueba de escritorio
+\begin_inset Quotes frs
+\end_inset
+
+ del algoritmo.
+ Esto ayuda a entender mejor cómo funciona y a encontrar patrones en su
+ comportamiento que podrían utilizarse para definir una invariante de lazo.
+\end_layout
+
+\begin_layout Itemize
+Al trabajar con arreglos, la invariante de lazo suele mostrar alguna característ
+ica particular de los elementos que han sido procesados hasta el momento.
+\end_layout
+
+\begin_layout Itemize
+Al trabajar con valores numéricos, la invariante de lazo suele describir
+ alguna relación matemática entre ellos.
+\end_layout
+
+\begin_layout Itemize
+La invariante de lazo se debe definir en función del número de iteraciones
+ ejecutadas hasta el momento.
+ 
+\end_layout
+
+\begin_layout Standard
+Demostrar que una invariante de lazo se cumple para cualquier iteración
+ es un procedimiento análogo a una demostración por inducción y consiste
+ de las sig.
+ etapas: 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Inicialización
+\emph default
+: se considera cuál es el estado del algoritmo que se tiene antes de comenzar
+ a ejecutar la primera iteración
+\emph on
+ 
+\emph default
+del bucle y se procede a demostrar que la invariante de lazo se cumple bajo
+ estas condiciones.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Mantenimiento
+\emph default
+: se hace la suposición de que la invariante de lazo se cumple antes de
+ comenzar alguna iteración genérica 
+\begin_inset Formula $i$
+\end_inset
+
+ y se determina el estado del algoritmo que se obtiene como consecuencia
+ de ello.
+ Después, partiendo de dicho estado, se ejecuta una iteración del bucle
+ y, de nuevo, se determina el estado del algoritmo que se obtuvo como resultado.
+ Finalmente, partiendo de dicho estado, se procede a demostrar que la invariante
+ de lazo se cumple antes de comenzar la iteración 
+\begin_inset Formula $i+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Finalización
+\emph default
+: se determina cuál es el estado del algoritmo cuando el bucle termina su
+ ejecución y, partiendo de dicho estado, se procede a utilizar la invariante
+ de lazo para demostrar que el algoritmo es correcto o para demostrar que
+ se cumple alguna propiedad particular del algoritmo.
+ 
+\end_layout
+
+\begin_layout Section*
+Consejos para diseñar algoritmos correctos
+\end_layout
+
+\begin_layout Standard
+Cuando se trata de diseñar algoritmos, rara vez es posible producir uno
+ que sea correcto al primer intento; normalmente, el diseño de un algoritmo
+ es un proceso iterativo.
+ A continuación se presentan algunos consejos que pueden facilitar la tarea
+ de diseñar algoritmos correctos.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Definición del problema
+\end_layout
+
+\begin_layout Standard
+El primer paso para diseñar un algoritmo correcto es definir claramente
+ los requerimientos de entrada y salida del problema a resolver.
+ Si el problema está mal definido, el algoritmo será incorrecto sin importar
+ lo que se haga.
+ Algunos consejos para definir correctamente el problema son:
+\end_layout
+
+\begin_layout Itemize
+De ser posible, se recomienda hacer más específicos los requerimientos de
+ entrada; esto suele reducir la dificultad para resolver el problema.
+ Por ejemplo, intentar trabajar con árboles en lugar de grafos generales.
+\end_layout
+
+\begin_layout Itemize
+Se debe ser explícito con los requerimientos de salida.
+ Por ejemplo, en lugar de simplemente pedir la 
+\begin_inset Quotes fls
+\end_inset
+
+mejor
+\begin_inset Quotes frs
+\end_inset
+
+ trayectoria entre dos lugares en el mapa, es preferible pedir la ruta de
+ menor distancia o la que requiera la menor cantidad de giros a la izquierda.
+\end_layout
+
+\begin_layout Itemize
+Los requerimientos de salida deben ser simples.
+ Por ejemplo, 
+\begin_inset Quotes fls
+\end_inset
+
+encontrar la ruta más corta entre dos lugares en el mapa que no requiera
+ más del doble de giros a la izquierda de los que son necesarios
+\begin_inset Quotes frs
+\end_inset
+
+ es una salida bien definida pero muy complicada de satisfacer puesto que
+ está compuesta de tres objetivos más específicos.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Abordar el problema por dos ángulos
+\end_layout
+
+\begin_layout Standard
+Al trabajar con problemas nuevos, se recomienda estudiar la complejidad
+ computacional del problema al mismo tiempo que se diseña un algoritmo para
+ resolverlo.
+ De esta forma, cualquier avance o descubrimiento que se obtenga al estudiar
+ la complejidad puede utilizarse después para avanzar el diseño del algoritmo
+ y vice versa.
+ Además, al final se obtendrá uno de dos posibles resultados: ya sea se
+ demuestra la complejidad del problema o se llega a la construcción de un
+ nuevo algoritmo para resolverlo.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Selección de una estructuras abstracta
+\end_layout
+
+\begin_layout Standard
+Casi cualquier problema, aplicación o sistema en la vida real se puede formular
+ en términos de alguna 
+\emph on
+estructura abstracta
+\emph default
+ y de sus operaciones fundamentales.
+ Como consecuencia, muchos problemas se pueden resolver aprovechando algoritmos
+ y estructuras de datos ya conocidos.
+ Sin embargo, las especificaciones del problema no siempre se ajustarán
+ perfectamente a las características de la estructura elegida.
+ En estos casos, se recomienda ignorar temporalmente aquellos detalles que
+ no encajen y decidir más adelante, después de trabajar un tiempo con esa
+ estructura, si dichos detalles son realmente esenciales o no para resolver
+ el problema.
+ 
+\end_layout
+
+\begin_layout Standard
+A continuación se presenta una lista de las estructuras abstractas más comunes.
+ Cabe señalar que todas estas estructuras son 
+\emph on
+recursivas
+\emph default
+; esto es, se pueden descomponer en estructuras más pequeñas pero de propiedades
+ idénticas a la original.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Permutaciones
+\emph default
+: representan diferentes ordenamientos de una misma secuencia de objetos.
+ Eliminando el primer elemento de una permutación produce una permutación
+ de menor longitud.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Subconjuntos
+\emph default
+: representan colecciones de objetos seleccionados de alguna otra colección
+ (tal vez) más grande.
+ Eliminando un elemento de un subconjunto produce un subconjunto de menor
+ cardinalidad.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Árboles
+\emph default
+: representan relaciones jerárquicas entre varios objetos.
+ Eliminando la raíz de un árbol produce una colección de árboles con menos
+ nodos (denominado 
+\emph on
+bosque
+\emph default
+).
+ Eliminando una hoja de un árbol produce un árbol con menos nodos.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Grafos
+\emph default
+: representan las relaciones entre pares arbitrarios de objetos.
+ Eliminando un vértice de un grafo produce un grafo con menos vértices.
+ Separando los vértices en dos grupos y eliminando todas las aristas que
+ crucen de un grupo a otro, produce dos grafos con menos aristas.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Puntos
+\emph default
+: representan diferentes posiciones en un mismo espacio geométrico.
+ Separando una nube de puntos en dos grupos produce dos nubes de puntos
+ más pequeños.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Polígonos
+\emph default
+: representan diferentes regiones en un mismo espacio plano.
+ Conectando dos vértices no adyacentes con una recta produce dos polígonos
+ de menor área.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Cadenas
+\emph default
+: representan diferentes secuencias de una misma colección de símbolos.
+ Eliminando el primer símbolo de una cadena produce una cadena de menor
+ longitud.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figuras/estructuras.png
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\size small
+Descomposición recursiva de algunas estructuras abstractas.
+ (Izquierda) Permutaciones, subconjuntos, árboles y grafos.
+ (Derecha) Puntos, polígonos y cadenas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Notas bibliográficas
+\end_layout
+
+\begin_layout Itemize
+Cormen T.H., Leiserson C.E., Rivest R.L.
+ & Stein C., 
+\begin_inset Quotes fls
+\end_inset
+
+Introduction to Algorithms
+\begin_inset Quotes frs
+\end_inset
+
+, 3ra ed.
+ (2009), MIT Press.
+ Págs.
+ 18-20.
+ 
+\end_layout
+
+\begin_layout Itemize
+Skiena S.S., 
+\begin_inset Quotes fls
+\end_inset
+
+The Algorithm Design Manual
+\begin_inset Quotes frs
+\end_inset
+
+, 2da ed.
+ (2012), Springer.
+ Págs.
+ 11-16.
+\end_layout
+
+\end_body
+\end_document

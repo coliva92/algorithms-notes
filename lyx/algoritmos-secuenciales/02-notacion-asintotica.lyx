@@ -1,0 +1,1311 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
+
+\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
+\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
+\theoremstyle{myplain}
+\newtheorem{mythm}{Teorema}[]
+\newtheorem{mylem}{Lema}[]
+\newtheorem{myprop}{Proposición}[]
+\theoremstyle{mydef}
+\newtheorem{mydef}{Definición}[]
+\newtheorem{myrmk}{Observación}[]
+\newtheorem{myex}{Ejemplo}[]
+
+\let\thm\mythm
+\let\endthm\endmythm
+\let\lem\mylem
+\let\endlem\endmylem
+\let\prop\myprop
+\let\endprop\endmyprop
+\let\defn\mydef
+\let\enddefn\endmydef
+\let\example\myex
+\let\endexample\endmyex
+\let\rem\myrmk
+\let\endrem\endmyrmk
+
+\usepackage{xpatch}
+\newcommand{\proofnamefont}{\scshape}
+\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+\end_local_layout
+\language spanish-mexico
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement tb
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.57in
+\topmargin 1.2in
+\rightmargin 1.2in
+\bottommargin 1.2in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0 2 5 -1
+\bullet 1 5 35 -1
+\bullet 2 2 11 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Notación Asintótica
+\end_layout
+
+\begin_layout Standard
+La notación asintótica (también conocida como la 
+\emph on
+notación de Landau
+\emph default
+) es una notación matemática que se utiliza para caracterizar, por medio
+ de una cota, la tasa de crecimiento de una función cuando la variable independi
+ente tiende a infinito.
+\end_layout
+
+\begin_layout Section*
+Definiciones básicas
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ y sean 
+\begin_inset Formula $f:\mathbb{N}\to\mathbb{R}$
+\end_inset
+
+ y 
+\begin_inset Formula $g:\mathbb{N}\to\mathbb{R}$
+\end_inset
+
+ dos funciones 
+\emph on
+asintóticamente positivas
+\emph default
+; esto es, 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ y 
+\begin_inset Formula $g(n)$
+\end_inset
+
+ siempre son positivas a partir de algún valor de 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ A continuación se presentan las definiciones básicas para la notación asintótic
+a.
+\end_layout
+
+\begin_layout Remark
+En la notación asintótica, se utiliza el símbolo 
+\begin_inset Formula $=$
+\end_inset
+
+ en lugar de 
+\begin_inset Formula $\in$
+\end_inset
+
+ para denotar que una función determinada pertenece a alguno de los conjuntos
+ que esta notación introduce.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+O grande
+\end_layout
+
+\end_inset
+
+Denotado como 
+\begin_inset Formula $O(g)$
+\end_inset
+
+, es el conjunto de todas aquellas funciones 
+\begin_inset Formula $f$
+\end_inset
+
+ para las cuales existen dos constantes 
+\begin_inset Formula $c\in\mathbb{R}^{+}$
+\end_inset
+
+ y 
+\begin_inset Formula $n_{0}\in\mathbb{N}$
+\end_inset
+
+, tales que 
+\begin_inset Formula $0\le f(n)\leq c\cdot g(n)$
+\end_inset
+
+ para toda 
+\begin_inset Formula $n\geq n_{0}$
+\end_inset
+
+.
+ En términos simples, 
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+ denota q
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega$
+\end_inset
+
+ grande
+\end_layout
+
+\end_inset
+
+Denotado como 
+\begin_inset Formula $\Omega(g)$
+\end_inset
+
+, es el conjunto de todas aquellas funciones 
+\begin_inset Formula $f$
+\end_inset
+
+ para las cuales existen dos constantes 
+\begin_inset Formula $c$
+\end_inset
+
+ y 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+, tales que 
+\begin_inset Formula $0\le c\cdot g(n)\leq f(n)$
+\end_inset
+
+ para toda 
+\begin_inset Formula $n\geq n_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Theta$
+\end_inset
+
+ grande
+\end_layout
+
+\end_inset
+
+Denotado como 
+\begin_inset Formula $\Theta(g)$
+\end_inset
+
+, es el conjunto de todas aquellas funciones 
+\begin_inset Formula $f$
+\end_inset
+
+ para las cuales existen tres constantes 
+\begin_inset Formula $c_{1},c_{2}\in\mathbb{R}^{+}$
+\end_inset
+
+ y 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+, tales que 
+\begin_inset Formula $0\le c_{1}\cdot g(n)\leq f(n)\leq c_{2}\cdot g(n)$
+\end_inset
+
+ para toda 
+\begin_inset Formula $n\geq n_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+Se tiene que 
+\begin_inset Formula $f=\Theta(g)$
+\end_inset
+
+ si y sólo si 
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+ y 
+\begin_inset Formula $f=\Omega(g)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figuras/o-grande.png
+	lyxscale 35
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\size small
+Ejemplos de cómo interpretar gráficamente las notaciones 
+\begin_inset Formula $\Theta$
+\end_inset
+
+-grande, O-grande y 
+\begin_inset Formula $\Omega$
+\end_inset
+
+-grande.
+ (a) La notación 
+\begin_inset Formula $f=\Theta(g)$
+\end_inset
+
+ implica que la función 
+\begin_inset Formula $g$
+\end_inset
+
+ acota 
+\begin_inset Formula $f$
+\end_inset
+
+ tanto por arriba como por abajo; esto es, 
+\begin_inset Formula $g$
+\end_inset
+
+ es una cota ajustada para 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ (b) La notación 
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+ implica que 
+\begin_inset Formula $g$
+\end_inset
+
+ acota 
+\begin_inset Formula $f$
+\end_inset
+
+ por arriba; esto es, 
+\begin_inset Formula $g$
+\end_inset
+
+ es una cota superior para 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ (c) La notación 
+\begin_inset Formula $f=\Omega(g)$
+\end_inset
+
+ implica que 
+\begin_inset Formula $g$
+\end_inset
+
+ acota 
+\begin_inset Formula $f$
+\end_inset
+
+ por abajo; esto es, 
+\begin_inset Formula $g$
+\end_inset
+
+ es una cota inferior para 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+o chica
+\end_layout
+
+\end_inset
+
+Denotado como 
+\begin_inset Formula $o(g)$
+\end_inset
+
+, es el conjunto de todas aquellas funciones 
+\begin_inset Formula $f$
+\end_inset
+
+ tales que, para toda constante 
+\begin_inset Formula $c$
+\end_inset
+
+, existe una constante 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ tal que 
+\begin_inset Formula $0\leq f(n)<c\cdot g(n)$
+\end_inset
+
+ para toda 
+\begin_inset Formula $n\geq n_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\omega$
+\end_inset
+
+ chica
+\end_layout
+
+\end_inset
+
+Denotado como 
+\begin_inset Formula $\omega(g)$
+\end_inset
+
+, es el conjunto de todas aquellas funciones 
+\begin_inset Formula $f$
+\end_inset
+
+ tales que, para toda constante 
+\begin_inset Formula $c$
+\end_inset
+
+, existe una constante 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ tal que 
+\begin_inset Formula $0\leq c\cdot g(n)<f(n)$
+\end_inset
+
+ para toda 
+\begin_inset Formula $n\geq n_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+Si 
+\begin_inset Formula $f=o(g)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+Si 
+\begin_inset Formula $f=\omega(g)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=\Omega(g)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Trabajando con la notación asintótica
+\end_layout
+
+\begin_layout Standard
+En términos prácticos, al aplicar la notación asintótica a una expresión
+ algebraica, ocurren dos cosas: se eliminan los términos constantes y los
+ coeficientes y se consideran únicamente los términos de mayor grado y los
+ demás se eliminan.
+ Intuitivamente, esto se debe a que, conforme la variable independiente
+ se aproxima a inifinito, la aportación de aquellos términos que crecen
+ más despacio se vuelve despreciable.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Órdenes de crecimiento
+\end_layout
+
+\begin_layout Standard
+Al aplicar la notacion asintótica a una función, se dice que la expresión
+ resultante es el 
+\emph on
+orden de crecimiento
+\emph default
+ (o, simplemente, 
+\emph on
+orden
+\emph default
+) de dicha función.
+ A continuación se presentan los órdenes de crecimiento más comunes, ordenados
+ de aquél que crece más lento al que crece más rápido.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Constantes
+\emph default
+: 
+\begin_inset Formula $O(1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Logarítmicos
+\emph default
+: 
+\begin_inset Formula $O(\log n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Radicales
+\emph default
+: 
+\begin_inset Formula $O(\sqrt{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Lineales
+\emph default
+: 
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Súper lineales
+\emph default
+: 
+\begin_inset Formula $O(n\cdot\log n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Cuadráticos
+\emph default
+: 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Cúbicos
+\emph default
+: 
+\begin_inset Formula $O(n^{3})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Exponenciales
+\emph default
+: 
+\begin_inset Formula $O(2^{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Factoriales
+\emph default
+: 
+\begin_inset Formula $O(n!)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Se debe tener cuidado sobre cómo se interpreta la lista anterior, puesto
+ que la notación asintótica puede ocultar constantes muy grandes.
+ Por ejemplo, a pesar de que 
+\begin_inset Formula $10^{100}n=\Theta(n)$
+\end_inset
+
+ y 
+\begin_inset Formula $2n\cdot\log n=\Theta(n\log n)$
+\end_inset
+
+, se puede ver que la primera función crece muchas veces más rápido que
+ la segunda, para cualquier valor de 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figuras/ordenes.png
+	lyxscale 20
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\size small
+Comparación gráfica de los órdenes de crecimiento más frecuentemente utilizados
+ en las ciencias de la computación.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Propiedades aritméticas
+\end_layout
+
+\begin_layout Paragraph
+Adición
+\end_layout
+
+\begin_layout Standard
+La suma de las cotas de dos funciones está gobernada por la función dominante.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}O(f)+O(g) & =O(\max\{f,g\})\\
+\Omega(f)+\Omega(g) & =\Omega(\max\{f,g\})\\
+\Theta(f)+\Theta(g) & =\Theta(\max\{f,g\})\\
+o(f)+o(g) & =o(\max\{f,g\})\\
+\omega(f)+\omega(g) & =\omega(\max\{f,g\})
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Multiplicación
+\end_layout
+
+\begin_layout Standard
+La multiplicación de una función 
+\begin_inset Formula $f$
+\end_inset
+
+ con una constante 
+\begin_inset Formula $c$
+\end_inset
+
+ no afecta el comportamiento asintótico de dicha función.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}O(c\cdot f) & =O(f)\\
+\Omega(c\cdot f) & =\Omega(f)\\
+\Theta(c\cdot f) & =\Theta(f)\\
+o(c\cdot f) & =o(f)\\
+\omega(c\cdot f) & =\omega(f)
+\end{aligned}
+\]
+
+\end_inset
+
+Cuando dos funciones 
+\begin_inset Formula $f$
+\end_inset
+
+ y 
+\begin_inset Formula $g$
+\end_inset
+
+ se multiplican, ambas contribuyen por igual al comportamiento asintótico
+ de la función resultante.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}O(f)\cdot O(g) & =O(f\cdot g)\\
+\Omega(f)\cdot\Omega(g) & =\Omega(f\cdot g)\\
+\Theta(f)\cdot\Theta(g) & =\Theta(f\cdot g)\\
+o(f)\cdot o(g) & =o(f\cdot g)\\
+\omega(f)\cdot\omega(g) & =\omega(f\cdot g)
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Propiedades de comparación
+\end_layout
+
+\begin_layout Standard
+Muchas de las propiedades de comparación de los números reales pueden trasladars
+e a funciones por medio de la notación asintótica.
+ Una forma intuitiva de verlo es trazando las sig.
+ analogías:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Números reales
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Notación asintótica
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\leq b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\ge b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f=\Omega(g)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a=b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f=\Theta(g)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a<b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f=o(g)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a>b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f=\omega(g)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Transitividad
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $h:\mathbb{N}\to\mathbb{R}$
+\end_inset
+
+ una función asintóticamente positiva.
+ 
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $f=\Theta(g)$
+\end_inset
+
+ y 
+\begin_inset Formula $g=\Theta(h)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=\Theta(h)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+ y 
+\begin_inset Formula $g=O(h)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=O(h)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $f=\Omega(g)$
+\end_inset
+
+ y 
+\begin_inset Formula $g=\Omega(h)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=\Omega(h)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $f=o(g)$
+\end_inset
+
+ y 
+\begin_inset Formula $g=o(h)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=o(h)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $f=\omega(g)$
+\end_inset
+
+ y 
+\begin_inset Formula $g=\omega(h)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=\omega(h)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Reflexividad
+\end_layout
+
+\begin_layout Standard
+Las sig.
+ igualdades se satisfacen porque 
+\begin_inset Formula $f(n)=f(n)$
+\end_inset
+
+ para toda 
+\begin_inset Formula $n$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}f & =\Theta(f)\\
+f & =O(f)\\
+f & =\Omega(f)
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Simetría
+\end_layout
+
+\begin_layout Standard
+Se tiene que 
+\begin_inset Formula $f=\Theta(g)$
+\end_inset
+
+ si y sólo si 
+\begin_inset Formula $g=\Theta(f)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Simetría traspuesta
+\end_layout
+
+\begin_layout Itemize
+Se tiene que 
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+ si y sólo si 
+\begin_inset Formula $g=\Omega(f)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Se tiene que 
+\begin_inset Formula $f=o(g)$
+\end_inset
+
+ si y sólo si 
+\begin_inset Formula $g=\omega(f)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Carencia de tricotomía
+\end_layout
+
+\begin_layout Standard
+Esta es la propiedad de los números reales que dice que, dados dos números
+ reales 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+, exactamente una de las sig.
+ condiciones debe cumplirse: 
+\begin_inset Formula $a<b$
+\end_inset
+
+, 
+\begin_inset Formula $a=b$
+\end_inset
+
+ o 
+\begin_inset Formula $a>b$
+\end_inset
+
+.
+ En otras palabras, siempre se puede establecer una comparación relativa
+ entre dos números reales.
+ La notación asintótica carece de esta propiedad, pues
+\emph on
+ 
+\emph default
+se puede dar el caso donde no se cumple que 
+\begin_inset Formula $f=O(g)$
+\end_inset
+
+ ni que 
+\begin_inset Formula $f=\Omega(g)$
+\end_inset
+
+.
+ Por ejemplo, las funciones 
+\begin_inset Formula $f(n)=n$
+\end_inset
+
+ y 
+\begin_inset Formula $g(n)=n^{1+\sin n}$
+\end_inset
+
+ no se pueden comparar utilizando notación asintótica, pues el valor del
+ exponente de 
+\begin_inset Formula $g$
+\end_inset
+
+ oscila entre 0 y 2, adquiriendo todos los valores intermedios.
+ Esto implica que 
+\begin_inset Formula $f(n)\geq g(n)$
+\end_inset
+
+ para algunos valores de 
+\begin_inset Formula $n$
+\end_inset
+
+ y que 
+\begin_inset Formula $f(n)<g(n)$
+\end_inset
+
+ para otros.
+\end_layout
+
+\begin_layout Section*
+Notas bibliográficas
+\end_layout
+
+\begin_layout Itemize
+Cormen T.H., Leiserson C.E., Rivest R.L.
+ & Stein C., 
+\begin_inset Quotes fls
+\end_inset
+
+Introduction to Algorithms
+\begin_inset Quotes frs
+\end_inset
+
+, 3ra ed.
+ (2009), MIT Press.
+ Págs.
+ 43-52.
+\end_layout
+
+\begin_layout Itemize
+Skiena S.S., 
+\begin_inset Quotes fls
+\end_inset
+
+The Algorithm Design Manual
+\begin_inset Quotes frs
+\end_inset
+
+, 2da ed.
+ (2012), Springer.
+ Págs.
+ 34-41.
+\end_layout
+
+\end_body
+\end_document
