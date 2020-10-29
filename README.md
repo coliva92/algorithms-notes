@@ -44,8 +44,6 @@ Estos apuntes son parte de un proyecto personal para crear un compendio digital 
   - [ ] Series
   - [ ] Probabilidad
 - [ ] Algoritmos paralelos
-- [ ] Algoritmos aleatorios
-- [ ] Algoritmos parametrizados
 - [ ] Álgebra
   - [ ] Exponentes y logaritmos
   - [ ] Pisos y techos
