@@ -131,11 +131,11 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 
 \begin_body
 
-\begin_layout Chapter*
+\begin_layout Chapter
 Conceptos Fundamentales
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Problema computacional
 \end_layout
 
@@ -193,42 +193,30 @@ Salida
 .
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Algoritmo
 \end_layout
 
 \begin_layout Standard
 Un algoritmo es una secuencia finita y ordenada de instrucciones bien definidas
- que describen el procedimiento a seguir para resolver un problema determinado;
- i.e.
- para transformar la entrada de dicho problema a la salida correspondiente.
+ que describen el procedimiento a seguir para transformar la entrada de
+ un problema determinado a la salida correspondiente.
  Se dice que un algoritmo es
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-finito
-\emph default
- porque tiene una cantidad determinada de instrucciones y su ejecución termina
- en una cantidad determinada de tiempo,
+finito porque tiene una cantidad determinada de instrucciones y su ejecución
+ termina en una cantidad determinada de tiempo,
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-ordenado
-\emph default
- porque, dadas dos instrucciones cualesquiera, no hay ambigüedad sobre cuál
- debe ejecutarse primero,
+ordenado porque, dadas dos instrucciones cualesquiera, no hay ambigüedad
+ sobre cuál debe ejecutarse primero,
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-bien definido
-\emph default
- porque no hay ambigüedad sobre la interpretación de las instrucciones.
+bien definido porque no hay ambigüedad sobre la interpretación de las instruccio
+nes.
 \end_layout
 
 \begin_layout Standard
@@ -249,10 +237,7 @@ caso específico
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Se dice que un algoritmo es 
+ Un algoritmo es 
 \emph on
 correcto
 \emph default
@@ -264,7 +249,7 @@ correcto
 resuelve
 \emph default
  el problema en cuestión.
- Se dice que un algoritmo es 
+ Un algoritmo es 
 \emph on
 incorrecto
 \emph default
@@ -274,36 +259,32 @@ entos de salida.
  
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Estructura de datos
 \end_layout
 
 \begin_layout Standard
-Una estructura de datos es una forma de organizar, almacenar y manipular
- un conjunto de datos de tal forma que se facilite su acceso y modificación.
- En otras palabras, es una colección de datos y de las operaciones que pueden
- aplicarse sobre ellos.
+Una estructura de datos es una colección de datos y de sus reglas de organizació
+n, acceso y operación.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Pseudocódigo
 \end_layout
 
 \begin_layout Standard
-El pseudocódigo es una forma de escribir un algoritmo.
- Consiste de una descripción compacta, informal y de alto nivel que utiliza
- estructuras de control de flujo (i.e.
- sentencias condicionales, bucles, i.a.) combinadas con prosa en lenguaje
- natural y/o notación matemática.
- El propósito del pseudocódigo es que el algoritmo que describe sea fácil
- de leer y comprender para una persona.
- A diferencia de un lenguaje de programación, el pseudocódigo no puede ser
- leído ni ejecutado por una computadora.
- Se dice que el pseudocódigo es de alto nivel porque omite muchos detalles
- sobre la implementación del proceso que describe.
+El pseudocódigo es una descripción compacta, informal y de alto nivel que
+ utiliza estructuras de control de flujo combinadas con prosa en lenguaje
+ natural y/o notación matemática para describir un algoritmo.
+ Se dice que el pseudocódigo es de alto nivel porque se omiten muchos detalles
+ sobre la implementación del algoritmo que describe.
+ A diferencia de un lenguaje de programación, el pseudocódigo se escribe
+ con el propósito de que sea leído y comprendido por seres humanos, no por
+ computadoras.
+ 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Análisis de algoritmos
 \end_layout
 
@@ -317,23 +298,23 @@ ticas:
 \end_layout
 
 \begin_layout Itemize
-
+La
 \emph on
-La exactitud
+ exactitud
 \emph default
  (correctness): ¿el algoritmo es correcto?
 \end_layout
 
 \begin_layout Itemize
-
+La
 \emph on
-La eficiencia
+ eficiencia
 \emph default
 : ¿qué tanto crece el tiempo de ejecución requerido por el algoritmo con
  respecto al tamaño de la entrada? ¿dicha razón de crecimiento es polinomial?
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Notas bibliográficas
 \end_layout
 

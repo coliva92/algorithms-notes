@@ -131,7 +131,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 
 \begin_body
 
-\begin_layout Chapter*
+\begin_layout Chapter
 Análisis de la Exactitud de un Algoritmo
 \end_layout
 
@@ -154,41 +154,33 @@ análisis de exactitud
 ).
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Demostrando que un algoritmo es incorrecto
 \end_layout
 
 \begin_layout Standard
-Para demostrar que un algoritmo es incorrecto basta con producir un 
+Para demostrar que un algoritmo es incorrecto, basta con producir un 
 \emph on
 contraejemplo
 \emph default
 ; esto es, un caso específico para el cual el algoritmo no genera un resultado
  que satisfaga los requerimientos de salida del problema o no termina su
  ejecución.
- Un buen contraejemplo debe tener las sig.
- características:
+ Un buen contraejemplo tiene las sig.
+ propiedades:
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Verificabilidad
-\emph default
-: debe ser posible determinar el resultado que el algoritmo producirá para
- el contraejemplo propuesto.
+Verificabilidad: debe ser posible determinar el resultado que el algoritmo
+ producirá para el contraejemplo propuesto.
  También debe ser posible determinar el resultado correcto que el algoritmo
  debió haber producido.
  
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Simplicidad
-\emph default
-: el contraejemplo debe exponer claramente porqué el algoritmo es incorrecto,
- sin recurrir a detalles innecesarios.
+Simplicidad: el contraejemplo debe exponer claramente porqué el algoritmo
+ es incorrecto, sin recurrir a detalles innecesarios.
  Una vez que se encuentra un contraejemplo, se recomienda simplificarlo
  a su forma más básica.
 \end_layout
@@ -216,9 +208,8 @@ clases de entrada
 \end_layout
 
 \begin_layout Itemize
-Proponer casos específicos con valores de frontera.
- Esto es, tomar los casos específicos más extremos que admite el algoritmo
- y observar cómo se comporta.
+Proponer casos específicos con valores de frontera; esto es, tomar los casos
+ específicos más extremos que admite el algoritmo y observar cómo se comporta.
 \end_layout
 
 \begin_layout Itemize
@@ -237,7 +228,7 @@ En caso de no haberse encontrado un contraejemplo para un algoritmo determinado,
  una demostración convincente de su exactitud.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 La invariante de lazo
 \end_layout
 
@@ -264,7 +255,8 @@ prueba de escritorio
 
 \begin_layout Itemize
 Al trabajar con arreglos, la invariante de lazo suele mostrar alguna característ
-ica particular de los elementos que han sido procesados hasta el momento.
+ica particular de los elementos que se han procesados hasta ahora en cada
+ iteración.
 \end_layout
 
 \begin_layout Itemize
@@ -333,7 +325,7 @@ Finalización
  
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Consejos para diseñar algoritmos correctos
 \end_layout
 
@@ -346,7 +338,7 @@ Cuando se trata de diseñar algoritmos, rara vez es posible producir uno
  
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Definición del problema
 \end_layout
 
@@ -354,14 +346,14 @@ Definición del problema
 El primer paso para diseñar un algoritmo correcto es definir claramente
  los requerimientos de entrada y salida del problema a resolver.
  Si el problema está mal definido, el algoritmo será incorrecto sin importar
- lo que se haga.
+ lo que haga.
  Algunos consejos para definir correctamente el problema son:
 \end_layout
 
 \begin_layout Itemize
 De ser posible, se recomienda hacer más específicos los requerimientos de
  entrada; esto suele reducir la dificultad para resolver el problema.
- Por ejemplo, intentar trabajar con árboles en lugar de grafos generales.
+ Por ejemplo, trabajar con árboles en lugar de grafos generales.
 \end_layout
 
 \begin_layout Itemize
@@ -385,16 +377,16 @@ Los requerimientos de salida deben ser simples.
 \end_inset
 
 encontrar la ruta más corta entre dos lugares en el mapa que no requiera
- más del doble de giros a la izquierda de los que son necesarios
+ más del doble de la mínima cantidad necesaria de giros a la izquierda
 \begin_inset Quotes frs
 \end_inset
 
  es una salida bien definida pero muy complicada de satisfacer puesto que
- está compuesta de tres objetivos más específicos.
+ está compuesta de tres objetivos específicos.
  
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Abordar el problema por dos ángulos
 \end_layout
 
@@ -411,8 +403,8 @@ Al trabajar con problemas nuevos, se recomienda estudiar la complejidad
  
 \end_layout
 
-\begin_layout Subsection*
-Selección de una estructuras abstracta
+\begin_layout Subsection
+Selección de una estructura abstracta
 \end_layout
 
 \begin_layout Standard
@@ -560,7 +552,7 @@ Descomposición recursiva de algunas estructuras abstractas.
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Notas bibliográficas
 \end_layout
 

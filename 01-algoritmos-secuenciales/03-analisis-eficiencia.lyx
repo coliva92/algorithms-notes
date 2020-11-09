@@ -131,7 +131,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 
 \begin_body
 
-\begin_layout Chapter*
+\begin_layout Chapter
 Análisis de la Eficiencia de un Algoritmo
 \end_layout
 
@@ -161,9 +161,10 @@ tiempo de ejecución
 
  de alguna operación o algoritmo, en realidad se está hablando de la cantidad
  total de instrucciones que se ejecutan.
+ 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 El modelo de cómputo RAM
 \end_layout
 
@@ -172,7 +173,11 @@ Un
 \emph on
 modelo de cómputo
 \emph default
- es una representación simplificada de alguna tecnología de cómputo particular
+ (o, simplemente, 
+\emph on
+modelo
+\emph default
+) es una representación simplificada de alguna tecnología de cómputo particular
  que funge como una 
 \begin_inset Quotes fls
 \end_inset
@@ -186,20 +191,20 @@ máquina hipotética
  Para ello, el modelo debe ser lo suficientemente simple para que facilite
  el análisis y, a la vez, lo suficientemente cercano a la tecnología que
  representa para que refleje lo más fielmente posible el comportamiento
- que tendría el algoritmo de ser implementado en la tecnología representada.
+ que tendría el algoritmo de ser implementado en dicha tecnología.
  Existen varios modelos de cómputo, pero el más comúnmente utilizado para
  analizar algoritmos secuenciales es el 
 \emph on
-modelo de cómputo RAM
+modelo RAM 
 \emph default
-.
+(random access machine).
  
 \end_layout
 
 \begin_layout Standard
-El modelo de cómputo RAM (random access machine) simula la arquitectura
- de von Neumann y, como tal, consiste de una unidad de procesamiento central
- (CPU o procesador) conectada a una unidad de memoria de acceso aleatorio.
+El modelo RAM simula la arquitectura de von Neumann y, como tal, consiste
+ de una unidad de procesamiento central conectada a una unidad de memoria
+ de acceso aleatorio.
  En la arquitectura de von Neumann, las instrucciones y los datos se almacenan
  en la misma unidad de memoria y comparten el mismo medio de transmisión.
  Como consecuencia, el procesador no puede ejecutar una instrucción al mismo
@@ -208,10 +213,25 @@ El modelo de cómputo RAM (random access machine) simula la arquitectura
 \emph on
 ciclo de máquina
 \emph default
- del modelo RAM consiste de tres pasos: primero, se lee un dato de la memoria,
- después, se ejecuta alguna instrucción sobre ése dato y, finalmente, se
- escribe el resultado en la memoria.
- Cada ciclo de máquina se ejecuta en tiempo constante (i.e.
+ del modelo RAM consiste de tres pasos: 
+\end_layout
+
+\begin_layout Enumerate
+Se lee algún dato de la memoria.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Se ejecuta alguna instrucción sobre ése dato.
+\end_layout
+
+\begin_layout Enumerate
+Se escribe el resultado en la memoria.
+ 
+\end_layout
+
+\begin_layout Standard
+Cada ciclo de máquina se ejecuta en tiempo constante (i.e.
  independiente del valor o tamaño del dato de entrada).
  
 \end_layout
@@ -224,7 +244,7 @@ En términos prácticos, al simular la ejecución de un algoritmo en el modelo
 
 \begin_layout Itemize
 Las instrucciones se pueden ejecutar únicamente de forma secuencial; no
- se permite ejecutar instrucciones de forma concurrente.
+ se permite ejecutar instrucciones concurrentes.
  
 \end_layout
 
@@ -251,8 +271,8 @@ Invocar una rutina toma tiempo constante, pero el tiempo requerido para
  ejecutar dicha rutina depende del tamaño de su entrada.
 \end_layout
 
-\begin_layout Section*
-Entradas a considerar
+\begin_layout Section
+Casos a considerar
 \end_layout
 
 \begin_layout Standard
@@ -267,7 +287,7 @@ Las clases de entrada de un algoritmo pueden categorizarse en tres casos
 Mejor caso
 \emph default
 : son todos los casos específicos que provocan que el algoritmo ejecute
- la menor cantidad total de instrucciones posible.
+ la menor cantidad de instrucciones posible.
  
 \end_layout
 
@@ -277,7 +297,7 @@ Mejor caso
 Peor caso
 \emph default
 : son todos los casos específicos que provocan que el algoritmo ejecute
- la mayor cantidad total de instrucciones posible.
+ la mayor cantidad de instrucciones posible.
  
 \end_layout
 
@@ -297,31 +317,33 @@ En la práctica, se suele estudiar únicamente el peor caso.
  que puede llegar a tardar el algoritmo.
  Por otro lado, estudiar el caso promedio es complicado debido a que no
  siempre es fácil ver cuáles clases de entrada constituyen el caso promedio,
- puesto que no siempre se tiene que todas las diferentes clases ocurren
- con la misma frecuencia.
- Además, frecuentemente ocurre que el caso promedio es casi tan tardado
- como el peor caso.
- Debido a esto, sólo en algunas ocasiones es de interés estudiar el caso
- promedio, por ejemplo, cuando el caso promedio ocurre con mayor frecuencia
- que los otros casos o cuando se está analizando un algoritmo aleatorio.
+ además de que no siempre se tiene que todas las clases ocurren con la misma
+ frecuencia.
+ De cualquier forma, frecuentemente ocurre que el caso promedio es casi
+ tan tardado como el peor caso.
+ Entonces, sólo en algunas ocasiones es de interés estudiar el caso promedio;
+ e.g.
+ cuando el caso promedio ocurre con mayor frecuencia que los otros casos
+ o cuando se está analizando un algoritmo aleatorio.
  
 \end_layout
 
-\begin_layout Section*
-Procedimiento general
+\begin_layout Section
+Procedimiento general del análisis
 \end_layout
 
 \begin_layout Standard
 El análisis de la eficiencia de un algoritmo consiste de multiplicar el
- tiempo de ejecución de cada instrucción del algoritmo (suponiendo que se
- ejecuta en el modelo RAM) por el número de veces que se ejecuta (dada una
- entrada genérica de tamaño arbitrariamente grande y perteneciente a alguna
- de las clases de entrada identificadas) y sumar los resultados obtenidos.
+ tiempo de ejecución de cada instrucción (suponiendo que el algoritmo se
+ ejecuta en el modelo RAM) por el número de veces que se ejecutan (dada
+ una entrada genérica de tamaño arbitrariamente grande y perteneciente a
+ alguna de las clases de entrada identificadas).
+ Finalmente, se suman estos productos.
  
 \end_layout
 
 \begin_layout Standard
-El producto final del análisis es una función 
+Como resultado final del análisis, se obtiene una función 
 \begin_inset Formula $T:\mathbb{N}\to\mathbb{N}$
 \end_inset
 
@@ -338,11 +360,13 @@ tamaño
 \begin_inset Quotes frs
 \end_inset
 
- depende del contexto del problema que se está tratando.
+ depende del contexto del problema que se está tratando; e.g.
+ la longitud de una secuencia o el número de vértices de un grafo.
  Aunque es posible encontrar esta función de forma algebraica, es más fácil
  trabajar con la notación asintótica y expresar dicha función por medio
  de su orden de crecimiento.
- Finalmente, se puede suponer, sin pérdida de generalidad, que 
+ Cabe mencionar que siempre se puede suponer, sin pérdida de generalidad,
+ que 
 \begin_inset Formula $T$
 \end_inset
 
@@ -350,7 +374,7 @@ tamaño
  
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Relaciones de recurrencia
 \end_layout
 
@@ -359,8 +383,8 @@ Una relación de recurrencia (o, simplemente,
 \emph on
 recurrencia
 \emph default
-) es una función expresada en términos de sí misma pero con un valor reducido
- para la variable independiente.
+) es una función expresada en términos de sí misma, pero con una variable
+ independiente de menor valor.
  Las recurrencias se presentan al analizar la eficiencia de algoritmos de
  tipo 
 \emph on
@@ -401,7 +425,7 @@ donde
 \end_inset
 
  es la condición de paro (boundary condition); esto es, el tamaño de entrada
- requerido para llegar al caso base de la recursividad, 
+ requerido para entrar al caso base de la recursividad, 
 \end_layout
 
 \begin_layout Itemize
@@ -451,10 +475,17 @@ La función
 \end_inset
 
  suele omitirse cuando es constante.
- A continuación se presentan tres técnicas diferentes para resolver recurrencias.
+ 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
+A continuación se presentan tres métodos diferentes para resolver recurrencias.
+ Para ver ejemplos de estos métodos, se recomienda consultar el libro de
+ Cormen et al.
+ (2009).
+\end_layout
+
+\begin_layout Subsection
 Teorema maestro
 \end_layout
 
@@ -611,7 +642,7 @@ en un factor polinomial
  cualquier tipo de recurrencia.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Método del árbol recursivo
 \end_layout
 
@@ -773,7 +804,7 @@ El método del árbol recursivo consiste de los sig.
 Desglozar la recurrencia en un árbol de tal forma que la raíz representa
  el tiempo requerido para combinar y/o dividir el problema original, cada
  nodo interno representa el tiempo requerido para combinar y/o dividir un
- subproblema y cada hoja representa el tiempo requerido para el caso base.
+ subproblema y cada hoja representa el tiempo requerido por el caso base.
  
 \end_layout
 
@@ -786,7 +817,7 @@ Calcular la cantidad de hojas.
 \end_layout
 
 \begin_layout Enumerate
-Calcular el tiempo de ejecución de cada nivel.
+Calcular la suma del tiempo de ejecución de todos los nodos de cada nivel.
  
 \end_layout
 
@@ -795,7 +826,7 @@ Sumar el tiempo de ejecución de todos los niveles para obtener la forma
  cerrada.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Método de sustitución
 \end_layout
 
@@ -823,61 +854,43 @@ Este método se puede utilizar para calcular tanto una cota superior como
  
 \end_layout
 
-\begin_layout Paragraph*
-Proponiendo una buena solución tentativa
+\begin_layout Itemize
+Para proponer una buena solución tentativa:
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
 Se puede utilizar el método del árbol recursivo para obtener una solución
- tentativa para la recurrencia y después utilizar el método de sustitución
- para demostrar que dicha solución es correcta o para ajustar la cota.
- Si la recurrencia tiene una forma similar a alguna otra que se haya resuelto
- anteriormente, se puede proponer la solución de la recurrencia anterior
- como la solución tentativa de la recurrencia actual.
- Finalmente, si no se está completamente seguro de cuál es la solución,
+ tentativa y después utilizar el método de sustitución para demostrar que
+ dicha solución es correcta o para ajustar la cota.
+\end_layout
+
+\begin_layout Itemize
+Si la recurrencia tiene una forma similar a alguna otra que se haya resuelto
+ anteriormente, se puede proponer la solución de dicha recurrencia como
+ la solución tentativa.
+\end_layout
+
+\begin_layout Itemize
+Si definitvamente no se sabe qué cota proponer como solución tentativa,
  se pueden proponer dos cotas holgadas, una inferior y una superior, y ajustarla
 s gradualmente hasta que converjan en la solución correcta.
  
 \end_layout
 
-\begin_layout Paragraph*
-Cuidado con la notación asintótica
+\end_deeper
+\begin_layout Itemize
+Diferencias con la inducción matemática:
 \end_layout
 
-\begin_layout Standard
-Aunque la solución de una recurrencia se expresa en notación asintótica,
- el objetivo del método de sustitución es demostrar que dicha cota se cumple
- de forma exacta.
- Por ejemplo, suponiendo que se desea demostrar que 
-\begin_inset Formula $T=O(n^{2})$
-\end_inset
-
-, lo que se debe hacer es calcular el valor de la constante 
-\begin_inset Formula $c$
-\end_inset
-
- que satisfaga la expresión 
-\begin_inset Formula $T(n)\leq cn^{2}$
-\end_inset
-
- para valores suficientemente grandes de 
-\begin_inset Formula $n$
-\end_inset
-
-.
- Un error común es aplicar la notación asintótica prematuramente durante
- la inducción para eliminar constantes o términos problemáticos.
+\begin_deeper
+\begin_layout Itemize
+El caso base se realiza hasta el último.
 \end_layout
 
-\begin_layout Paragraph*
-Diferencias con la inducción matemática
-\end_layout
-
-\begin_layout Standard
-A diferencia de la notación matemática, en el método de sustitución el caso
- base se realiza hasta el último.
- Además, la hipótesis inductiva consiste de suponer que la cota propuesta
- se cumple para 
+\begin_layout Itemize
+La hipótesis inductiva consiste de suponer que la cota propuesta se cumple
+ para 
 \begin_inset Formula $T(n_{i})$
 \end_inset
 
@@ -886,36 +899,45 @@ A diferencia de la notación matemática, en el método de sustitución el caso
 \end_inset
 
 .
- Así, el paso inductivo consiste en sustituir 
+\end_layout
+
+\begin_layout Itemize
+El paso inductivo consiste en sustituir 
 \begin_inset Formula $T(n_{i})$
 \end_inset
 
-, en la recurrencia origial, con la forma exacta de la cota propuesta, lo
- que da origen al nombre del método.
+, en la recurrencia original, con la forma exacta de la cota propuesta,
+ lo que da origen al nombre del método.
 \end_layout
 
-\begin_layout Paragraph
-Ajustando la hipótesis inductiva
+\end_deeper
+\begin_layout Itemize
+La idea principal de este método es demostrar que la cota propuesta se cumple
+ de forma exacta, por lo que nunca se debe aplicar la notación asintótica
+ en la inducción.
+\end_layout
+
+\begin_layout Itemize
+Cuando la solución correcta es la cota más ajustada posible, pero aún así
+ la inducción no converge:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En lugar de proponer una cota más holgada, proponer una nueva hipótesis
+ inductiva cuya única diferencia es que se le restan los términos de menor
+ grado de la última solución obtenida.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Cambio de variable
 \end_layout
 
 \begin_layout Standard
-En algunas ocasiones, puede ocurrir que la solución propuesta es, de hecho,
- la solución correcta, pero la inducción no converge exactamente a dicho
- resultado.
- En estos casos, uno podría estar tentado a proponer una cota más holgada.
- En lugar de eso, se puede simplemente proponer una nueva hipótesis inductiva,
- que sea igual a la original pero restándole los términos de menor grado.
- 
-\end_layout
-
-\begin_layout Subsection*
-Uso creativo del álgebra
-\end_layout
-
-\begin_layout Standard
-En ocasiones, en lugar de utilizar cualquiera de los métodos mencionados
- anteriormente, se puede aplicar un poco de álgebra para transformar una
- recurrencia en alguna otra cuya solución ya se conozca.
+En ocasiones, se puede aplicar un poco de álgebra para transformar una recurrenc
+ia en alguna otra cuya solución ya se conozca, eliminando por completo la
+ necesidad de recurrir a alguno de los métodos anteriores.
 \end_layout
 
 \begin_layout Section*

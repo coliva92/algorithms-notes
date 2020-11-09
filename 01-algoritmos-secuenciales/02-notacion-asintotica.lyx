@@ -131,7 +131,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 
 \begin_body
 
-\begin_layout Chapter*
+\begin_layout Chapter
 Notación Asintótica
 \end_layout
 
@@ -145,7 +145,7 @@ notación de Landau
 ente tiende a infinito.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Definiciones básicas
 \end_layout
 
@@ -174,17 +174,14 @@ asintóticamente positivas
 \begin_inset Formula $g(n)$
 \end_inset
 
- siempre son positivas a partir de algún valor de 
+ siempre son positivos a partir de algún valor de 
 \begin_inset Formula $n$
 \end_inset
 
 .
  A continuación se presentan las definiciones básicas para la notación asintótic
 a.
-\end_layout
-
-\begin_layout Remark
-En la notación asintótica, se utiliza el símbolo 
+ Obsérvese que, en la notación asintótica, se utiliza el símbolo 
 \begin_inset Formula $=$
 \end_inset
 
@@ -222,20 +219,16 @@ Denotado como
 \begin_inset Formula $n_{0}\in\mathbb{N}$
 \end_inset
 
-, tales que 
+ tales que 
 \begin_inset Formula $0\le f(n)\leq c\cdot g(n)$
 \end_inset
 
- para toda 
+, para toda 
 \begin_inset Formula $n\geq n_{0}$
 \end_inset
 
 .
- En términos simples, 
-\begin_inset Formula $f=O(g)$
-\end_inset
-
- denota q
+ 
 \end_layout
 
 \begin_layout Standard
@@ -274,11 +267,11 @@ Denotado como
 \begin_inset Formula $n_{0}$
 \end_inset
 
-, tales que 
+ tales que 
 \begin_inset Formula $0\le c\cdot g(n)\leq f(n)$
 \end_inset
 
- para toda 
+, para toda 
 \begin_inset Formula $n\geq n_{0}$
 \end_inset
 
@@ -321,11 +314,11 @@ Denotado como
 \begin_inset Formula $n_{0}$
 \end_inset
 
-, tales que 
+ tales que 
 \begin_inset Formula $0\le c_{1}\cdot g(n)\leq f(n)\leq c_{2}\cdot g(n)$
 \end_inset
 
- para toda 
+, para toda 
 \begin_inset Formula $n\geq n_{0}$
 \end_inset
 
@@ -572,36 +565,43 @@ Si
 .
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Trabajando con la notación asintótica
 \end_layout
 
 \begin_layout Standard
 En términos prácticos, al aplicar la notación asintótica a una expresión
- algebraica, ocurren dos cosas: se eliminan los términos constantes y los
- coeficientes y se consideran únicamente los términos de mayor grado y los
- demás se eliminan.
- Intuitivamente, esto se debe a que, conforme la variable independiente
- se aproxima a inifinito, la aportación de aquellos términos que crecen
- más despacio se vuelve despreciable.
+ algebraica, ocurren dos cosas: 
+\end_layout
+
+\begin_layout Enumerate
+Se eliminan los términos constantes y los coeficientes.
  
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Enumerate
+Se consideran únicamente los términos de mayor grado y los demás se eliminan.
+ 
+\end_layout
+
+\begin_layout Standard
+Intuitivamente, esto se debe a que, conforme la variable independiente se
+ aproxima a inifinito, la aportación de aquellos términos que crecen más
+ despacio se vuelve despreciable.
+ 
+\end_layout
+
+\begin_layout Subsection
 Órdenes de crecimiento
 \end_layout
 
 \begin_layout Standard
-Al aplicar la notacion asintótica a una función, se dice que la expresión
- resultante es el 
+El órden de crecimiento (o, simplemente,
 \emph on
-orden de crecimiento
+ orden
 \emph default
- (o, simplemente, 
-\emph on
-orden
-\emph default
-) de dicha función.
+) de una función es la expresión algebráica más simple posible que resulta
+ de aplicar la notación asintótica a dicha función.
  A continuación se presentan los órdenes de crecimiento más comunes, ordenados
  de aquél que crece más lento al que crece más rápido.
 \end_layout
@@ -714,14 +714,14 @@ Factoriales
 
 \end_layout
 
-\begin_layout Remark
-Se debe tener cuidado sobre cómo se interpreta la lista anterior, puesto
- que la notación asintótica puede ocultar constantes muy grandes.
+\begin_layout Standard
+Se debe tener cuidado sobre cómo interpretar la lista anterior, puesto que
+ la notación asintótica puede ocultar constantes muy grandes.
  Por ejemplo, a pesar de que 
 \begin_inset Formula $10^{100}n=\Theta(n)$
 \end_inset
 
- y 
+ y que 
 \begin_inset Formula $2n\cdot\log n=\Theta(n\log n)$
 \end_inset
 
@@ -730,7 +730,7 @@ Se debe tener cuidado sobre cómo se interpreta la lista anterior, puesto
 \begin_inset Formula $n$
 \end_inset
 
-.
+, lo que contradice el orden presentado en la lista anterior.
 \end_layout
 
 \begin_layout Standard
@@ -771,8 +771,12 @@ Comparación gráfica de los órdenes de crecimiento más frecuentemente utiliza
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Propiedades aritméticas
+\end_layout
+
+\begin_layout Standard
+A continuación se describe cómo hacer aritmética con la notación asintótica.
 \end_layout
 
 \begin_layout Paragraph
@@ -804,15 +808,8 @@ Multiplicación
 \end_layout
 
 \begin_layout Standard
-La multiplicación de una función 
-\begin_inset Formula $f$
-\end_inset
-
- con una constante 
-\begin_inset Formula $c$
-\end_inset
-
- no afecta el comportamiento asintótico de dicha función.
+La multiplicación de una función con una constante no afecta el comportamiento
+ asintótico de dicha función.
 \end_layout
 
 \begin_layout Standard
@@ -828,16 +825,8 @@ o(c\cdot f) & =o(f)\\
 
 \end_inset
 
-Cuando dos funciones 
-\begin_inset Formula $f$
-\end_inset
-
- y 
-\begin_inset Formula $g$
-\end_inset
-
- se multiplican, ambas contribuyen por igual al comportamiento asintótico
- de la función resultante.
+Cuando dos funciones se multiplican, ambas contribuyen por igual al comportamien
+to asintótico de la función resultante.
 \end_layout
 
 \begin_layout Standard
@@ -856,13 +845,13 @@ o(f)\cdot o(g) & =o(f\cdot g)\\
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Propiedades de comparación
 \end_layout
 
 \begin_layout Standard
-Muchas de las propiedades de comparación de los números reales pueden trasladars
-e a funciones por medio de la notación asintótica.
+La notación asintótica se puede utilizar como un esquema para comparar dos
+ funciones, similar a como se puede hacer con números reales.
  Una forma intuitiva de verlo es trazando las sig.
  analogías:
 \end_layout
