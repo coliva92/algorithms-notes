@@ -77,7 +77,16 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \float_placement tb
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize letterpaper
 \use_geometry false
 \use_package amsmath 1
@@ -108,7 +117,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \topmargin 1.2in
 \rightmargin 1.2in
 \bottommargin 1.2in
-\secnumdepth 3
+\secnumdepth 2
 \tocdepth 0
 \paragraph_separation indent
 \paragraph_indentation default
@@ -117,7 +126,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \bullet 0 2 5 -1
 \bullet 1 5 35 -1
@@ -131,117 +140,53 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 
 \begin_body
 
-\begin_layout Chapter
+\begin_layout Title
+ANÁLISIS DE ALGORITMOS
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
+\begin_inset CommandInset include
+LatexCommand input
+filename "01-algoritmos-secuenciales/00-conceptos-fundamentales.lyx"
 
-\begin_layout Plain Layout
+\end_inset
 
-
-\backslash
-SetKwInOut{In}{Entrada}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetKwInOut{Out}{Salida}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetKw{Throw}{throw}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetKw{Error}{error}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetKw{T}{true}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetKw{F}{false}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetKw{Nil}{nil}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetCommentSty{text}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetKwComment{Comment}{$
-\backslash
-triangleright$ }{}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetFuncSty{textsc}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-SetAlgoVlined
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-DontPrintSemicolon
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "01-algoritmos-secuenciales/01-analisis-exactitud.lyx"
+
+\end_inset
 
 
-\backslash
-In{}
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "01-algoritmos-secuenciales/02-notacion-asintotica.lyx"
+
+\end_inset
 
 
-\backslash
-Out{}
 \end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "01-algoritmos-secuenciales/03-analisis-eficiencia.lyx"
 
 \end_inset
 
