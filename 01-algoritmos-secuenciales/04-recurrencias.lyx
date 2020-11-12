@@ -322,7 +322,7 @@ Si
 \end_inset
 
 , entonces 
-\begin_inset Formula $T=\Theta(n^{c}\lg n)$
+\begin_inset Formula $T=\Theta(n^{c}\log n)$
 \end_inset
 
 .
