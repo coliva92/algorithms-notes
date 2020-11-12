@@ -1,0 +1,1169 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
+
+\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
+\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
+\theoremstyle{myplain}
+\newtheorem{mythm}{Teorema}[]
+\newtheorem{mylem}{Lema}[]
+\newtheorem{myprop}{Proposición}[]
+\theoremstyle{mydef}
+\newtheorem{mydef}{Definición}[]
+\newtheorem{myrmk}{Observación}[]
+\newtheorem{myex}{Ejemplo}[]
+
+\let\thm\mythm
+\let\endthm\endmythm
+\let\lem\mylem
+\let\endlem\endmylem
+\let\prop\myprop
+\let\endprop\endmyprop
+\let\defn\mydef
+\let\enddefn\endmydef
+\let\example\myex
+\let\endexample\endmyex
+\let\rem\myrmk
+\let\endrem\endmyrmk
+
+\usepackage{xpatch}
+\newcommand{\proofnamefont}{\scshape}
+\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+\end_local_layout
+\language spanish-mexico
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement tb
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize letterpaper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.57in
+\topmargin 1.2in
+\rightmargin 1.2in
+\bottommargin 1.2in
+\secnumdepth 3
+\tocdepth 0
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+La Potencia y el Logaritmo
+\end_layout
+
+\begin_layout Section
+Potencia
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Potencia
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ y 
+\begin_inset Formula $n\in\mathbb{N}_{0}$
+\end_inset
+
+, donde 
+\begin_inset Formula $x$
+\end_inset
+
+ se denomina 
+\emph on
+base
+\emph default
+ y 
+\begin_inset Formula $n$
+\end_inset
+
+ se denomina 
+\emph on
+exponente
+\emph default
+.
+ La 
+\begin_inset Formula $n$
+\end_inset
+
+-ésima potencia
+\emph on
+ 
+\emph default
+de 
+\begin_inset Formula $x$
+\end_inset
+
+, denotada como 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+, es el producto de 
+\begin_inset Formula $n$
+\end_inset
+
+ bases 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Esto es, 
+\begin_inset Formula $x^{n}=x\cdot x\cdot\dots\text{ (}n\text{ veces)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "laws-of-exp"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Leyes de los exponentes
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $x,y\in\mathbb{R}$
+\end_inset
+
+ y sean 
+\begin_inset Formula $m,n\in\mathbb{N}_{0}$
+\end_inset
+
+.
+ Se tienen las sig.
+ identidades sobre potencias:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x^{0}\triangleq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x^{1}\triangleq x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x^{-1}\triangleq1/x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x^{m/n}\triangleq\sqrt[n]{x^{m}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x^{m}x^{n}=x^{m+n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x^{m}/x^{n}=x^{m-n}$
+\end_inset
+
+, donde 
+\begin_inset Formula $x\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(x^{m})^{n}=x^{mn}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(xy)^{n}=x^{n}y^{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(x/y)^{n}=x^{n}/y^{n}$
+\end_inset
+
+, donde 
+\begin_inset Formula $y\neq0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+Cuando 
+\begin_inset Formula $x=0$
+\end_inset
+
+, se tiene que 
+\begin_inset Formula $x^{-1}$
+\end_inset
+
+ es indefinido.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Cuando 
+\begin_inset Formula $x=0$
+\end_inset
+
+, por convención, la identidad 
+\begin_inset Formula $x^{0}=1$
+\end_inset
+
+ se seguirá cumpliendo.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Demostración para el teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "laws-of-exp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Las primeras cuatro identidades se aceptan sin requerir una demostración,
+ el resto se pueden demostrar de forma algebraica.
+ Comenzando por la identidad 5, ésta se obtiene de:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+x^{m}x^{n}=x\cdot x\cdot\dots\text{ (}m\text{ veces)}\cdot x\cdot x\cdot\dots\text{ (}n\text{ veces)}=x^{m+n}
+\]
+
+\end_inset
+
+Para la identidad 6 se tienen dos casos:
+\end_layout
+
+\begin_deeper
+\begin_layout Case
+Si 
+\begin_inset Formula $m<n$
+\end_inset
+
+, se tiene que
+\begin_inset Formula 
+\begin{align*}
+\dfrac{x^{m}}{x^{n}} & =\dfrac{x\cdot x\cdot\dots\text{ (}m\text{ veces)}}{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}\\
+ & =1\cdot1\cdot\dots\text{ (}m\text{ veces)}\cdot\dfrac{1}{x}\cdot\dfrac{1}{x}\cdot\dots\text{ (}n-m\text{ veces)}\\
+ & =x^{-1}\cdot x^{-1}\cdot\dots\text{ (}n-m\text{ veces)}\\
+ & =x^{m-n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Case
+Si 
+\begin_inset Formula $m\geq n$
+\end_inset
+
+, se tiene que
+\begin_inset Formula 
+\begin{align*}
+\dfrac{x^{m}}{x^{n}} & =\dfrac{x\cdot x\cdot\dots\text{ (}m\text{ veces)}}{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}\\
+ & =1\cdot1\cdot\dots\text{ (}n\text{ veces)}\cdot x\cdot x\cdot\dots\text{ (}m-n\text{ veces)}\\
+ & =x^{m-n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+La identidad 7 se obtiene de:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\left(x^{m}\right)^{n}=\left[x\cdot x\cdot\dots\text{ (}m\text{ veces)}\right]\cdot\left[x\cdot x\cdot\dots\text{ (}m\text{ veces)}\right]\cdot\dots\text{ (}n\text{ veces)}=x^{mn}
+\]
+
+\end_inset
+
+La identidad 8 se obtiene de:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\left(xy\right)^{n} & =xy\cdot xy\cdot\dots\text{ (}n\text{ veces)}\\
+ & =x\cdot x\cdot\dots\text{ (}n\text{ veces)}\cdot y\cdot y\cdot\dots\text{ (}n\text{ veces)}\\
+ & =x^{n}y^{n}
+\end{align*}
+
+\end_inset
+
+Finalmente, la identidad 9 se obtiene de:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\left(\dfrac{x}{y}\right)^{n} & =\dfrac{x}{y}\cdot\dfrac{x}{y}\cdot\dots\text{ (}n\text{ veces)}\\
+ & =\dfrac{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}{y\cdot y\cdot\dots\text{ (}n\text{ veces)}}\\
+ & =\dfrac{x^{n}}{y^{n}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Logaritmo
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Logaritmo
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $b,x\in\mathbb{R}^{+}$
+\end_inset
+
+, donde 
+\begin_inset Formula $b>1$
+\end_inset
+
+ y se denomina 
+\emph on
+base
+\emph default
+.
+ El logaritmo de 
+\emph on
+
+\begin_inset Formula $x$
+\end_inset
+
+
+\emph default
+ con respecto a 
+\emph on
+
+\begin_inset Formula $b$
+\end_inset
+
+, 
+\emph default
+denotado como 
+\begin_inset Formula $\log_{b}x$
+\end_inset
+
+, es la potencia a la que hay que elevar 
+\begin_inset Formula $b$
+\end_inset
+
+ para obtener 
+\begin_inset Formula $x$
+\end_inset
+
+ como resultado.
+ Esto es, 
+\begin_inset Formula $y=\log_{b}x$
+\end_inset
+
+ si y sólo si 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+, donde 
+\begin_inset Formula $y\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Logaritmo decimal
+\end_layout
+
+\end_inset
+
+Se dice que un logaritmo es decimal cuando su base es 10.
+ El logaritmo decimal de un número real 
+\begin_inset Formula $x$
+\end_inset
+
+ se denota como 
+\begin_inset Formula $\log x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Logaritmo natural
+\end_layout
+
+\end_inset
+
+Se dice que un logaritmo es natural cuando su base es la constante de Neper
+ 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ El logaritmo natural de un número real 
+\begin_inset Formula $x$
+\end_inset
+
+ se denota como 
+\begin_inset Formula $\ln x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Logaritmo binario
+\end_layout
+
+\end_inset
+
+Se dice que un logaritmo es binario cuando su base es 2.
+ El logaritmo binario de un número real 
+\begin_inset Formula $x$
+\end_inset
+
+ se denotan como 
+\begin_inset Formula $\lg x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "no-negative-bases"
+
+\end_inset
+
+La base de un logaritmo no puede ser negativa.
+\end_layout
+
+\begin_layout Proof
+Supóngase que 
+\begin_inset Formula $y=\log_{b}x$
+\end_inset
+
+, donde 
+\begin_inset Formula $b$
+\end_inset
+
+ es negativo.
+ Esto implica que 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+ (por la definición del logaritmo).
+ Sin embargo, por las leyes de los signos, se tiene que el término 
+\begin_inset Formula $b^{y}$
+\end_inset
+
+ es positivo si 
+\begin_inset Formula $y$
+\end_inset
+
+ es par, o negativo si 
+\begin_inset Formula $y$
+\end_inset
+
+ es impar.
+ Esto implica que existen valores de 
+\begin_inset Formula $x$
+\end_inset
+
+ para los cuales 
+\begin_inset Formula $\log_{b}x$
+\end_inset
+
+ no existe.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "no-negative-logarithm"
+
+\end_inset
+
+Los números negativos no tienen logaritmo.
+\end_layout
+
+\begin_layout Proof
+Supóngase que 
+\begin_inset Formula $y=\log_{b}x$
+\end_inset
+
+, donde 
+\begin_inset Formula $x$
+\end_inset
+
+ es negativo.
+ Esto implica que 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+ (por la definición del logaritmo).
+ Sin embargo, como consecuencia de la proposición 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "no-negative-bases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se tiene que la base de un logaritmo siempre es positiva.
+ Como la potencia de todo número positivo siempre resulta en un número positivo
+ (por las leyes de los signos), entonces no existe un número 
+\begin_inset Formula $y=\log_{b}x$
+\end_inset
+
+ que satisfaga la relación 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+Se tiene que 
+\begin_inset Formula $\log_{b}1=0$
+\end_inset
+
+ para toda 
+\begin_inset Formula $b>1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Supóngase que 
+\begin_inset Formula $y=\log_{b}1$
+\end_inset
+
+, lo que implica que 
+\begin_inset Formula $b^{y}=1$
+\end_inset
+
+ (por la definición del logaritmo).
+ Se tiene entonces lo sig.:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+b^{y} & =1\\
+b^{y} & =b^{0}\\
+y & =0\\
+\log_{b}1 & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+Se tiene que 
+\begin_inset Formula $\log_{b}b=1$
+\end_inset
+
+ para toda 
+\begin_inset Formula $b>1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Supóngase que 
+\begin_inset Formula $y=\log_{b}b$
+\end_inset
+
+, lo que implica que 
+\begin_inset Formula $b^{y}=b$
+\end_inset
+
+ (por la definición del logaritmo).
+ Se tiene entonces lo sig.:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+b^{y} & =b\\
+b^{y} & =b^{1}\\
+y & =1\\
+\log_{b}b & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+El logaritmo de todo número mayor a 1 es positivo.
+ Esto es, 
+\begin_inset Formula $\log_{b}x>0$
+\end_inset
+
+ para toda 
+\begin_inset Formula $x>1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Supóngase que 
+\begin_inset Formula $y=\log_{b}x$
+\end_inset
+
+, donde 
+\begin_inset Formula $x>1$
+\end_inset
+
+.
+ Esto implica que 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+ (por la definición del logaritmo).
+ De la proposición 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "no-negative-bases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se tiene que 
+\begin_inset Formula $b$
+\end_inset
+
+ es positivo.
+ Por lo tanto, para que se satisfaga la relación 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+, el valor de 
+\begin_inset Formula $y$
+\end_inset
+
+ debe ser positivo.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+El logaritmo de todo número menor a 1 es negativo.
+ Esto es, 
+\begin_inset Formula $\log_{b}x<0$
+\end_inset
+
+ para toda 
+\begin_inset Formula $x\in(0,1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Supóngase que 
+\begin_inset Formula $y=\log_{b}x$
+\end_inset
+
+, donde 
+\begin_inset Formula $x\in(0,1)$
+\end_inset
+
+.
+ Esto implica que 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+ (por la definición del logaritmo).
+ De las proposiciones 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "no-negative-bases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "no-negative-logarithm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se tiene que 
+\begin_inset Formula $b$
+\end_inset
+
+ y 
+\begin_inset Formula $x$
+\end_inset
+
+ son ambos positivos.
+ Por lo tanto, para que se satisfaga la relación 
+\begin_inset Formula $b^{y}=x$
+\end_inset
+
+, el valor de 
+\begin_inset Formula $y$
+\end_inset
+
+ debe ser negativo (por las leyes de los exponentes).
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Leyes de los logaritmos
+\end_layout
+
+\end_inset
+
+Sean 
+\begin_inset Formula $b,v,x,y\in\mathbb{R^{+}}$
+\end_inset
+
+, donde 
+\begin_inset Formula $b,v>1$
+\end_inset
+
+.
+ Se tienen las sig.
+ identidades sobre logaritmos:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\log_{b}\left(x\cdot y\right)=\log_{b}x+\log_{b}y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\log_{b}\left(x/y\right)=\log_{b}x-\log_{b}y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\log_{b}x^{y}=y\cdot\log_{b}x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\log_{b}\sqrt[y]{x}=1/y\cdot\log_{b}x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\log_{b}x=\log_{v}x/\log_{v}b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\log_{b}x=1/\log_{x}b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x^{\log_{b}y}=y^{\log_{b}x}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Todas las identidades se pueden demostrar algebraicamente.
+ Comenzando por la identidad 1, sean 
+\begin_inset Formula $\alpha,\beta\in\mathbb{R}$
+\end_inset
+
+ tales que 
+\begin_inset Formula $\alpha=b^{x}$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta=b^{y}$
+\end_inset
+
+.
+ Entonces, se tiene que:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\alpha\cdot\beta & =b^{x}b^{y}\\
+\alpha\cdot\beta & =b^{x+y}\\
+\log_{b}(\alpha\cdot\beta) & =x+y\\
+\log_{b}(\alpha\cdot\beta) & =\log_{b}\alpha+\log_{b}\beta
+\end{align*}
+
+\end_inset
+
+La identidad 2 se origina de una manipulación algebraica similar:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\dfrac{\alpha}{\beta} & =\dfrac{b^{x}}{b^{y}}\\
+\dfrac{\alpha}{\beta} & =b^{x-y}\\
+\log_{b}\left(\dfrac{\alpha}{\beta}\right) & =x-y\\
+\log_{b}\left(\dfrac{\alpha}{\beta}\right) & =\log_{b}\alpha-\log_{b}\beta
+\end{align*}
+
+\end_inset
+
+Para la identidad 3, sea 
+\begin_inset Formula $\theta\in\mathbb{R}$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\theta=\log_{b}x$
+\end_inset
+
+.
+ Esto implica que 
+\begin_inset Formula $b^{\theta}=x$
+\end_inset
+
+ (por la definición del logaritmo), por lo que se tiene lo sig.:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+b^{\theta} & =x\\
+(b^{\theta})^{y} & =x^{y}\\
+b^{\theta y} & =x^{y}\\
+\theta\cdot y & =\log_{b}x^{y}\\
+y\cdot\log_{b}x & =\log_{b}x^{y}
+\end{align*}
+
+\end_inset
+
+La identidad 4 se obtiene de:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+b^{\theta} & =x\\
+\sqrt[y]{b^{\theta}} & =\sqrt[y]{x}\\
+b^{\theta/y} & =\sqrt[y]{x}\\
+\dfrac{\theta}{y} & =\log_{b}\sqrt[y]{x}\\
+\dfrac{1}{y}\cdot\log_{b}x & =\log_{b}\sqrt[y]{x}
+\end{align*}
+
+\end_inset
+
+La identidad 5 se obtiene de:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+b^{\theta} & =x\\
+\log_{v}b^{\theta} & =\log_{v}x\\
+\theta\cdot\log_{v}b & =\log_{v}x\\
+\theta & =\dfrac{\log_{v}x}{\log_{v}b}\\
+\log_{b}x & =\dfrac{\log_{v}x}{\log_{v}b}
+\end{align*}
+
+\end_inset
+
+La identidad 6 se obtiene de:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+b^{\theta} & =x\\
+\log_{x}b^{\theta} & =1\\
+\theta\cdot\log_{x}b & =1\\
+\theta & =\dfrac{1}{\log_{x}b}\\
+\log_{b}x & =\dfrac{1}{\log_{x}b}
+\end{align*}
+
+\end_inset
+
+Finalmente, para la identidad 7, supóngase que 
+\begin_inset Formula $\alpha=\log_{b}x$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta=\log_{b}y$
+\end_inset
+
+.
+ Esto implica que 
+\begin_inset Formula $b^{\alpha}=x$
+\end_inset
+
+ y que 
+\begin_inset Formula $b^{\beta}=y$
+\end_inset
+
+ (por la definición del logaritmo).
+ Entonces, se tiene que:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+x^{\log_{b}y} & =x^{\beta}\\
+ & =(b^{\alpha})^{\beta}\\
+ & =b^{\alpha\beta}\\
+ & =(b^{\beta})^{\alpha}\\
+ & =y^{\alpha}\\
+ & =y^{\log_{b}x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Debido a que cambiar la base de un logaritmo altera dicho valor en un factor
+ constante, el comportamiento asintótico de un logaritmo no va a cambiar
+ sin importar la base.
+ Por ende, la base del logaritmo suele omitirse.
+\end_layout
+
+\end_body
+\end_document

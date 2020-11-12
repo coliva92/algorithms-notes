@@ -42,6 +42,9 @@
 \usepackage{xpatch}
 \newcommand{\proofnamefont}{\scshape}
 \xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -118,7 +121,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \rightmargin 1.2in
 \bottommargin 1.2in
 \secnumdepth 2
-\tocdepth 0
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -187,6 +190,27 @@ filename "01-algoritmos-secuenciales/02-notacion-asintotica.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "01-algoritmos-secuenciales/03-analisis-eficiencia.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "01-algoritmos-secuenciales/04-recurrencias.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset CommandInset include
+LatexCommand input
+filename "apendices/potencia-logaritmo.lyx"
 
 \end_inset
 
