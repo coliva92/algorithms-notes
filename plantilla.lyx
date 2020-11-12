@@ -42,6 +42,9 @@
 \usepackage{xpatch}
 \newcommand{\proofnamefont}{\scshape}
 \xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -117,11 +120,8 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
-\bullet 0 2 5 -1
-\bullet 1 5 35 -1
-\bullet 2 2 11 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0

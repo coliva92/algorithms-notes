@@ -104,12 +104,8 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 1.57in
-\topmargin 1.2in
-\rightmargin 1.2in
-\bottommargin 1.2in
 \secnumdepth 3
-\tocdepth 2
+\tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -119,9 +115,6 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\bullet 0 2 5 -1
-\bullet 1 5 35 -1
-\bullet 2 2 11 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -136,11 +129,15 @@ Conceptos Fundamentales
 \end_layout
 
 \begin_layout Section
-Problema computacional
+Problemas y Algoritmos
 \end_layout
 
 \begin_layout Standard
-Un problema computacional (o, simplemente, 
+Un 
+\emph on
+problema computacional
+\emph default
+ (o, simplemente, 
 \emph on
 problema
 \emph default
@@ -153,70 +150,29 @@ entrada
 salida
 \emph default
 .
- Por ejemplo, el problema de 
-\shape smallcaps
-Ordenamiento
-\shape default
- se define de la sig.
- manera:
-\end_layout
-
-\begin_layout Itemize
-
+ Un 
 \emph on
-Entrada
+algoritmo
 \emph default
-: una secuencia de 
-\begin_inset Formula $n$
-\end_inset
-
- elementos comparables, 
-\begin_inset Formula $A=\langle a_{1},a_{2},\dots,a_{n}\rangle$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Salida
-\emph default
-: una permutación de la secuencia de entrada, 
-\begin_inset Formula $A\text{´}=\langle a\text{´}_{1},a\text{´}_{2},\dots,a\text{´}_{n}\rangle$
-\end_inset
-
-, tal que 
-\begin_inset Formula $a\text{´}_{1}\leq a\text{´}_{2}\le\dots\le a\text{´}_{n}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-Algoritmo
-\end_layout
-
-\begin_layout Standard
-Un algoritmo es una secuencia finita y ordenada de instrucciones bien definidas
- que describen el procedimiento a seguir para transformar la entrada de
- un problema determinado a la salida correspondiente.
+ es una secuencia finita y ordenada de instrucciones bien definidas que
+ describen el procedimiento a seguir para transformar la entrada de un problema
+ determinado a la salida correspondiente.
  Se dice que un algoritmo es
 \end_layout
 
 \begin_layout Itemize
-finito porque tiene una cantidad determinada de instrucciones y su ejecución
+finito, porque tiene una cantidad determinada de instrucciones y su ejecución
  termina en una cantidad determinada de tiempo,
 \end_layout
 
 \begin_layout Itemize
-ordenado porque, dadas dos instrucciones cualesquiera, no hay ambigüedad
- sobre cuál debe ejecutarse primero,
+ordenado, porque, dadas dos instrucciones cualesquiera, no hay ambigüedad
+ sobre cuál debe ejecutarse primero, y
 \end_layout
 
 \begin_layout Itemize
-bien definido porque no hay ambigüedad sobre la interpretación de las instruccio
-nes.
+bien definido, porque no hay ambigüedad sobre la interpretación de las instrucci
+ones.
 \end_layout
 
 \begin_layout Standard
@@ -225,19 +181,18 @@ Un
 caso específico
 \emph default
  (instance) para algún problema particular es cualquier conjunto de valores
- específicos que satisfagan los requerimientos de entrada impuestos por
+ particulares que satisfagan los requerimientos de entrada impuestos por
  dicho problema.
- Por ejemplo, dos casos específicos para el problema de ordenamiento son:
- 
-\begin_inset Formula $\langle31,41,59,26,41,58\rangle$
-\end_inset
+ Los casos específicos pueden agruparse en diferentes 
+\emph on
+clases de entrada
+\emph default
+, que son todas las formas diferentes en las que pueden presentarse los
+ casos específicos.
+\end_layout
 
- y 
-\begin_inset Formula $\langle f,x,a,b,w,j\rangle$
-\end_inset
-
-.
- Un algoritmo es 
+\begin_layout Standard
+Un algoritmo es 
 \emph on
 correcto
 \emph default
@@ -259,40 +214,42 @@ entos de salida.
  
 \end_layout
 
-\begin_layout Section
-Estructura de datos
+\begin_layout Standard
+Los algoritmos suelen presentarse en forma de un 
+\emph on
+pseudocódigo
+\emph default
+.
+ Un pseudocódigo es una descripción simple, informal y de alto nivel de
+ algún algoritmo.
+ Consiste de estructuras de control de flujo, notación matemática y, a veces,
+ prosa en lenguaje natural.
+ Se dice que el pseudocódigo es de alto nivel porque omite detalles de implement
+ación innecesarios.
+ A diferencia de un lenguaje de programación, el pseudocódigo está dirigido
+ a seres humanos, no a computadoras.
 \end_layout
 
 \begin_layout Standard
-Una estructura de datos es una colección de datos y de sus reglas de organizació
-n, acceso y operación.
+Finalmente, una 
+\emph on
+estructura de datos
+\emph default
+ es una forma de organizar, acceder y manipular una colección de datos.
 \end_layout
 
 \begin_layout Section
-Pseudocódigo
+Análisis de Algoritmos
 \end_layout
 
 \begin_layout Standard
-El pseudocódigo es una descripción compacta, informal y de alto nivel que
- utiliza estructuras de control de flujo combinadas con prosa en lenguaje
- natural y/o notación matemática para describir un algoritmo.
- Se dice que el pseudocódigo es de alto nivel porque se omiten muchos detalles
- sobre la implementación del algoritmo que describe.
- A diferencia de un lenguaje de programación, el pseudocódigo se escribe
- con el propósito de que sea leído y comprendido por seres humanos, no por
- computadoras.
- 
-\end_layout
-
-\begin_layout Section
-Análisis de algoritmos
-\end_layout
-
-\begin_layout Standard
-El análisis de algoritmos es el conjunto de técnicas matemáticas por medio
- de las cuáles se pueden caracterizar las propiedades particulares de un
- algoritmo de forma independiente a su implementación específica en hardware
- y/o software.
+El 
+\emph on
+análisis de algoritmos
+\emph default
+ es el conjunto de técnicas matemáticas por medio de las cuáles se pueden
+ caracterizar las propiedades particulares de un algoritmo de forma independient
+e a su implementación específica en hardware y/o software.
  En estos apuntes, el análisis consistirá en describir únicamente dos caracterís
 ticas:
 \end_layout
@@ -302,7 +259,8 @@ La
 \emph on
  exactitud
 \emph default
- (correctness): ¿el algoritmo es correcto?
+ (correctness); i.e.
+ ¿el algoritmo es correcto?
 \end_layout
 
 \begin_layout Itemize
@@ -310,8 +268,18 @@ La
 \emph on
  eficiencia
 \emph default
-: ¿qué tanto crece el tiempo de ejecución requerido por el algoritmo con
- respecto al tamaño de la entrada? ¿dicha razón de crecimiento es polinomial?
+; i.e.
+ ¿qué tanto crece el tiempo de ejecución del algoritmo con respecto al tamaño
+ de la entrada?
+\end_layout
+
+\begin_layout Standard
+Se dice que un algoritmo es 
+\emph on
+eficiente
+\emph default
+ cuando su tiempo de ejecución crece polinomialmente con respecto al tamaño
+ de la entrada.
 \end_layout
 
 \begin_layout Section*

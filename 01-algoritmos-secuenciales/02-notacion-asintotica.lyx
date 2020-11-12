@@ -132,7 +132,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \begin_body
 
 \begin_layout Chapter
-Notación Asintótica
+La Notación Asintótica
 \end_layout
 
 \begin_layout Standard
@@ -566,43 +566,92 @@ Si
 \end_layout
 
 \begin_layout Section
-Trabajando con la notación asintótica
+Definiciones a partir de límites
 \end_layout
 
 \begin_layout Standard
-En términos prácticos, al aplicar la notación asintótica a una expresión
- algebraica, ocurren dos cosas: 
-\end_layout
-
-\begin_layout Enumerate
-Se eliminan los términos constantes y los coeficientes.
+La notación asintótica también se puede expresar en términos del límite
+ de la razón de las funciones involucradas (suponiendo que dicho límite
+ existe).
  
 \end_layout
 
-\begin_layout Enumerate
-Se consideran únicamente los términos de mayor grado y los demás se eliminan.
- 
+\begin_layout Proposition
+Se tiene que
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\dfrac{f(n)}{g(n)}\in\begin{cases}
+[0,\infty) & \text{si y sólo si }f=O(g)\\
+(0,\infty] & \text{si y sólo si }f=\Omega(g)\\
+(0,\infty) & \text{si y sólo si }f=\Theta(g)
+\end{cases}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Intuitivamente, esto se debe a que, conforme la variable independiente se
- aproxima a inifinito, la aportación de aquellos términos que crecen más
- despacio se vuelve despreciable.
- 
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Proposition
+Se tiene que
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Formula 
+\[
+\text{si }\lim_{n\to\infty}\dfrac{f(n)}{g(n)}=\begin{cases}
+0 & \text{entonces }f=o(g)\\
+\infty & \text{entonces }f=\omega(g)\\
+1 & \text{entonces }f\sim g
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+Si 
+\begin_inset Formula $f\sim g$
+\end_inset
+
+, entonces 
+\begin_inset Formula $f=\Theta(g)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Órdenes de crecimiento
 \end_layout
 
 \begin_layout Standard
-El órden de crecimiento (o, simplemente,
+La notación asintótica permite clasificar funciones según su tasa de crecimiento.
+ Tal clasificación se denomina orden de crecimiento (o, simplemente, 
 \emph on
- orden
+orden
 \emph default
-) de una función es la expresión algebráica más simple posible que resulta
- de aplicar la notación asintótica a dicha función.
- A continuación se presentan los órdenes de crecimiento más comunes, ordenados
+).
+ A continuación se presentan los órdenes de crecimiento más comunes, listados
  de aquél que crece más lento al que crece más rápido.
 \end_layout
 
@@ -716,21 +765,9 @@ Factoriales
 
 \begin_layout Standard
 Se debe tener cuidado sobre cómo interpretar la lista anterior, puesto que
- la notación asintótica puede ocultar constantes muy grandes.
- Por ejemplo, a pesar de que 
-\begin_inset Formula $10^{100}n=\Theta(n)$
-\end_inset
-
- y que 
-\begin_inset Formula $2n\cdot\log n=\Theta(n\log n)$
-\end_inset
-
-, se puede ver que la primera función crece muchas veces más rápido que
- la segunda, para cualquier valor de 
-\begin_inset Formula $n$
-\end_inset
-
-, lo que contradice el orden presentado en la lista anterior.
+ la notación asintótica puede ocultar constantes muy grandes, lo que puede
+ dar una impresión equivocada de la verdadera tasa de crecimiento de una
+ función.
 \end_layout
 
 \begin_layout Standard
@@ -771,7 +808,7 @@ Comparación gráfica de los órdenes de crecimiento más frecuentemente utiliza
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Propiedades aritméticas
 \end_layout
 
@@ -779,7 +816,7 @@ Propiedades aritméticas
 A continuación se describe cómo hacer aritmética con la notación asintótica.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Adición
 \end_layout
 
@@ -803,7 +840,7 @@ o(f)+o(g) & =o(\max\{f,g\})\\
 
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Multiplicación
 \end_layout
 
@@ -845,8 +882,8 @@ o(f)\cdot o(g) & =o(f\cdot g)\\
 
 \end_layout
 
-\begin_layout Subsection
-Propiedades de comparación
+\begin_layout Section
+Comparación de funciones
 \end_layout
 
 \begin_layout Standard
@@ -1020,7 +1057,7 @@ Notación asintótica
 
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Transitividad
 \end_layout
 
@@ -1114,7 +1151,7 @@ Si
 .
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Reflexividad
 \end_layout
 
@@ -1145,12 +1182,15 @@ f & =\Omega(f)
 
 \end_layout
 
-\begin_layout Paragraph
-Simetría
+\begin_layout Subsection
+Simetría y simetría traspuesta
 \end_layout
 
 \begin_layout Standard
-Se tiene que 
+Se tiene que
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Formula $f=\Theta(g)$
 \end_inset
 
@@ -1161,12 +1201,7 @@ Se tiene que
 .
 \end_layout
 
-\begin_layout Paragraph
-Simetría traspuesta
-\end_layout
-
 \begin_layout Itemize
-Se tiene que 
 \begin_inset Formula $f=O(g)$
 \end_inset
 
@@ -1178,7 +1213,6 @@ Se tiene que
 \end_layout
 
 \begin_layout Itemize
-Se tiene que 
 \begin_inset Formula $f=o(g)$
 \end_inset
 
@@ -1189,12 +1223,12 @@ Se tiene que
 .
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Carencia de tricotomía
 \end_layout
 
 \begin_layout Standard
-Esta es la propiedad de los números reales que dice que, dados dos números
+La tricotomía es la propiedad de los números reales donde, dados dos números
  reales 
 \begin_inset Formula $a$
 \end_inset
@@ -1203,8 +1237,8 @@ Esta es la propiedad de los números reales que dice que, dados dos números
 \begin_inset Formula $b$
 \end_inset
 
-, exactamente una de las sig.
- condiciones debe cumplirse: 
+, siempre se cumple exactamente una de las sig.
+ condiciones: 
 \begin_inset Formula $a<b$
 \end_inset
 
@@ -1217,8 +1251,6 @@ Esta es la propiedad de los números reales que dice que, dados dos números
 \end_inset
 
 .
- En otras palabras, siempre se puede establecer una comparación relativa
- entre dos números reales.
  La notación asintótica carece de esta propiedad, pues
 \emph on
  
@@ -1232,33 +1264,12 @@ se puede dar el caso donde no se cumple que
 \end_inset
 
 .
- Por ejemplo, las funciones 
-\begin_inset Formula $f(n)=n$
+ Por ejemplo, si 
+\begin_inset Formula $f(n)$
 \end_inset
 
- y 
-\begin_inset Formula $g(n)=n^{1+\sin n}$
-\end_inset
-
- no se pueden comparar utilizando notación asintótica, pues el valor del
- exponente de 
-\begin_inset Formula $g$
-\end_inset
-
- oscila entre 0 y 2, adquiriendo todos los valores intermedios.
- Esto implica que 
-\begin_inset Formula $f(n)\geq g(n)$
-\end_inset
-
- para algunos valores de 
-\begin_inset Formula $n$
-\end_inset
-
- y que 
-\begin_inset Formula $f(n)<g(n)$
-\end_inset
-
- para otros.
+ oscila periódicamente en lugar de siempre tener una tendencia a la alza
+ o a la baja.
 \end_layout
 
 \begin_layout Section*
@@ -1294,6 +1305,18 @@ The Algorithm Design Manual
  (2012), Springer.
  Págs.
  34-41.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://www.cs.sfu.ca/~ggbaker/zju/math/growth.html"
+target "https://www.cs.sfu.ca/~ggbaker/zju/math/growth.html"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_body

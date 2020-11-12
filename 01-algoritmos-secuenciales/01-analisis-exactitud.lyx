@@ -109,7 +109,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \rightmargin 1.2in
 \bottommargin 1.2in
 \secnumdepth 3
-\tocdepth 2
+\tocdepth 0
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -119,9 +119,6 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\bullet 0 2 5 -1
-\bullet 1 5 35 -1
-\bullet 2 2 11 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -155,7 +152,7 @@ análisis de exactitud
 \end_layout
 
 \begin_layout Section
-Demostrando que un algoritmo es incorrecto
+Contraejemplo
 \end_layout
 
 \begin_layout Standard
@@ -163,63 +160,18 @@ Para demostrar que un algoritmo es incorrecto, basta con producir un
 \emph on
 contraejemplo
 \emph default
-; esto es, un caso específico para el cual el algoritmo no genera un resultado
+; esto es, un caso específico para el cual el algoritmo no produce un resultado
  que satisfaga los requerimientos de salida del problema o no termina su
  ejecución.
- Un buen contraejemplo tiene las sig.
- propiedades:
-\end_layout
-
-\begin_layout Itemize
-Verificabilidad: debe ser posible determinar el resultado que el algoritmo
- producirá para el contraejemplo propuesto.
- También debe ser posible determinar el resultado correcto que el algoritmo
- debió haber producido.
+ Para producir un contraejemplo, es necesario considerar todas las posibles
+ clases de entrada.
+ Se recomienda probar primero con casos específicos extremos o con valores
+ de frontera.
+ El contraejemplo propuesto debe ser lo más simple y pequeño posible y,
+ para complementarlo, se debe determinar el resultado incorrecto que el
+ algoritmo produce para dicho contraejemplo y compararlo con el resultado
+ correcto que debió haber producido.
  
-\end_layout
-
-\begin_layout Itemize
-Simplicidad: el contraejemplo debe exponer claramente porqué el algoritmo
- es incorrecto, sin recurrir a detalles innecesarios.
- Una vez que se encuentra un contraejemplo, se recomienda simplificarlo
- a su forma más básica.
-\end_layout
-
-\begin_layout Standard
-Algunos consejos para encontrar buenos contraejemplos:
-\end_layout
-
-\begin_layout Itemize
-Proponer casos específicos de tamaño lo más pequeño posible.
- Esto va de la mano con el concepto de simplicidad mencionado anteriormente.
-\end_layout
-
-\begin_layout Itemize
-Considerar todas las posibles 
-\emph on
-clases de entrada
-\emph default
-; esto es, las diferentes formas en las que pueden presentarse los casos
- específicos.
- Por ejemplo, si la entrada de un algoritmo son dos conjuntos, entonces
- se tienen cuatro clases de entrada diferentes: dos conjuntos disjuntos,
- dos conjuntos que se intersectan, un subconjunto propio del otro o dos
- conjuntos iguales.
-\end_layout
-
-\begin_layout Itemize
-Proponer casos específicos con valores de frontera; esto es, tomar los casos
- específicos más extremos que admite el algoritmo y observar cómo se comporta.
-\end_layout
-
-\begin_layout Itemize
-En cuanto a algoritmos voraces,
-\emph on
- 
-\emph default
-proponer casos específicos cuyos elementos sean todos del mismo valor.
- Esto va de la mano con el punto anterior y se refiere a observar cómo se
- comporta el algoritmo en caso de empates.
 \end_layout
 
 \begin_layout Standard
@@ -234,13 +186,8 @@ La invariante de lazo
 
 \begin_layout Standard
 Una invariante de lazo es una proposición lógica que se cumple inmediatamente
- antes e inmediatamente después de la ejecución de cada iteración de un
- bucle.
- Algunos consejos para elegir una buena invariante de lazo son:
-\end_layout
-
-\begin_layout Itemize
-Comenzar por realizar una 
+ antes e inmediatamente después de cada iteración de un bucle determinado.
+ Para producir una invariante de lazo, se recomienda primero hacer una 
 \begin_inset Quotes fls
 \end_inset
 
@@ -248,30 +195,16 @@ prueba de escritorio
 \begin_inset Quotes frs
 \end_inset
 
- del algoritmo.
- Esto ayuda a entender mejor cómo funciona y a encontrar patrones en su
- comportamiento que podrían utilizarse para definir una invariante de lazo.
-\end_layout
-
-\begin_layout Itemize
-Al trabajar con arreglos, la invariante de lazo suele mostrar alguna característ
-ica particular de los elementos que se han procesados hasta ahora en cada
- iteración.
-\end_layout
-
-\begin_layout Itemize
-Al trabajar con valores numéricos, la invariante de lazo suele describir
- alguna relación matemática entre ellos.
-\end_layout
-
-\begin_layout Itemize
-La invariante de lazo se debe definir en función del número de iteraciones
+ del bucle.
+ Esto ayuda a encontrar patrones en el comportamiento de dicho bucle que
+ podrían utilizarse para definir una invariante de lazo.
+ La invariante de lazo siempre se define en función del número de iteraciones
  ejecutadas hasta el momento.
  
 \end_layout
 
 \begin_layout Standard
-Demostrar que una invariante de lazo se cumple para cualquier iteración
+Demostrar que una invariante de lazo es verdadera para cualquier iteración
  es un procedimiento análogo a una demostración por inducción y consiste
  de las sig.
  etapas: 
@@ -326,96 +259,54 @@ Finalización
 \end_layout
 
 \begin_layout Section
-Consejos para diseñar algoritmos correctos
+Cómo diseñar algoritmos correctos
 \end_layout
 
 \begin_layout Standard
-Cuando se trata de diseñar algoritmos, rara vez es posible producir uno
- que sea correcto al primer intento; normalmente, el diseño de un algoritmo
- es un proceso iterativo.
+Rara vez es posible producir un nuevo algoritmo correcto en el primer intento;
+ normalmente, el diseño de un algoritmo es un proceso iterativo.
  A continuación se presentan algunos consejos que pueden facilitar la tarea
  de diseñar algoritmos correctos.
  
 \end_layout
 
 \begin_layout Subsection
-Definición del problema
+Definir bien el problema
 \end_layout
 
 \begin_layout Standard
-El primer paso para diseñar un algoritmo correcto es definir claramente
- los requerimientos de entrada y salida del problema a resolver.
- Si el problema está mal definido, el algoritmo será incorrecto sin importar
+Si el problema no está bien definido, el algoritmo será incorrecto sin importar
  lo que haga.
- Algunos consejos para definir correctamente el problema son:
-\end_layout
-
-\begin_layout Itemize
-De ser posible, se recomienda hacer más específicos los requerimientos de
- entrada; esto suele reducir la dificultad para resolver el problema.
- Por ejemplo, trabajar con árboles en lugar de grafos generales.
-\end_layout
-
-\begin_layout Itemize
-Se debe ser explícito con los requerimientos de salida.
- Por ejemplo, en lugar de simplemente pedir la 
-\begin_inset Quotes fls
-\end_inset
-
-mejor
-\begin_inset Quotes frs
-\end_inset
-
- trayectoria entre dos lugares en el mapa, es preferible pedir la ruta de
- menor distancia o la que requiera la menor cantidad de giros a la izquierda.
-\end_layout
-
-\begin_layout Itemize
-Los requerimientos de salida deben ser simples.
- Por ejemplo, 
-\begin_inset Quotes fls
-\end_inset
-
-encontrar la ruta más corta entre dos lugares en el mapa que no requiera
- más del doble de la mínima cantidad necesaria de giros a la izquierda
-\begin_inset Quotes frs
-\end_inset
-
- es una salida bien definida pero muy complicada de satisfacer puesto que
- está compuesta de tres objetivos específicos.
+ Los requerimientos de salida deben ser concisos y explícitos y no deben
+ consistir de objetivos compuestos.
+ Por otro lado, entre más restrictivos sean los requerimientos de entrada,
+ menor suele ser la dificultad para resolver el problema.
  
 \end_layout
 
 \begin_layout Subsection
-Abordar el problema por dos ángulos
+Estudiar la complejidad computacional del problema
 \end_layout
 
 \begin_layout Standard
-Al trabajar con problemas nuevos, se recomienda estudiar la complejidad
- computacional del problema al mismo tiempo que se diseña un algoritmo para
- resolverlo.
- De esta forma, cualquier avance o descubrimiento que se obtenga al estudiar
- la complejidad puede utilizarse después para avanzar el diseño del algoritmo
- y vice versa.
- Además, al final se obtendrá uno de dos posibles resultados: ya sea se
- demuestra la complejidad del problema o se llega a la construcción de un
- nuevo algoritmo para resolverlo.
- 
+Se recomienda estudiar la complejidad computacional del problema al mismo
+ tiempo que se diseña un algoritmo para resolverlo.
+ Esto porque, cualquier descubrimiento o avance que se obtenga en uno podría
+ aprovecharse después para avanzar el otro.
+ Además, al final se obtendría uno de dos posibles resultados: ya sea se
+ llega a la construcción de un algoritmo correcto o se demuestra la complejidad
+ del problema.
 \end_layout
 
 \begin_layout Subsection
-Selección de una estructura abstracta
+Elegir un modelo adecuado
 \end_layout
 
 \begin_layout Standard
-Casi cualquier problema, aplicación o sistema en la vida real se puede formular
- en términos de alguna 
-\emph on
-estructura abstracta
-\emph default
- y de sus operaciones fundamentales.
- Como consecuencia, muchos problemas se pueden resolver aprovechando algoritmos
- y estructuras de datos ya conocidos.
+Las entidades con las que interactúa un problema en la vida real suelen
+ representarse por medio de alguna de varias estructuras abstractas ya conocidas
+ (e.g.
+ cadenas, grafos, conjuntos, etc.).
  Sin embargo, las especificaciones del problema no siempre se ajustarán
  perfectamente a las características de la estructura elegida.
  En estos casos, se recomienda ignorar temporalmente aquellos detalles que
@@ -423,133 +314,6 @@ estructura abstracta
  estructura, si dichos detalles son realmente esenciales o no para resolver
  el problema.
  
-\end_layout
-
-\begin_layout Standard
-A continuación se presenta una lista de las estructuras abstractas más comunes.
- Cabe señalar que todas estas estructuras son 
-\emph on
-recursivas
-\emph default
-; esto es, se pueden descomponer en estructuras más pequeñas pero de propiedades
- idénticas a la original.
- 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Permutaciones
-\emph default
-: representan diferentes ordenamientos de una misma secuencia de objetos.
- Eliminando el primer elemento de una permutación produce una permutación
- de menor longitud.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Subconjuntos
-\emph default
-: representan colecciones de objetos seleccionados de alguna otra colección
- (tal vez) más grande.
- Eliminando un elemento de un subconjunto produce un subconjunto de menor
- cardinalidad.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Árboles
-\emph default
-: representan relaciones jerárquicas entre varios objetos.
- Eliminando la raíz de un árbol produce una colección de árboles con menos
- nodos (denominado 
-\emph on
-bosque
-\emph default
-).
- Eliminando una hoja de un árbol produce un árbol con menos nodos.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Grafos
-\emph default
-: representan las relaciones entre pares arbitrarios de objetos.
- Eliminando un vértice de un grafo produce un grafo con menos vértices.
- Separando los vértices en dos grupos y eliminando todas las aristas que
- crucen de un grupo a otro, produce dos grafos con menos aristas.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Puntos
-\emph default
-: representan diferentes posiciones en un mismo espacio geométrico.
- Separando una nube de puntos en dos grupos produce dos nubes de puntos
- más pequeños.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Polígonos
-\emph default
-: representan diferentes regiones en un mismo espacio plano.
- Conectando dos vértices no adyacentes con una recta produce dos polígonos
- de menor área.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Cadenas
-\emph default
-: representan diferentes secuencias de una misma colección de símbolos.
- Eliminando el primer símbolo de una cadena produce una cadena de menor
- longitud.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename figuras/estructuras.png
-	lyxscale 30
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\size small
-Descomposición recursiva de algunas estructuras abstractas.
- (Izquierda) Permutaciones, subconjuntos, árboles y grafos.
- (Derecha) Puntos, polígonos y cadenas.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section*
