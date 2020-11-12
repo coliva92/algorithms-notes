@@ -4,7 +4,7 @@ Esta es una colección de apuntes de estudio sobre el análisis de algoritmos y 
 
 Para descargar el archivo PDF de la versión más reciente de estos apuntes, haga clic [aquí][latest].
 
-[latest]: https://github.com/coliva92/algorithms-notes/releases/tag/v0.0.01
+[latest]: https://github.com/coliva92/algorithms-notes/releases/tag/v0.0.02
 
 ### Literatura consultada
 
