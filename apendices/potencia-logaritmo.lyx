@@ -1159,8 +1159,8 @@ x^{\log_{b}y} & =x^{\beta}\\
 \end_layout
 
 \begin_layout Remark
-Debido a que cambiar la base de un logaritmo altera dicho valor en un factor
- constante, el comportamiento asintótico de un logaritmo no va a cambiar
+Debido a que cambiar la base de cualquier logaritmo altera dicho valor en
+ un factor constante, el comportamiento asintótico sigue siendo el mismo
  sin importar la base.
  Por ende, la base del logaritmo suele omitirse.
 \end_layout
