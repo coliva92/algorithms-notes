@@ -2,7 +2,9 @@
 
 Esta es una colección de apuntes de estudio sobre el análisis de algoritmos y otros temas relacionados.
 
-Para descargar directamente estos apuntes en PDF, descargue la versión más reciente de la carpeta `pdfs.zip` que se encuentra disponible [aquí](https://github.com/coliva92/algorithms-notes/releases).
+Para descargar directamente estos apuntes en PDF, descargue la carpeta `pdfs.zip` que se encuentra disponible [aquí][latest].
+
+[latest]: https://github.com/coliva92/algorithms-notes/releases/tag/v0.0.01
 
 ### Dependencias Latex
 
