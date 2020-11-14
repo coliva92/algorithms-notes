@@ -1,0 +1,930 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
+
+\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
+\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
+\theoremstyle{myplain}
+\newtheorem{mythm}{Teorema}[]
+\newtheorem{mylem}{Lema}[]
+\newtheorem{myprop}{Proposición}[]
+\theoremstyle{mydef}
+\newtheorem{mydef}{Definición}[]
+\newtheorem{myrmk}{Observación}[]
+\newtheorem{myex}{Ejemplo}[]
+
+\let\thm\mythm
+\let\endthm\endmythm
+\let\lem\mylem
+\let\endlem\endmylem
+\let\prop\myprop
+\let\endprop\endmyprop
+\let\defn\mydef
+\let\enddefn\endmydef
+\let\example\myex
+\let\endexample\endmyex
+\let\rem\myrmk
+\let\endrem\endmyrmk
+
+\usepackage{xpatch}
+\newcommand{\proofnamefont}{\scshape}
+\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+\end_local_layout
+\language spanish-mexico
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement tb
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.57in
+\topmargin 1.2in
+\rightmargin 1.2in
+\bottommargin 1.2in
+\secnumdepth 3
+\tocdepth 0
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+El Algoritmo Insertion Sort
+\end_layout
+
+\begin_layout Standard
+El algoritmo 
+\shape smallcaps
+InsertionSort
+\shape default
+ es análogo al procedimiento que se sigue comúnmente para ordenar una baraja
+ de cartas.
+ Cada elemento a ordenar se compara, uno por uno, con todos los elementos
+ del sub-arreglo ordenado hasta encontrar la posición donde debe insertarse
+ para quedar en el orden correcto.
+ Después de insertar el elemento, se puede ver que el sub-arreglo resultante
+ permanece ordenado.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut{In}{Entrada}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut{Out}{Salida}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKw{Throw}{throw}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKw{Error}{error}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKw{T}{true}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKw{F}{false}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKw{Nil}{nil}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetCommentSty{text}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwComment{Comment}{$
+\backslash
+triangleright$ }{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetFuncSty{textsc}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetAlgoVlined
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+DontPrintSemicolon
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+In{Un arreglo $A$ de $n
+\backslash
+in
+\backslash
+mathbb{N}$ elementos.}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Out{El arreglo $A$ ordenado de forma ascendente.}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+For{$i
+\backslash
+gets 2$ 
+\backslash
+KwTo $n$}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	$
+\backslash
+alpha 
+\backslash
+gets A[i]$ 
+\backslash
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+	$j 
+\backslash
+gets i - 1$ 
+\backslash
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+While{$j > 0$ 
+\backslash
+& $A[j] > 
+\backslash
+alpha$}{
+\end_layout
+
+\begin_layout Plain Layout
+
+		$A[j+1] 
+\backslash
+gets A[j]$
+\backslash
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+		$j 
+\backslash
+downarrow$
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	$A[j+1] 
+\backslash
+gets 
+\backslash
+alpha$
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\shape smallcaps
+InsertionSort
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figuras/insertionsort.png
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\size small
+Ejemplo de la ejecución del algoritmo 
+\shape smallcaps
+InsertionSort
+\shape default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "insertion-sort-while-loop"
+
+\end_inset
+
+Al inicio de cada iteración 
+\begin_inset Formula $j$
+\end_inset
+
+ del bucle 
+\series bold
+while
+\series default
+ (líneas 4-6) del algoritmo 
+\shape smallcaps
+InsertionSort
+\shape default
+, se cumplen las sig.
+ condiciones: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Los elementos de 
+\begin_inset Formula $A[1\dots j]$
+\end_inset
+
+ permanecen sin cambio con respecto a la iteración anterior.
+\end_layout
+
+\begin_layout Enumerate
+El sub-arreglo 
+\begin_inset Formula $A[j+2\dots i]$
+\end_inset
+
+ consiste de los mismos elementos que originalmente se encontraban en 
+\begin_inset Formula $A[j+1\dots i-1]$
+\end_inset
+
+, preservándose su orden.
+\end_layout
+
+\begin_layout Enumerate
+Se tiene que 
+\begin_inset Formula $\alpha<A[j+2\dots i]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Se demuestra como una invariante de lazo.
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Inicialización
+\end_layout
+
+\begin_layout Standard
+Antes de comenzar la primera iteración, se tiene que 
+\begin_inset Formula $j=i-1$
+\end_inset
+
+ (por la línea 3).
+ Como todavía no se ha ejecutado ninguna iteración, se tiene que 
+\begin_inset Formula $A[1\dots i-1]$
+\end_inset
+
+ no ha sido alterado, por lo que se satisface la condición 1.
+ Por otro lado, 
+\begin_inset Formula $A[i+1\dots i]$
+\end_inset
+
+ constituye un arreglo vacío por no ser posible construirlo.
+ Esto implica que todavía no se ha recorrido ningún elemento del arreglo
+ y que 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ no tiene ningún elemento con qué compararse.
+ Por lo anterior, se satisfacen las condiciones 2 y 3.
+ Así, el lema se cumple antes de la primera iteración.
+\end_layout
+
+\begin_layout Paragraph*
+Mantenimiento
+\end_layout
+
+\begin_layout Standard
+Supóngase que el lema se cumple antes de comenzar alguna iteración genérica
+ 
+\begin_inset Formula $j=k$
+\end_inset
+
+.
+ Se pretende demostrar que el lema se cumple antes de comenzar la iteración
+ 
+\begin_inset Formula $j=k-1$
+\end_inset
+
+ (por la línea 6).
+ Por la suposición, se tiene que 
+\begin_inset Formula $A[1\dots k]$
+\end_inset
+
+ no ha sido alterado.
+ Lo anterior implica que implica que 
+\begin_inset Formula $A[1\dots k-1]$
+\end_inset
+
+ tampoco ha sido alterado, lo que satisface la condición 1.
+ Por otro lado, por la suposición se tiene que los valores de 
+\begin_inset Formula $A[k+1\dots i-1]$
+\end_inset
+
+ se recorrieron a 
+\begin_inset Formula $A[k+2\dots i]$
+\end_inset
+
+, habiéndose preservado su orden.
+ Además, por la línea 5, se tiene que 
+\begin_inset Formula $A[k]$
+\end_inset
+
+ se recorrió a 
+\begin_inset Formula $A[k+1]$
+\end_inset
+
+.
+ Entonces, se tiene por transición que los valores de 
+\begin_inset Formula $A[k\dots i-1]$
+\end_inset
+
+ se recorrieron a 
+\begin_inset Formula $A[k+1\dots i]$
+\end_inset
+
+, lo que satisface la condición 2.
+ Por último, por la suposición se tiene que 
+\begin_inset Formula $\alpha<A[k+2\dots i]$
+\end_inset
+
+.
+ Además por las líneas 4 y 5, se tiene que 
+\begin_inset Formula $\alpha<A[k+1]$
+\end_inset
+
+.
+ Así, se tiene por transición que 
+\begin_inset Formula $\alpha<A[k+1\dots i]$
+\end_inset
+
+, lo que satisface la condición 3.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Finalización
+\end_layout
+
+\begin_layout Standard
+Se tienen dos casos por medio de los cuáles el bucle puede terminar su ejecución
+:
+\end_layout
+
+\begin_layout Case
+Cuando 
+\begin_inset Formula $j=0$
+\end_inset
+
+, lo que implica que 
+\begin_inset Formula $\alpha<A[1\dots i-1]$
+\end_inset
+
+ (en el arreglo original).
+ En este caso, el sub-arreglo 
+\begin_inset Formula $A[1\dots0]$
+\end_inset
+
+ constituye un arreglo vacío.
+ Esto implica que ningún elemento del arreglo ha sido alterado, lo que satisface
+ la condición 1.
+ Por otro lado, como el bucle se ejecutó sobre el sub-arreglo 
+\begin_inset Formula $A[1\dots i-1]$
+\end_inset
+
+, se tiene que estos valores se recorrieron a 
+\begin_inset Formula $A[2\dots i]$
+\end_inset
+
+, lo que satisface la condición 2.
+ De lo anterior, y por la suposición, se deduce que 
+\begin_inset Formula $\alpha<A[2\dots i]$
+\end_inset
+
+, lo que satisface la condición 3.
+ Por lo tanto, el lema se cumple para este caso.
+\end_layout
+
+\begin_layout Case
+Cuando 
+\begin_inset Formula $j=k$
+\end_inset
+
+, lo que implica que 
+\begin_inset Formula $A[k]\leq\alpha<A[k+1\dots i-1]$
+\end_inset
+
+ (en el arreglo original).
+ En este caso, como no se ejecutó esta última iteración, se tiene que los
+ valores 
+\begin_inset Formula $A[1\dots k]$
+\end_inset
+
+ no fueron alterados, lo que satisface la condición 1.
+ Por otro lado, como el bucle se ejecutó sobre el sub-arreglo 
+\begin_inset Formula $A[k+1\dots i-1]$
+\end_inset
+
+, se tiene que estos valores se recorrieron a 
+\begin_inset Formula $A[k+2\dots i]$
+\end_inset
+
+, lo que satisface la condición 2.
+ De lo anterior, y por la suposición, se deduce que 
+\begin_inset Formula $\alpha<A[k+2\dots i]$
+\end_inset
+
+, lo que satisface la condición 3.
+ Por lo tanto, el lema se cumple para este caso.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "insertion-sort-is-correct"
+
+\end_inset
+
+El algoritmo 
+\shape smallcaps
+InsertionSort
+\shape default
+ resuelve el problema de 
+\shape smallcaps
+Ordenamiento
+\shape default
+ en tiempo cuadrático.
+ 
+\end_layout
+
+\begin_layout Proof
+La exactitud del algoritmo se demuestra por inducción sobre una invariante
+ de lazo.
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Invariante de lazo
+\end_layout
+
+\begin_layout Standard
+Al inicio de cada iteración 
+\begin_inset Formula $i$
+\end_inset
+
+ del bucle 
+\emph on
+for
+\emph default
+ (líneas 1-7), el sub-arreglo 
+\begin_inset Formula $A[1\dots i-1]$
+\end_inset
+
+ consiste de los mismos elementos que originalmente se encontraban en 
+\begin_inset Formula $A[1\dots i-1]$
+\end_inset
+
+ en la iteración anterior, pero ahora ordenados de forma ascendente.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Inicialización
+\end_layout
+
+\begin_layout Standard
+Antes de comenzar la primera iteración, se tiene que 
+\begin_inset Formula $i=2$
+\end_inset
+
+ (por la línea 1).
+ Esto implica que 
+\begin_inset Formula $A[1\dots i-1]$
+\end_inset
+
+ consiste únicamente del primer elemento, 
+\begin_inset Formula $A[1]$
+\end_inset
+
+, por lo que la invariante de lazo se cumple trivialmente para este caso.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Mantenimiento
+\end_layout
+
+\begin_layout Standard
+Supóngase que la invariante de lazo se cumple antes de comenzar alguna iteración
+ genérica 
+\begin_inset Formula $i=k$
+\end_inset
+
+.
+ En la línea 2, se tiene que 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ almacena el valor original de 
+\begin_inset Formula $A[k]$
+\end_inset
+
+, que es el elemento que se va a ordenar.
+ Tras ejecutar el bucle 
+\emph on
+while
+\emph default
+, y para cualquier 
+\begin_inset Formula $j\geq0$
+\end_inset
+
+, se tiene que 
+\begin_inset Formula $A[j]\leq\alpha$
+\end_inset
+
+.
+ Además, por el lema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "insertion-sort-while-loop"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se tiene que 
+\begin_inset Formula $\alpha<A[j+2\dots k]$
+\end_inset
+
+ (condición 2) y que los valores 
+\begin_inset Formula $A[1\dots j]$
+\end_inset
+
+ no fueron alterados (condición 1).
+ Ahunado a que los valores de 
+\begin_inset Formula $A[1\dots k-1]$
+\end_inset
+
+ ya está ordenados (por la suposición), se deduce que 
+\begin_inset Formula $A[1\dots j]\leq\alpha<A[j+2\dots k]$
+\end_inset
+
+.
+ Así, insertando 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ en 
+\begin_inset Formula $A[j+1]$
+\end_inset
+
+ (por la línea 7), se tiene que 
+\begin_inset Formula $A[1\dots k]$
+\end_inset
+
+ queda ordenado.
+ También, por la suposición y por las condiciones 1 y 2 del lema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "insertion-sort-while-loop"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se deduce que 
+\begin_inset Formula $A[1\dots k]$
+\end_inset
+
+ consiste de los mismos valores originales.
+ Por lo tanto, la invariante de lazo se mantiene antes de iniciar la iteración
+ 
+\begin_inset Formula $i=k+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Finalización
+\end_layout
+
+\begin_layout Standard
+Al finalizar la ejecución del bucle 
+\emph on
+for
+\emph default
+, se tiene que 
+\begin_inset Formula $i=n+1$
+\end_inset
+
+ (por la línea 1).
+ Al sustituir este valor en la invariante de lazo, se deduce que el arreglo
+ completo ha sido ordenado.
+ Por lo tanto, el algoritmo es correcto.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Tiempo de ejecución
+\end_layout
+
+\begin_layout Standard
+El peor caso para este algoritmo ocurre cuando los elementos están ordenados
+ en sentido contrario.
+ En este caso, cada elemento 
+\begin_inset Formula $A[i]$
+\end_inset
+
+ se debe comparar con todos los elementos 
+\begin_inset Formula $A[1\dots i-1]$
+\end_inset
+
+ para encontrar su posición correcta, lo que da un total de 
+\begin_inset Formula $\Theta(n^{2})$
+\end_inset
+
+ comparaciones (por la serie aritmética).
+ Obsérvese que el caso promedio ocurre cuando la mitad del arreglo está
+ ordenado y la otra mitad está desordenado.
+ En este caso, el orden de crecimiento del algoritmo es igual que para el
+ peor caso.
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Notas bibliográficas
+\end_layout
+
+\begin_layout Standard
+Bender et al.
+ (2006) proponen una extensión del algoritmo 
+\shape smallcaps
+InsertionSort
+\shape default
+ (denominado 
+\shape smallcaps
+GappedInsertionSort
+\shape default
+ o, también, 
+\shape smallcaps
+LibrarySort
+\shape default
+) donde se insertan espacios vacíos entre cada par de elementos en el sub-arregl
+o ordenado.
+ Cabe mencionar que el algoritmo propuesto no es estable (puesto que es
+ un algoritmo aleatorio) ni tampoco trabaja en sitio (por que la memoria
+ adicional requerida para insertar los espacios vacíos intermedios crece
+ de forma lineal con respecto al tamaño de la entrada).
+\end_layout
+
+\begin_layout Itemize
+Cormen T.H., Leiserson C.E., Rivest R.L.
+ & Stein C., 
+\begin_inset Quotes fls
+\end_inset
+
+Introduction to Algorithms
+\begin_inset Quotes frs
+\end_inset
+
+, 3ra ed.
+ (2009), MIT Press.
+ Págs.
+ 16-20 y 24-27.
+\end_layout
+
+\begin_layout Itemize
+Bender M.A., Farach-Colton M.
+ & Mosteiro M., 
+\begin_inset Quotes fls
+\end_inset
+
+Insertion Sort is 
+\begin_inset Formula $O(n\log n)$
+\end_inset
+
+
+\begin_inset Quotes frs
+\end_inset
+
+, Theory of Computing Systems (2006), Vol.
+ 39, Págs.
+ 391-397.
+\end_layout
+
+\end_body
+\end_document

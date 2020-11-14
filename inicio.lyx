@@ -207,6 +207,16 @@ filename "01-algoritmos-secuenciales/04-recurrencias.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "01-algoritmos-secuenciales/06-insertion-sort.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \start_of_appendix
 \begin_inset CommandInset include
 LatexCommand input
