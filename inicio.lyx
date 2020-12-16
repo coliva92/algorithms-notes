@@ -6,55 +6,40 @@
 \origin unavailable
 \textclass book
 \begin_preamble
-\usepackage{indentfirst}
-
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
-\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
-\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\section}[hang]{\bfseries\large}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
 \titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
-
-\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
-\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
-\theoremstyle{myplain}
-\newtheorem{mythm}{Teorema}[]
-\newtheorem{mylem}{Lema}[]
-\newtheorem{myprop}{Proposición}[]
-\theoremstyle{mydef}
-\newtheorem{mydef}{Definición}[]
-\newtheorem{myrmk}{Observación}[]
-\newtheorem{myex}{Ejemplo}[]
-
-\let\thm\mythm
-\let\endthm\endmythm
-\let\lem\mylem
-\let\endlem\endmylem
-\let\prop\myprop
-\let\endprop\endmyprop
-\let\defn\mydef
-\let\enddefn\endmydef
-\let\example\myex
-\let\endexample\endmyex
-\let\rem\myrmk
-\let\endrem\endmyrmk
-
-\usepackage{xpatch}
-\newcommand{\proofnamefont}{\scshape}
-\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
 
 \usepackage{enumitem}
 \setlist{nolistsep}
+
+\SetKwInOut{In}{Entrada}
+\SetKwInOut{Out}{Salida}
+\SetKw{Throw}{throw}
+\SetKw{Error}{error}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Not}{not}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Nil}{nil}
+\SetCommentSty{textit}
+\SetKwComment{Comment}{$\triangleright$ }{}
+\SetFuncSty{textsc}
+\DontPrintSemicolon
 \end_preamble
 \use_default_options true
 \begin_modules
 algorithm2e
-theorems-ams-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
 Format 66
-PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+PackageOptions algorithm2e "algochapter,vlined,linesnumbered,ruled"
 \end_local_layout
 \language spanish-mexico
 \language_package default
@@ -156,6 +141,10 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Part
+Algoritmos Secuenciales
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
@@ -200,16 +189,6 @@ filename "01-algoritmos-secuenciales/03-analisis-eficiencia.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "01-algoritmos-secuenciales/04-recurrencias.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "01-algoritmos-secuenciales/06-insertion-sort.lyx"
 
 \end_inset
 

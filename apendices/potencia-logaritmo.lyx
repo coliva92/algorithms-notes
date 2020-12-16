@@ -6,52 +6,40 @@
 \origin unavailable
 \textclass book
 \begin_preamble
-\usepackage{indentfirst}
-
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
-\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
-\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\section}[hang]{\bfseries\large}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
 \titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
 
-\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
-\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
-\theoremstyle{myplain}
-\newtheorem{mythm}{Teorema}[]
-\newtheorem{mylem}{Lema}[]
-\newtheorem{myprop}{Proposición}[]
-\theoremstyle{mydef}
-\newtheorem{mydef}{Definición}[]
-\newtheorem{myrmk}{Observación}[]
-\newtheorem{myex}{Ejemplo}[]
+\usepackage{enumitem}
+\setlist{nolistsep}
 
-\let\thm\mythm
-\let\endthm\endmythm
-\let\lem\mylem
-\let\endlem\endmylem
-\let\prop\myprop
-\let\endprop\endmyprop
-\let\defn\mydef
-\let\enddefn\endmydef
-\let\example\myex
-\let\endexample\endmyex
-\let\rem\myrmk
-\let\endrem\endmyrmk
-
-\usepackage{xpatch}
-\newcommand{\proofnamefont}{\scshape}
-\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\SetKwInOut{In}{Entrada}
+\SetKwInOut{Out}{Salida}
+\SetKw{Throw}{throw}
+\SetKw{Error}{error}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Not}{not}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Nil}{nil}
+\SetCommentSty{textit}
+\SetKwComment{Comment}{$\triangleright$ }{}
+\SetFuncSty{textsc}
+\DontPrintSemicolon
 \end_preamble
 \use_default_options true
 \begin_modules
 algorithm2e
-theorems-ams-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
 Format 66
-PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+PackageOptions algorithm2e "algochapter,vlined,linesnumbered,ruled"
 \end_local_layout
 \language spanish-mexico
 \language_package default
@@ -117,8 +105,8 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \topmargin 1.2in
 \rightmargin 1.2in
 \bottommargin 1.2in
-\secnumdepth 3
-\tocdepth 0
+\secnumdepth 2
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -366,8 +354,8 @@ noprefix "false"
 
 \end_inset
 
-Las primeras cuatro identidades se aceptan sin requerir una demostración,
- el resto se pueden demostrar de forma algebraica.
+Las primeras cuatro identidades se aceptan sin requerir una demostración.
+ El resto se pueden demostrar de forma algebraica.
  Comenzando por la identidad 5, ésta se obtiene de:
 \end_layout
 
@@ -655,11 +643,11 @@ Supóngase que
 \begin_inset Formula $b^{y}$
 \end_inset
 
- es positivo si 
+ es positivo cuando 
 \begin_inset Formula $y$
 \end_inset
 
- es par, o negativo si 
+ es par y negativo cuando 
 \begin_inset Formula $y$
 \end_inset
 
@@ -710,10 +698,14 @@ noprefix "false"
 
 \end_inset
 
-, se tiene que la base de un logaritmo siempre es positiva.
+, se tiene que 
+\begin_inset Formula $b$
+\end_inset
+
+ debe ser positiva.
  Como la potencia de todo número positivo siempre resulta en un número positivo
  (por las leyes de los signos), entonces no existe un número 
-\begin_inset Formula $y=\log_{b}x$
+\begin_inset Formula $y$
 \end_inset
 
  que satisfaga la relación 
@@ -1162,7 +1154,8 @@ x^{\log_{b}y} & =x^{\beta}\\
 Debido a que cambiar la base de cualquier logaritmo altera dicho valor en
  un factor constante, el comportamiento asintótico sigue siendo el mismo
  sin importar la base.
- Por ende, la base del logaritmo suele omitirse.
+ Como consecuencia, la base del logaritmo suele omitirse al usar notación
+ asintótica.
 \end_layout
 
 \end_body

@@ -6,52 +6,40 @@
 \origin unavailable
 \textclass book
 \begin_preamble
-\usepackage{indentfirst}
-
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
-\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
-\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\section}[hang]{\bfseries\large}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
 \titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
 
-\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
-\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
-\theoremstyle{myplain}
-\newtheorem{mythm}{Teorema}[]
-\newtheorem{mylem}{Lema}[]
-\newtheorem{myprop}{Proposición}[]
-\theoremstyle{mydef}
-\newtheorem{mydef}{Definición}[]
-\newtheorem{myrmk}{Observación}[]
-\newtheorem{myex}{Ejemplo}[]
+\usepackage{enumitem}
+\setlist{nolistsep}
 
-\let\thm\mythm
-\let\endthm\endmythm
-\let\lem\mylem
-\let\endlem\endmylem
-\let\prop\myprop
-\let\endprop\endmyprop
-\let\defn\mydef
-\let\enddefn\endmydef
-\let\example\myex
-\let\endexample\endmyex
-\let\rem\myrmk
-\let\endrem\endmyrmk
-
-\usepackage{xpatch}
-\newcommand{\proofnamefont}{\scshape}
-\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\SetKwInOut{In}{Entrada}
+\SetKwInOut{Out}{Salida}
+\SetKw{Throw}{throw}
+\SetKw{Error}{error}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Not}{not}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Nil}{nil}
+\SetCommentSty{textit}
+\SetKwComment{Comment}{$\triangleright$ }{}
+\SetFuncSty{textsc}
+\DontPrintSemicolon
 \end_preamble
 \use_default_options true
 \begin_modules
 algorithm2e
-theorems-ams-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
 Format 66
-PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+PackageOptions algorithm2e "algochapter,vlined,linesnumbered,ruled"
 \end_local_layout
 \language spanish-mexico
 \language_package default
@@ -77,7 +65,16 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \float_placement tb
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize letterpaper
 \use_geometry false
 \use_package amsmath 1
@@ -108,8 +105,8 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \topmargin 1.2in
 \rightmargin 1.2in
 \bottommargin 1.2in
-\secnumdepth 3
-\tocdepth 2
+\secnumdepth 2
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -117,7 +114,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \bullet 0 2 5 -1
 \bullet 1 5 35 -1
@@ -166,7 +163,8 @@ Sea
 \emph on
 asintóticamente positivas
 \emph default
-; esto es, 
+; i.e.
+ 
 \begin_inset Formula $f(n)$
 \end_inset
 
@@ -190,7 +188,7 @@ a.
 \end_inset
 
  para denotar que una función determinada pertenece a alguno de los conjuntos
- que esta notación introduce.
+ introducidos.
 \end_layout
 
 \begin_layout Definition
@@ -646,7 +644,11 @@ Si
 
 \begin_layout Standard
 La notación asintótica permite clasificar funciones según su tasa de crecimiento.
- Tal clasificación se denomina orden de crecimiento (o, simplemente, 
+ Tal clasificación se denomina 
+\emph on
+orden de crecimiento
+\emph default
+ (o, simplemente, 
 \emph on
 orden
 \emph default
@@ -1229,7 +1231,7 @@ Carencia de tricotomía
 
 \begin_layout Standard
 La tricotomía es la propiedad de los números reales donde, dados dos números
- reales 
+ 
 \begin_inset Formula $a$
 \end_inset
 
@@ -1268,7 +1270,7 @@ se puede dar el caso donde no se cumple que
 \begin_inset Formula $f(n)$
 \end_inset
 
- oscila periódicamente en lugar de siempre tener una tendencia a la alza
+ oscila periódicamente en lugar de siempre mantener una tendencia a la alza
  o a la baja.
 \end_layout
 

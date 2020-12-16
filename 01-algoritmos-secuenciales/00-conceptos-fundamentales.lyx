@@ -6,52 +6,40 @@
 \origin unavailable
 \textclass book
 \begin_preamble
-\usepackage{indentfirst}
-
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
-\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
-\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\section}[hang]{\bfseries\large}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
 \titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
 
-\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
-\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
-\theoremstyle{myplain}
-\newtheorem{mythm}{Teorema}[]
-\newtheorem{mylem}{Lema}[]
-\newtheorem{myprop}{Proposición}[]
-\theoremstyle{mydef}
-\newtheorem{mydef}{Definición}[]
-\newtheorem{myrmk}{Observación}[]
-\newtheorem{myex}{Ejemplo}[]
+\usepackage{enumitem}
+\setlist{nolistsep}
 
-\let\thm\mythm
-\let\endthm\endmythm
-\let\lem\mylem
-\let\endlem\endmylem
-\let\prop\myprop
-\let\endprop\endmyprop
-\let\defn\mydef
-\let\enddefn\endmydef
-\let\example\myex
-\let\endexample\endmyex
-\let\rem\myrmk
-\let\endrem\endmyrmk
-
-\usepackage{xpatch}
-\newcommand{\proofnamefont}{\scshape}
-\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\SetKwInOut{In}{Entrada}
+\SetKwInOut{Out}{Salida}
+\SetKw{Throw}{throw}
+\SetKw{Error}{error}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Not}{not}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Nil}{nil}
+\SetCommentSty{textit}
+\SetKwComment{Comment}{$\triangleright$ }{}
+\SetFuncSty{textsc}
+\DontPrintSemicolon
 \end_preamble
 \use_default_options true
 \begin_modules
 algorithm2e
-theorems-ams-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
 Format 66
-PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+PackageOptions algorithm2e "algochapter,vlined,linesnumbered,ruled"
 \end_local_layout
 \language spanish-mexico
 \language_package default
@@ -77,7 +65,16 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \float_placement tb
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize letterpaper
 \use_geometry false
 \use_package amsmath 1
@@ -104,8 +101,8 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 2
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -141,7 +138,7 @@ problema computacional
 \emph on
 problema
 \emph default
-) es una relación explícita entre dos conjuntos de entidades, uno de 
+) es una relación entre dos conjuntos de entidades, uno de 
 \emph on
 entrada
 \emph default
@@ -154,9 +151,9 @@ salida
 \emph on
 algoritmo
 \emph default
- es una secuencia finita y ordenada de instrucciones bien definidas que
+ es una secuencia, finita y ordenada, de instrucciones bien definidas que
  describen el procedimiento a seguir para transformar la entrada de un problema
- determinado a la salida correspondiente.
+ determinado en la salida correspondiente.
  Se dice que un algoritmo es
 \end_layout
 
@@ -167,7 +164,7 @@ finito, porque tiene una cantidad determinada de instrucciones y su ejecución
 
 \begin_layout Itemize
 ordenado, porque, dadas dos instrucciones cualesquiera, no hay ambigüedad
- sobre cuál debe ejecutarse primero, y
+ sobre cuál se ejecuta primero, y
 \end_layout
 
 \begin_layout Itemize
@@ -181,13 +178,12 @@ Un
 caso específico
 \emph default
  (instance) para algún problema particular es cualquier conjunto de valores
- particulares que satisfagan los requerimientos de entrada impuestos por
- dicho problema.
+ que satisfacen las características de entrada del problema.
  Los casos específicos pueden agruparse en diferentes 
 \emph on
 clases de entrada
 \emph default
-, que son todas las formas diferentes en las que pueden presentarse los
+, que son todas las diferentes formas en las que pueden presentarse los
  casos específicos.
 \end_layout
 
@@ -197,8 +193,7 @@ Un algoritmo es
 correcto
 \emph default
  cuando, para cualquier caso específico, el algoritmo termina su ejecución
- y produce un resultado que cumple los requerimientos de salida impuestos
- por el problema.
+ y produce un resultado que cumple las características de salida del problema.
  Se dice que un algoritmo correcto 
 \emph on
 resuelve
@@ -209,8 +204,8 @@ resuelve
 incorrecto
 \emph default
  cuando existe al menos un caso específico para el cual el algoritmo no
- termina su ejecución o termina con un resultado que no cumple con los requerimi
-entos de salida.
+ termina su ejecución o termina con un resultado que no cumple las característic
+as de salida.
  
 \end_layout
 
@@ -221,13 +216,13 @@ pseudocódigo
 \emph default
 .
  Un pseudocódigo es una descripción simple, informal y de alto nivel de
- algún algoritmo.
- Consiste de estructuras de control de flujo, notación matemática y, a veces,
- prosa en lenguaje natural.
+ un algoritmo.
+ Comúnmente consiste de estructuras de control de flujo, notación matemática
+ y/o prosa en lenguaje natural.
  Se dice que el pseudocódigo es de alto nivel porque omite detalles de implement
 ación innecesarios.
- A diferencia de un lenguaje de programación, el pseudocódigo está dirigido
- a seres humanos, no a computadoras.
+ A diferencia de un lenguaje de programación, el pseudocódigo se escribe
+ para que sea entendido por seres humanos, no por computadoras.
 \end_layout
 
 \begin_layout Standard
@@ -235,7 +230,8 @@ Finalmente, una
 \emph on
 estructura de datos
 \emph default
- es una forma de organizar, acceder y manipular una colección de datos.
+ es un conjunto de procedimientos para organizar, acceder y manipular una
+ colección de datos.
 \end_layout
 
 \begin_layout Section
@@ -247,9 +243,9 @@ El
 \emph on
 análisis de algoritmos
 \emph default
- es el conjunto de técnicas matemáticas por medio de las cuáles se pueden
- caracterizar las propiedades particulares de un algoritmo de forma independient
-e a su implementación específica en hardware y/o software.
+ es el conjunto de técnicas matemáticas para caracterizar las propiedades
+ particulares de un algoritmo de forma independiente a su implementación
+ específica en hardware y/o software.
  En estos apuntes, el análisis consistirá en describir únicamente dos caracterís
 ticas:
 \end_layout
@@ -296,8 +292,8 @@ definición
 \begin_inset Quotes frs
 \end_inset
 
- que se presenta aquí es una lista de las características que posee un algoritmo
-, más que una definición propia.
+ presentada aquí es más bien una lista de las características que posee
+ un algoritmo.
 \end_layout
 
 \begin_layout Itemize

@@ -6,52 +6,40 @@
 \origin unavailable
 \textclass book
 \begin_preamble
-\usepackage{indentfirst}
-
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\centering\larger}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
-\titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ }{0pt}{}[]
-\titleformat{\subsection}[runin]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\section}[hang]{\bfseries\large}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
 \titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
 
-\newtheoremstyle{myplain}{\topsep}{\topsep}{\itshape}{}{\scshape}{.}{.5em}{}
-\newtheoremstyle{mydef}{\topsep}{\topsep}{\normalfont}{}{\scshape}{.}{.5em}{}
-\theoremstyle{myplain}
-\newtheorem{mythm}{Teorema}[]
-\newtheorem{mylem}{Lema}[]
-\newtheorem{myprop}{Proposición}[]
-\theoremstyle{mydef}
-\newtheorem{mydef}{Definición}[]
-\newtheorem{myrmk}{Observación}[]
-\newtheorem{myex}{Ejemplo}[]
+\usepackage{enumitem}
+\setlist{nolistsep}
 
-\let\thm\mythm
-\let\endthm\endmythm
-\let\lem\mylem
-\let\endlem\endmylem
-\let\prop\myprop
-\let\endprop\endmyprop
-\let\defn\mydef
-\let\enddefn\endmydef
-\let\example\myex
-\let\endexample\endmyex
-\let\rem\myrmk
-\let\endrem\endmyrmk
-
-\usepackage{xpatch}
-\newcommand{\proofnamefont}{\scshape}
-\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+\SetKwInOut{In}{Entrada}
+\SetKwInOut{Out}{Salida}
+\SetKw{Throw}{throw}
+\SetKw{Error}{error}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Not}{not}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Nil}{nil}
+\SetCommentSty{textit}
+\SetKwComment{Comment}{$\triangleright$ }{}
+\SetFuncSty{textsc}
+\DontPrintSemicolon
 \end_preamble
 \use_default_options true
 \begin_modules
 algorithm2e
-theorems-ams-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
 Format 66
-PackageOptions algorithm2e "vlined,linesnumbered,ruled"
+PackageOptions algorithm2e "algochapter,vlined,linesnumbered,ruled"
 \end_local_layout
 \language spanish-mexico
 \language_package default
@@ -77,7 +65,16 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \float_placement tb
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize letterpaper
 \use_geometry false
 \use_package amsmath 1
@@ -108,8 +105,8 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \topmargin 1.2in
 \rightmargin 1.2in
 \bottommargin 1.2in
-\secnumdepth 3
-\tocdepth 0
+\secnumdepth 2
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -117,7 +114,7 @@ PackageOptions algorithm2e "vlined,linesnumbered,ruled"
 \quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -144,11 +141,7 @@ análisis de la exactitud
 \emph on
 de un algoritmo
 \emph default
- (o, simplemente, 
-\emph on
-análisis de exactitud
-\emph default
-).
+.
 \end_layout
 
 \begin_layout Section
@@ -160,24 +153,22 @@ Para demostrar que un algoritmo es incorrecto, basta con producir un
 \emph on
 contraejemplo
 \emph default
-; esto es, un caso específico para el cual el algoritmo no produce un resultado
- que satisfaga los requerimientos de salida del problema o no termina su
- ejecución.
- Para producir un contraejemplo, es necesario considerar todas las posibles
- clases de entrada.
- Se recomienda probar primero con casos específicos extremos o con valores
- de frontera.
- El contraejemplo propuesto debe ser lo más simple y pequeño posible y,
- para complementarlo, se debe determinar el resultado incorrecto que el
- algoritmo produce para dicho contraejemplo y compararlo con el resultado
- correcto que debió haber producido.
+; i.e.
+ un caso específico para el cual el algoritmo no termina su ejecución o
+ no produce un resultado que cumpla las características de salida del problema.
+ Para producir un contraejemplo, se deben explorar todas las clases de entrada.
+ Se recomienda probar primero con aquellos casos específicos que representen
+ situaciones extremas o difíciles de resolver por el algoritmo, o que contengan
+ valores de frontera.
+ El contraejemplo propuesto debe ser lo más simple y pequeño posible y debe
+ acompañarse con el resultado incorrecto producido por el algoritmo y el
+ resultado correcto que debió producir.
  
 \end_layout
 
 \begin_layout Standard
-En caso de no haberse encontrado un contraejemplo para un algoritmo determinado,
- esto no implica que dicho algoritmo es correcto; aún es necesario presentar
- una demostración convincente de su exactitud.
+Cabe mencionar que, si no se encontra un contraejemplo para un algoritmo
+ determinado, eso no implica que dicho algoritmo es correcto.
 \end_layout
 
 \begin_layout Section
@@ -185,7 +176,11 @@ La invariante de lazo
 \end_layout
 
 \begin_layout Standard
-Una invariante de lazo es una proposición lógica que se cumple inmediatamente
+Una 
+\emph on
+invariante de lazo
+\emph default
+ (loop invariant) es una proposición lógica que se cumple inmediatamente
  antes e inmediatamente después de cada iteración de un bucle determinado.
  Para producir una invariante de lazo, se recomienda primero hacer una 
 \begin_inset Quotes fls
@@ -196,15 +191,14 @@ prueba de escritorio
 \end_inset
 
  del bucle.
- Esto ayuda a encontrar patrones en el comportamiento de dicho bucle que
+ Esto permite identificar patrones en el comportamiento de dicho bucle que
  podrían utilizarse para definir una invariante de lazo.
- La invariante de lazo siempre se define en función del número de iteraciones
- ejecutadas hasta el momento.
+ La invariante de lazo siempre se define en función del número de iteraciones.
  
 \end_layout
 
 \begin_layout Standard
-Demostrar que una invariante de lazo es verdadera para cualquier iteración
+Demostrar que una invariante de lazo se cumple para cualquier iteración
  es un procedimiento análogo a una demostración por inducción y consiste
  de las sig.
  etapas: 
@@ -220,8 +214,8 @@ Inicialización
 \emph on
  
 \emph default
-del bucle y se procede a demostrar que la invariante de lazo se cumple bajo
- estas condiciones.
+del bucle y se demuestra que la invariante de lazo se cumple bajo estas
+ condiciones.
 \end_layout
 
 \begin_layout Enumerate
@@ -229,16 +223,14 @@ del bucle y se procede a demostrar que la invariante de lazo se cumple bajo
 \emph on
 Mantenimiento
 \emph default
-: se hace la suposición de que la invariante de lazo se cumple antes de
- comenzar alguna iteración genérica 
+: se supone que la invariante de lazo se cumple antes de comenzar alguna
+ iteración genérica 
 \begin_inset Formula $i$
 \end_inset
 
  y se determina el estado del algoritmo que se obtiene como consecuencia
  de ello.
- Después, partiendo de dicho estado, se ejecuta una iteración del bucle
- y, de nuevo, se determina el estado del algoritmo que se obtuvo como resultado.
- Finalmente, partiendo de dicho estado, se procede a demostrar que la invariante
+ Después, se ejecuta una iteración del bucle y se demuestra que la invariante
  de lazo se cumple antes de comenzar la iteración 
 \begin_inset Formula $i+1$
 \end_inset
@@ -252,9 +244,8 @@ Mantenimiento
 Finalización
 \emph default
 : se determina cuál es el estado del algoritmo cuando el bucle termina su
- ejecución y, partiendo de dicho estado, se procede a utilizar la invariante
- de lazo para demostrar que el algoritmo es correcto o para demostrar que
- se cumple alguna propiedad particular del algoritmo.
+ ejecución y se utiliza la invariante de lazo para demostrar que el algoritmo
+ es correcto o para caracterizar alguna propiedad particular del algoritmo.
  
 \end_layout
 
@@ -263,39 +254,39 @@ Cómo diseñar algoritmos correctos
 \end_layout
 
 \begin_layout Standard
-Rara vez es posible producir un nuevo algoritmo correcto en el primer intento;
- normalmente, el diseño de un algoritmo es un proceso iterativo.
- A continuación se presentan algunos consejos que pueden facilitar la tarea
- de diseñar algoritmos correctos.
+El diseño de un algoritmo es un proceso iterativo; rara vez se puede diseñar
+ un algoritmo correcto en el primer intento.
+ A continuación se presentan algunos consejos para diseñar algoritmos correctos.
  
 \end_layout
 
 \begin_layout Subsection
-Definir bien el problema
+Definición del problema
 \end_layout
 
 \begin_layout Standard
-Si el problema no está bien definido, el algoritmo será incorrecto sin importar
- lo que haga.
- Los requerimientos de salida deben ser concisos y explícitos y no deben
- consistir de objetivos compuestos.
- Por otro lado, entre más restrictivos sean los requerimientos de entrada,
- menor suele ser la dificultad para resolver el problema.
- 
+Si el problema no está bien definido, será muy difícil o incluso imposible
+ diseñar un algoritmo que lo resuelva.
+ Las características de salida deben ser claras y no deben consistir de
+ objetivos compuestos.
+ En cuanto a las características de entrada, entre más restrictivas sean,
+ menor es la dificultad para resolver el problema.
+ Por ende, se recomienda comenzar por diseñar un algoritmo que admita entradas
+ de características particulares y después extenderlo a entradas más generales.
 \end_layout
 
 \begin_layout Subsection
-Estudiar la complejidad computacional del problema
+Analizar la complejidad computacional del problema
 \end_layout
 
 \begin_layout Standard
-Se recomienda estudiar la complejidad computacional del problema al mismo
+Se recomienda analizar la complejidad computacional del problema al mismo
  tiempo que se diseña un algoritmo para resolverlo.
- Esto porque, cualquier descubrimiento o avance que se obtenga en uno podría
- aprovecharse después para avanzar el otro.
+ De esta forma, cualquier descubrimiento o avance que se obtenga en un lado
+ podría aprovecharse después para avanzar en el otro.
  Además, al final se obtendría uno de dos posibles resultados: ya sea se
- llega a la construcción de un algoritmo correcto o se demuestra la complejidad
- del problema.
+ llega a la construcción de un algoritmo correcto o se caracteriza la complejida
+d del problema.
 \end_layout
 
 \begin_layout Subsection
@@ -307,8 +298,8 @@ Las entidades con las que interactúa un problema en la vida real suelen
  representarse por medio de alguna de varias estructuras abstractas ya conocidas
  (e.g.
  cadenas, grafos, conjuntos, etc.).
- Sin embargo, las especificaciones del problema no siempre se ajustarán
- perfectamente a las características de la estructura elegida.
+ Sin embargo, las especificaciones del problema no siempre se ajustan perfectame
+nte a las características de la estructura elegida.
  En estos casos, se recomienda ignorar temporalmente aquellos detalles que
  no encajen y decidir más adelante, después de trabajar un tiempo con esa
  estructura, si dichos detalles son realmente esenciales o no para resolver
