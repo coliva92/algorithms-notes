@@ -130,7 +130,7 @@ Análisis de la Exactitud de un Algoritmo
 \end_layout
 
 \begin_layout Standard
-El primer paso al analizar un algoritmo es determinar si éste es correcto
+El primer paso al analizar un algoritmo es determinar si este es correcto
  o incorrecto.
  El procedimiento que se sigue para llevar a cabo esta tarea se denomina
  
@@ -156,19 +156,35 @@ contraejemplo
 ; i.e.
  un caso específico para el cual el algoritmo no termina su ejecución o
  no produce un resultado que cumpla las características de salida del problema.
- Para producir un contraejemplo, se deben explorar todas las clases de entrada.
- Se recomienda probar primero con aquellos casos específicos que representen
- situaciones extremas o difíciles de resolver por el algoritmo, o que contengan
- valores de frontera.
- El contraejemplo propuesto debe ser lo más simple y pequeño posible y debe
- acompañarse con el resultado incorrecto producido por el algoritmo y el
- resultado correcto que debió producir.
  
 \end_layout
 
 \begin_layout Standard
-Cabe mencionar que, si no se encontra un contraejemplo para un algoritmo
- determinado, eso no implica que dicho algoritmo es correcto.
+Para producir un contraejemplo, se deben explorar todas las clases de entrada
+ posibles.
+ Se recomienda comenzar por aquellas que representen las situaciones más
+ complicadas para el algoritmo.
+ Por ejemplo, si se trata de un algoritmo voraz, se puede proponer un caso
+ donde todos los valores estén empatados.
+ Para otros tipos de algoritmos, se pueden proponer casos que contengan
+ mezclados valores de frontera de extremos opuestos.
+ Por ejemplo, casos con valores muy grandes y muy pequeños, muy cerca y
+ muy lejos, muchos y muy pocos, etc.
+\end_layout
+
+\begin_layout Standard
+El contraejemplo debe ser lo más simple y pequeño posible; idealmente, la
+ razón de por qué el algoritmo es incorrecto debe ser inmediatamente visible.
+ Así, una vez encontrado un contraejemplo, se recomienda simplificarlo tanto
+ como sea posible.
+ Además, el contraejemplo debe presentarse junto con el resultado incorrecto
+ que produjo el algoritmo y el resultado correcto que debió producir.
+\end_layout
+
+\begin_layout Standard
+Es importante destacar que, si no se logra encontrar un contraejemplo para
+ un algoritmo determinado, esto no implica que dicho algoritmo es correcto;
+ aún es necesario demostrar su exactitud.
 \end_layout
 
 \begin_layout Section
@@ -181,8 +197,13 @@ Una
 invariante de lazo
 \emph default
  (loop invariant) es una proposición lógica que se cumple inmediatamente
- antes e inmediatamente después de cada iteración de un bucle determinado.
- Para producir una invariante de lazo, se recomienda primero hacer una 
+ antes e inmediatamente después de cada iteración de un bucle o algoritmo
+ iterativo determinado.
+ La invariante de lazo siempre se define en función del número de iteraciones.
+\end_layout
+
+\begin_layout Standard
+Para producir una invariante de lazo, se recomienda primero hacer una 
 \begin_inset Quotes fls
 \end_inset
 
@@ -191,17 +212,18 @@ prueba de escritorio
 \end_inset
 
  del bucle.
+ Esto es, ejecutar cada paso del algoritmo en una hoja de papél con uno
+ o varios casos específicos de prueba.
  Esto permite identificar patrones en el comportamiento de dicho bucle que
- podrían utilizarse para definir una invariante de lazo.
- La invariante de lazo siempre se define en función del número de iteraciones.
+ podrían aprovecharse para definir una invariante de lazo.
  
 \end_layout
 
 \begin_layout Standard
 Demostrar que una invariante de lazo se cumple para cualquier iteración
  es un procedimiento análogo a una demostración por inducción y consiste
- de las sig.
- etapas: 
+ de los sig.
+ pasos: 
 \end_layout
 
 \begin_layout Enumerate
@@ -209,12 +231,8 @@ Demostrar que una invariante de lazo se cumple para cualquier iteración
 \emph on
 Inicialización
 \emph default
-: se considera cuál es el estado del algoritmo que se tiene antes de comenzar
- a ejecutar la primera iteración
-\emph on
- 
-\emph default
-del bucle y se demuestra que la invariante de lazo se cumple bajo estas
+: se considera cuál es el estado que se tiene antes de ejecutar la primera
+ iteración y se demuestra que la invariante de lazo se cumple bajo estas
  condiciones.
 \end_layout
 
@@ -228,10 +246,9 @@ Mantenimiento
 \begin_inset Formula $i$
 \end_inset
 
- y se determina el estado del algoritmo que se obtiene como consecuencia
- de ello.
- Después, se ejecuta una iteración del bucle y se demuestra que la invariante
- de lazo se cumple antes de comenzar la iteración 
+ y se determina el estado que se obtiene como consecuencia de ello.
+ Después, se ejecuta una iteración y se demuestra que la invariante de lazo
+ se cumple antes de comenzar la iteración 
 \begin_inset Formula $i+1$
 \end_inset
 
@@ -243,9 +260,9 @@ Mantenimiento
 \emph on
 Finalización
 \emph default
-: se determina cuál es el estado del algoritmo cuando el bucle termina su
- ejecución y se utiliza la invariante de lazo para demostrar que el algoritmo
- es correcto o para caracterizar alguna propiedad particular del algoritmo.
+: se determina cuál es el estado al salir del bucle y se utiliza la invariante
+ de lazo para demostrar que el algoritmo es correcto o para caracterizar
+ alguna propiedad particular del algoritmo.
  
 \end_layout
 
@@ -261,7 +278,7 @@ El diseño de un algoritmo es un proceso iterativo; rara vez se puede diseñar
 \end_layout
 
 \begin_layout Subsection
-Definición del problema
+Definir el problema correctamente
 \end_layout
 
 \begin_layout Standard
@@ -269,10 +286,47 @@ Si el problema no está bien definido, será muy difícil o incluso imposible
  diseñar un algoritmo que lo resuelva.
  Las características de salida deben ser claras y no deben consistir de
  objetivos compuestos.
- En cuanto a las características de entrada, entre más restrictivas sean,
- menor es la dificultad para resolver el problema.
- Por ende, se recomienda comenzar por diseñar un algoritmo que admita entradas
- de características particulares y después extenderlo a entradas más generales.
+ Por ejemplo, decir 
+\begin_inset Quotes fls
+\end_inset
+
+encontrar la mejor ruta entre dos puntos en un mapa
+\begin_inset Quotes frs
+\end_inset
+
+, es un problema mal definido, pues no queda claro a qué se refiere exactamente
+ con 
+\begin_inset Quotes fls
+\end_inset
+
+la mejor ruta
+\begin_inset Quotes frs
+\end_inset
+
+.
+ Otro ejemplo, decir 
+\begin_inset Quotes fls
+\end_inset
+
+encontrar la ruta más corta entre dos puntos en un mapa que además requiera
+ menos del doble de los giros a la izquierda de los que son mínimamente
+ necesarios
+\begin_inset Quotes frs
+\end_inset
+
+, es un problema bien definido pero muy difícil de resolver pues la salida
+ consiste de varios objetivos intermedios.
+ 
+\end_layout
+
+\begin_layout Standard
+En cuanto a las características de entrada, típicamente entre más restrictivas
+ sean, menor es la dificultad para resolver el problema.
+ Por ende, se recomienda comenzar por diseñar un algoritmo correcto que
+ admita entradas de características muy particulares y después extenderlo
+ a entradas más generales.
+ Por ejemplo, en lugar de trabajar con grafos generales, se puede comenzar
+ por trabajar primero con árboles.
 \end_layout
 
 \begin_layout Subsection
@@ -282,11 +336,11 @@ Analizar la complejidad computacional del problema
 \begin_layout Standard
 Se recomienda analizar la complejidad computacional del problema al mismo
  tiempo que se diseña un algoritmo para resolverlo.
- De esta forma, cualquier descubrimiento o avance que se obtenga en un lado
- podría aprovecharse después para avanzar en el otro.
+ De esta forma, cualquier descubrimiento o avance que se obtenga por un
+ lado podría aprovecharse después para avanzar en el otro.
  Además, al final se obtendría uno de dos posibles resultados: ya sea se
  llega a la construcción de un algoritmo correcto o se caracteriza la complejida
-d del problema.
+d computacional del problema.
 \end_layout
 
 \begin_layout Subsection

@@ -6,6 +6,7 @@
 \origin unavailable
 \textclass book
 \begin_preamble
+% Personalización del formato de los títulos
 \usepackage{titlesec}
 \titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
@@ -13,9 +14,11 @@
 \titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
 \titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
 
+% Eliminar el espacio que hay entre cada elemento de una lista
 \usepackage{enumitem}
 \setlist{nolistsep}
 
+% Personalización del pseudocódigo
 \SetKwInOut{In}{Entrada}
 \SetKwInOut{Out}{Salida}
 \SetKw{Throw}{throw}
@@ -30,6 +33,10 @@
 \SetKwComment{Comment}{$\triangleright$ }{}
 \SetFuncSty{textsc}
 \DontPrintSemicolon
+
+% Símbolo para indicar el final de un ejemplo
+\newcommand\xqed[1]{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{#1}}
+\newcommand\exend{\xqed{$\blacklozenge$}}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -151,7 +158,7 @@ salida
 \emph on
 algoritmo
 \emph default
- es una secuencia, finita y ordenada, de instrucciones bien definidas que
+ es una secuencia finita y ordenada de instrucciones bien definidas que
  describen el procedimiento a seguir para transformar la entrada de un problema
  determinado en la salida correspondiente.
  Se dice que un algoritmo es
@@ -185,6 +192,21 @@ clases de entrada
 \emph default
 , que son todas las diferentes formas en las que pueden presentarse los
  casos específicos.
+ Por ejemplo, supóngase que se tiene un algoritmo que admite como entrada
+ dos valores numéricos 
+\begin_inset Formula $a,b\in\mathbb{R}$
+\end_inset
+
+.
+ Este algoritmo tendría dos posibles clases de entrada: 
+\begin_inset Formula $a\leq b$
+\end_inset
+
+ y 
+\begin_inset Formula $a>b$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -220,13 +242,13 @@ pseudocódigo
  Comúnmente consiste de estructuras de control de flujo, notación matemática
  y/o prosa en lenguaje natural.
  Se dice que el pseudocódigo es de alto nivel porque omite detalles de implement
-ación innecesarios.
+ación irrelevantes.
  A diferencia de un lenguaje de programación, el pseudocódigo se escribe
- para que sea entendido por seres humanos, no por computadoras.
+ para que sea leído y entendido por seres humanos, no por computadoras.
 \end_layout
 
 \begin_layout Standard
-Finalmente, una 
+Por último, una 
 \emph on
 estructura de datos
 \emph default
@@ -325,6 +347,22 @@ The Algorithm Design Manual
  (2012), Springer.
  Págs.
  3-13.
+\end_layout
+
+\begin_layout Itemize
+Goodrich M.T.
+ & Tamassia R., 
+\begin_inset Quotes fls
+\end_inset
+
+Algorithm Design: Foundations, Analysis and Internet Examples
+\begin_inset Quotes frs
+\end_inset
+
+, 2da ed.
+ (2006), Wikey & Sons Inc.
+ Págs.
+ 4, 7 y 8.
 \end_layout
 
 \end_body

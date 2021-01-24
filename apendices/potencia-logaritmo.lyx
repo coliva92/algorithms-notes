@@ -823,7 +823,7 @@ Supóngase que
  (por la definición del logaritmo).
  De la proposición 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "no-negative-bases"
 plural "false"
 caps "false"
@@ -885,7 +885,7 @@ Supóngase que
  (por la definición del logaritmo).
  De las proposiciones 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "no-negative-bases"
 plural "false"
 caps "false"
@@ -895,7 +895,7 @@ noprefix "false"
 
  y 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "no-negative-logarithm"
 plural "false"
 caps "false"
@@ -1151,11 +1151,16 @@ x^{\log_{b}y} & =x^{\beta}\\
 \end_layout
 
 \begin_layout Remark
-Debido a que cambiar la base de cualquier logaritmo altera dicho valor en
- un factor constante, el comportamiento asintótico sigue siendo el mismo
- sin importar la base.
- Como consecuencia, la base del logaritmo suele omitirse al usar notación
- asintótica.
+De la regla de cambio de base, se tiene que 
+\begin_inset Formula $\log_{v}b\cdot\log_{b}x=\log_{v}x$
+\end_inset
+
+.
+ En otras palabras, cambiar la base de cualquier logaritmo altera dicho
+ valor en un factor constante, lo que implica que el comportamiento asintótico
+ sigue siendo el mismo sin importar la base.
+ Como consecuencia, la base de un logaritmo suele omitirse al utilizar la
+ notación asintótica.
 \end_layout
 
 \end_body

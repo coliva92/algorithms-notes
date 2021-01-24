@@ -1,0 +1,94 @@
+
+\chapter{Análisis de la Eficiencia de un Algoritmo}
+
+Después de demostrar que un algoritmo es correcto, el sig. paso es
+caracterizar su tiempo de ejecución. El procedimiento que se sigue
+para realizar esta tarea se demonima \emph{análisis de la eficiencia}
+\emph{de un algoritmo}. En este contexto, el tiempo de ejecución de
+un algoritmo se mide como la cantidad total de instrucciones que se
+ejecutan. 
+
+\section{El modelo de cómputo RAM}
+
+Un \emph{modelo de cómputo} (o, simplemente, \emph{modelo}) es una
+representación simplificada de alguna tecnología de cómputo particular
+que funge como una ``máquina hipotética'' donde se puede simular
+la ejecución de un algoritmo para llevar a cabo su análisis. El modelo
+debe ser lo suficientemente simple para facilitar el análisis. Al
+mismo tiempo, debe ser lo suficientemente cercano a la tecnología
+que representa para que refleje lo más fielmente posible el comportamiento
+que tendría el algoritmo de ser implementado en dicha tecnología. 
+
+Existen varios modelos de cómputo, pero el más utilizado para analizar
+algoritmos secuenciales es el \emph{modelo RAM }(random access machine).
+El modelo RAM simula la arquitectura de von Neumann y, como tal, consiste
+de una unidad de procesamiento central conectada a una unidad de memoria
+de acceso aleatorio. El \emph{ciclo de máquina} del modelo RAM consiste
+de tres pasos: 
+\begin{enumerate}
+\item Se lee algún dato de la memoria. 
+\item Se ejecuta alguna instrucción sobre ése dato.
+\item Se escribe el resultado en la memoria. 
+\end{enumerate}
+Cada ciclo de máquina se ejecuta en tiempo constante (i.e. independiente
+del valor o tamaño del dato de entrada). 
+
+En términos prácticos, al simular la ejecución de un algoritmo en
+el modelo RAM, se deben seguir las sig. suposiciones:
+\begin{itemize}
+\item Las instrucciones se pueden ejecutar únicamente de forma secuencial. 
+\item Todas las operaciones lógicas, aritméticas y de comparación se ejecutan
+en tiempo constante, con la excepción del exponente, el factorial,
+la raíz, el logaritmo, i.a.
+\item Se cuenta con una cantidad infinita de memoria. 
+\item Todas las operaciones de memoria (ya sea por puntero, índice o variable)
+se ejecutan en tiempo constante; no se hace distinción entre si un
+dato se encuentra en memoria caché, en la memoria RAM, en el disco
+duro, etc. 
+\item Invocar una sub-rutina toma tiempo constante, pero el tiempo requerido
+para ejecutarla depende del tamaño de su entrada.
+\end{itemize}
+
+\section{Casos a considerar}
+
+Las clases de entrada de un algoritmo pueden categorizarse en tres
+casos diferentes, dependiendo de cómo influyen en el tiempo de ejecución
+de dicho algoritmo:
+\begin{itemize}
+\item \emph{Mejor caso}: son todos los casos específicos que provocan que
+el algoritmo ejecute la menor cantidad de instrucciones posible. 
+\item \emph{Peor caso}: son todos los casos específicos que provocan que
+el algoritmo ejecute la mayor cantidad de instrucciones posible. 
+\item \emph{Caso promedio}: representa la cantidad promedio de instrucciones
+que el algoritmo realiza para todos los posibles casos específicos. 
+\end{itemize}
+En la práctica, se suele estudiar únicamente el peor caso. En ocasiones
+también se estudia el caso promedio; e.g. cuando el caso promedio
+ocurre con mayor frecuencia que los demás o cuando se está analizando
+un algoritmo aleatorio. 
+
+\section{Procedimiento general del análisis}
+
+El análisis de la eficiencia de un algoritmo consiste de multiplicar
+el tiempo de ejecución de cada instrucción (suponiendo que se ejecuta
+en el modelo RAM) por el número de veces que se ejecuta (dada una
+entrada genérica de tamaño arbitrariamente grande y perteneciente
+a alguna de las clases de entrada identificadas). Al final, se suman
+estos productos. 
+
+Como resultado final del análisis, se obtiene una función $T:\mathbb{N}\to\mathbb{N}$
+que determina el número total de instrucciones que el algoritmo ejecuta
+en proporción al tamaño $n\in\mathbb{N}$ de la entrada, donde el
+significado de ``tamaño'' depende del contexto del problema que
+se está tratando. Dicha función se expresa por medio de su orden de
+crecimiento. Cabe mencionar que se puede suponer, sin pérdida de generalidad,
+que $T$ es una función asintóticamente positiva. 
+
+\section*{Notas bibliográficas}
+\begin{itemize}
+\item Cormen T.H., Leiserson C.E., Rivest R.L. \& Stein C., ``Introduction
+to Algorithms'', 3ra ed. (2009), MIT Press. Págs. 23-29.
+\item Skiena S.S., ``The Algorithm Design Manual'', 2da ed. (2012), Springer.
+Págs. 31-34.
+\end{itemize}
+

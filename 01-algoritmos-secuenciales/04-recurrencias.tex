@@ -1,0 +1,163 @@
+
+\chapter{Relaciones de Recurrencia}
+
+Una \emph{relación de recurrencia} (o, simplemente, \emph{recurrencia})
+es una función expresada en términos de sí misma, pero con una entrada
+menor. Las recurrencias se presentan al analizar la eficiencia de
+algoritmos de tipo \emph{divide y vencerás}. La \emph{forma cerrada}
+de una recurrencia es una función equivalente, pero expresada sin
+recursividad. Resolver una recurrencia implica encontrar su forma
+cerrada.
+
+En el contexto de los algoritmos divide y vencerás, las recurrencias
+suelen tener la sig. forma general: 
+
+\[
+T(n)=\begin{cases}
+\sum_{i=1}^{p}T(n_{i})+f(n) & \text{para }n>b\\
+g(n) & \text{en caso contrario}
+\end{cases}
+\]
+donde 
+\begin{itemize}
+\item $b\in\mathbb{N}$ es la condición de paro (boundary condition); esto
+es, el valor de $n$ requerido para entrar al caso base, 
+\item $g:\mathbb{N}\to\mathbb{N}$ es el tiempo de ejecución del caso base, 
+\item $p\in\mathbb{N}$ es la cantidad de subproblemas en las que se dividió
+la entrada, 
+\item $n_{i}\in\mathbb{N}$, tal que $n_{i}<n$, es el tamaño de la entrada
+para el subproblema $i$, 
+\item $f:\mathbb{N}\to\mathbb{N}$ es el tiempo de ejecución para dividir
+la entrada en y/o combinar las soluciones de los $p$ subproblemas 
+\end{itemize}
+La función $g$ suele omitirse cuando es constante. 
+
+A continuación se presentan tres métodos diferentes para resolver
+recurrencias. Para ver ejemplos de estos métodos, se recomienda consultar
+el libro de Cormen et al. (2009).
+
+\section{El método maestro}
+
+El método maestro consiste simplemente en aplicar el sig. teorema.
+\begin{thm}[Teorema maestro]
+Sean $a,n\in\mathbb{N}$ y $b\in\mathbb{R}$, donde $a$ y $b$ son
+constantes y $b>1$. Sea $f:\mathbb{N}\to\mathbb{N}$ una función
+asintóticamente positiva y sea $c=\log_{b}a$. Si $T:\mathbb{N}\to\mathbb{N}$
+es una recurrencia de la forma $T(n)=aT(n/b)+f(n)$, entonces se puede
+resolver de alguna de las sig. maneras:
+\begin{enumerate}
+\item Si $f=O(n^{c-\varepsilon})$ para alguna constante real $\varepsilon>0$,
+entonces $T=\Theta(n^{c})$.
+\item Si $f=\Theta(n^{c})$, entonces $T=\Theta(n^{c}\log n)$.
+\item Si $f=\Omega(n^{c+\varepsilon})$ y si, además, $af(n/b)\leq kf(n)$
+para alguna constante real $k<1$ y todo valor de $n$ pasado algún
+umbral, entonces $T=\Theta(f)$.
+\end{enumerate}
+\end{thm}
+\begin{rem}
+Para el teorema maestro, el término $n/b$ también se puede interpretar
+como $\lceil n/b\rceil$ o $\lfloor n/b\rfloor$.
+\end{rem}
+La principal desventaja del teorema maestro es que no puede aplicarse
+a cualquier tipo de recurrencia. La demostración del teorema maestro
+se puede encontrar en el libro de Cormen et al.
+
+\section{El método del árbol recursivo}
+
+El método del árbol recursivo es un método gráfico e informal que
+consiste de construir un árbol donde cada sub-árbol representa el
+tiempo requerido para resolver un subproblema en la recurrencia. Al
+sumar el tiempo total de cada nivel del árbol se obtiene la forma
+cerrada. 
+
+Antes de estudiar el método en sí, es importante recordar las sig.
+propiedades de los árboles $k$-arios.
+\begin{prop}
+Sea $k\in\mathbb{N}_{0}$ y $n\in\mathbb{N}$. La altura de un árbol
+$k$-ario de $n$ nodos se calcula como $\lfloor\log_{k}n\rfloor+1$.
+\end{prop}
+%
+\begin{prop}
+Sea $i\in\mathbb{N}_{0}$. Suponiendo que la raíz de un árbol $k$-ario
+completo se encuentra en el nivel 0, la cantidad de nodos en el nivel
+$i$, se calcula como $k^{i}$.
+\end{prop}
+El método del árbol recursivo consiste de los sig. pasos:
+\begin{enumerate}
+\item Desglozar la recurrencia en un árbol de tal forma que la raíz representa
+el tiempo requerido para combinar y/o dividir el problema original.
+Cada nodo interno representa el tiempo requerido para combinar y/o
+dividir un subproblema y cada hoja representa el tiempo requerido
+por el caso base. 
+\item Calcular la altura del árbol.
+\item Calcular la cantidad de hojas.
+\item Para cada nivel, sumar el tiempo de ejecución de sus nodos. 
+\item Sumar el tiempo de ejecución de todos los niveles para obtener la
+forma cerrada.
+\end{enumerate}
+
+\section{El método de sustitución}
+
+El método de sustitución es un método formal que consiste en resolver
+una recurrencia por inducción matemática. Específicamente, este método
+consiste de los sig. pasos:
+\begin{enumerate}
+\item Proponer una cota asintótica que funja como una solución tentativa
+para la recurrencia.
+\item Utilizar inducción matemática para demostrar que la cota propuesta
+es correcta y para encontrar las constantes de dicha cota.
+\end{enumerate}
+Este método se puede utilizar para calcular tanto una cota superior
+como una inferior. A continuación se presentan algunas consideraciones
+y consejos que se deben tener en cuenta al trabajar con este método. 
+\begin{itemize}
+\item Para proponer una buena solución tentativa:
+\begin{itemize}
+\item Se puede utilizar el método del árbol recursivo para obtener una solución
+tentativa y después utilizar el método de sustitución para demostrar
+que dicha solución es correcta o para ajustar la cota.
+\item Si la recurrencia tiene una forma similar a alguna cuya solución ya
+se conoce, se puede proponer esa solución como una solución tentativa.
+\item Se pueden proponer dos cotas holgadas, una inferior y una superior,
+y ajustarlas gradualmente hasta que converjan en la solución correcta. 
+\end{itemize}
+\item Diferencias con la inducción matemática:
+\begin{itemize}
+\item El caso base se realiza hasta el último.
+\item La hipótesis inductiva consiste de suponer que la cota se cumple para
+$T(n_{i})$.
+\item El paso inductivo consiste en sustituir $T(n_{i})$, en la recurrencia
+original, con la forma exacta de la cota de la hipótesis inductiva.
+Este paso da origen al nombre del método.
+\end{itemize}
+\item Se debe demostrar algebraicamente que la cota propuesta se cumple
+de forma exacta. Es incorrecto aplicar la notación asintótica en el
+paso inductivo para deshacerse de constantes o términos problemáticos.
+\item Cuando la cota popuesta es lo más ajustada posible, pero aún así la
+inducción no converge, en lugar de proponer una cota más holgada,
+se puede proponer una nueva hipótesis inductiva cuya única diferencia
+con la anterior es que se le restan los términos de menor grado.
+\end{itemize}
+
+\section{Cambio de variable}
+
+En ocasiones, se puede aplicar álgebra para transformar una recurrencia
+en alguna otra cuya solución ya se conozca, eliminando por completo
+la necesidad de recurrir a cualquiera de los métodos anteriores.
+
+\section*{Notas bibliográficas}
+
+En las págs. 112 y 113 del libro de Cormen et al. se proporcionan
+referencias a otros métodos que existen para resolver diferentes tipos
+de recurrencias. Uno de ellos es el método de Akra-Bazzi, el cual
+es una generalización del teorema maestro que admite variables contínuas
+y permite resolver recurrencias donde los subproblemas varían substancialmente
+de tamaño. El método de Drmota y Szpankowski (2013) es una extensión
+del método de Akra-Bazzi para trabajar con variables discretas. 
+\begin{itemize}
+\item Cormen T.H., Leiserson C.E., Rivest R.L. \& Stein C., ``Introduction
+to Algorithms'', 3ra ed. (2009), MIT Press. Págs. 83-106 y 112-113.
+\item Drmota M. \& Szpankowski W., ``A Master Theorem for Discrete Divide
+and Conquer Recurrences'', Journal of the ACM (2013), Art. No. 16.
+\end{itemize}
+

@@ -130,7 +130,7 @@ relación de recurrencia
 recurrencia
 \emph default
 ) es una función expresada en términos de sí misma, pero con una entrada
- menor.
+ de menor cardinalidad.
  Las recurrencias se presentan al analizar la eficiencia de algoritmos de
  tipo 
 \emph on
@@ -142,7 +142,11 @@ divide y vencerás
 forma cerrada
 \emph default
  de una recurrencia es una función equivalente, pero expresada sin recursividad.
- Resolver una recurrencia implica encontrar su forma cerrada.
+ 
+\emph on
+Resolver
+\emph default
+ una recurrencia implica encontrar su forma cerrada.
 \end_layout
 
 \begin_layout Standard
@@ -169,11 +173,12 @@ donde
 \begin_inset Formula $b\in\mathbb{N}$
 \end_inset
 
- es la condición de paro (boundary condition); esto es, el valor de 
+ es la condición de paro (boundary condition); esto es, el valor que debe
+ tener 
 \begin_inset Formula $n$
 \end_inset
 
- requerido para entrar al caso base, 
+ para entrar al caso base, 
 \end_layout
 
 \begin_layout Itemize
@@ -209,8 +214,8 @@ donde
 \begin_inset Formula $f:\mathbb{N}\to\mathbb{N}$
 \end_inset
 
- es el tiempo de ejecución para dividir la entrada en y/o combinar las solucione
-s de los 
+ es el tiempo de ejecución para dividir la entrada en, y/o combinar las
+ soluciones de los, 
 \begin_inset Formula $p$
 \end_inset
 
@@ -290,7 +295,7 @@ Sean
 \begin_inset Formula $T(n)=aT(n/b)+f(n)$
 \end_inset
 
-, entonces se puede resolver de alguna de las sig.
+, entonces se puede resolver de una de las sig.
  maneras:
 \end_layout
 
@@ -336,7 +341,7 @@ Si
 \begin_inset Formula $k<1$
 \end_inset
 
- y todo valor de 
+ y para todo valor de 
 \begin_inset Formula $n$
 \end_inset
 
@@ -368,7 +373,7 @@ Para el teorema maestro, el término
 La principal desventaja del teorema maestro es que no puede aplicarse a
  cualquier tipo de recurrencia.
  La demostración del teorema maestro se puede encontrar en el libro de Cormen
- et al.
+ et al (2009).
 \end_layout
 
 \begin_layout Section
@@ -519,7 +524,7 @@ Se puede utilizar el método del árbol recursivo para obtener una solución
 
 \begin_layout Itemize
 Si la recurrencia tiene una forma similar a alguna cuya solución ya se conoce,
- se puede proponer esa solución como una solución tentativa.
+ se puede proponer esa solución como tentativa.
 \end_layout
 
 \begin_layout Itemize
@@ -627,6 +632,22 @@ A Master Theorem for Discrete Divide and Conquer Recurrences
 , Journal of the ACM (2013), Art.
  No.
  16.
+\end_layout
+
+\begin_layout Itemize
+Goodrich M.T.
+ & Tamassia R., 
+\begin_inset Quotes fls
+\end_inset
+
+Algorithm Design: Foundations, Analysis and Internet Examples
+\begin_inset Quotes frs
+\end_inset
+
+, 2da ed.
+ (2006), Wikey & Sons Inc.
+ Pág.
+ 12.
 \end_layout
 
 \end_body

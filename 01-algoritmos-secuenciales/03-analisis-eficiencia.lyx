@@ -164,10 +164,10 @@ máquina hipotética
 
  donde se puede simular la ejecución de un algoritmo para llevar a cabo
  su análisis.
- El modelo debe ser lo suficientemente simple para facilitar el análisis.
- Al mismo tiempo, debe ser lo suficientemente cercano a la tecnología que
- representa para que refleje lo más fielmente posible el comportamiento
- que tendría el algoritmo de ser implementado en dicha tecnología.
+ El modelo debe ser lo suficientemente simple para facilitar el análisis
+ y lo suficientemente cercano a la tecnología que representa para que refleje
+ lo más fielmente posible el comportamiento que tendría el algoritmo de
+ ser implementado en dicha tecnología.
  
 \end_layout
 
@@ -178,10 +178,23 @@ s secuenciales es el
 modelo RAM 
 \emph default
 (random access machine).
- El modelo RAM simula la arquitectura de von Neumann y, como tal, consiste
- de una unidad de procesamiento central conectada a una unidad de memoria
- de acceso aleatorio.
- El 
+ 
+\end_layout
+
+\begin_layout Standard
+El modelo RAM simula la arquitectura de von Neumann, la cual consiste de
+ una unidad de procesamiento central conectada por algún medio a una unidad
+ de memoria de acceso aleatorio.
+ Esta arquitectura se caracteriza en que las instrucciones de un programa
+ particular y los datos del mismo se almacenan en la misma unidad memoria
+ y se transmiten al procesador utilizando el mismo medio.
+ Como consecuencia, no se puede ejecutar una instrucción al mismo tiempo
+ que se lee o se escribe un dato en memoria.
+ Estas mismas características también aplican para el modelo RAM.
+\end_layout
+
+\begin_layout Standard
+Así, el 
 \emph on
 ciclo de máquina
 \emph default
@@ -221,8 +234,8 @@ Las instrucciones se pueden ejecutar únicamente de forma secuencial.
 
 \begin_layout Itemize
 Todas las operaciones lógicas, aritméticas y de comparación se ejecutan
- en tiempo constante, con la excepción del exponente, el factorial, la raíz,
- el logaritmo, i.a.
+ en tiempo constante, con la excepción del exponente, el factorial, la raíz
+ y el logaritmo.
 \end_layout
 
 \begin_layout Itemize
@@ -310,26 +323,32 @@ Como resultado final del análisis, se obtiene una función
 \end_inset
 
  que determina el número total de instrucciones que el algoritmo ejecuta
- en proporción al tamaño 
+ en proporción al tamaño de la entrada 
 \begin_inset Formula $n\in\mathbb{N}$
 \end_inset
 
- de la entrada, donde el significado de 
+.
+ Esta función se expresa por medio de su orden de crecimiento y se puede
+ suponer sin pérdida de generalidad que es asintóticamente positiva.
+ 
+\end_layout
+
+\begin_layout Standard
+Cabe mencionar que el significado de 
 \begin_inset Quotes fls
 \end_inset
 
-tamaño
+tamaño de la entrada
 \begin_inset Quotes frs
 \end_inset
 
  depende del contexto del problema que se está tratando.
- Dicha función se expresa por medio de su orden de crecimiento.
- Cabe mencionar que se puede suponer, sin pérdida de generalidad, que 
-\begin_inset Formula $T$
+ Por ejemplo, 
+\begin_inset Formula $n$
 \end_inset
 
- es una función asintóticamente positiva.
- 
+ podría referirse a la longitud de un arreglo, al número de vértices en
+ un grafo, a la longitud de una cadena binaria, etc.
 \end_layout
 
 \begin_layout Section*
@@ -365,6 +384,22 @@ The Algorithm Design Manual
  (2012), Springer.
  Págs.
  31-34.
+\end_layout
+
+\begin_layout Itemize
+Goodrich M.T.
+ & Tamassia R., 
+\begin_inset Quotes fls
+\end_inset
+
+Algorithm Design: Foundations, Analysis and Internet Examples
+\begin_inset Quotes frs
+\end_inset
+
+, 2da ed.
+ (2006), Wikey & Sons Inc.
+ Págs.
+ 5-6, 9-11.
 \end_layout
 
 \end_body

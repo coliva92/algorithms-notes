@@ -563,6 +563,117 @@ Si
 .
 \end_layout
 
+\begin_layout Theorem
+Sea 
+\begin_inset Formula $k\in\mathbb{N}_{0}$
+\end_inset
+
+ una constante.
+ Todo polinomio de grado 
+\begin_inset Formula $k$
+\end_inset
+
+ pertenece a 
+\begin_inset Formula $\Theta(n^{k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Sea 
+\begin_inset Formula $f(n)=a_{k}n^{k}+a_{k-1}n^{k-1}+\dots+a_{1}n+a_{0}$
+\end_inset
+
+ un polinomio arbitrario, donde 
+\begin_inset Formula $a_{i},\dots,a_{0}\in\mathbb{R}$
+\end_inset
+
+ son constantes.
+ Por la definición de 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ grande, se requiere demostrar que 
+\begin_inset Formula $f=O(n^{k})$
+\end_inset
+
+ y que 
+\begin_inset Formula $f=\Omega(n^{k})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Para demostrar que 
+\begin_inset Formula $f=O(n^{k})$
+\end_inset
+
+, se propone la constante 
+\begin_inset Formula $c=\sum_{i=0}^{k}a_{i}$
+\end_inset
+
+.
+ Así, se tiene que 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a_{k}n^{k}+a_{k-1}n^{k-1}+\dots+a_{1}n+a_{0}\leq c\cdot n^{k},
+\]
+
+\end_inset
+
+lo que se cumple para toda 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Por lo tanto 
+\begin_inset Formula $f=O(n^{k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para demostrar que 
+\begin_inset Formula $f=\Omega(n^{k})$
+\end_inset
+
+, se propone la constante 
+\begin_inset Formula $c=1$
+\end_inset
+
+.
+ Así, se tiene que 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a_{k}n^{k}+a_{k-1}n^{k-1}+\dots+a_{1}n+a_{0}\geq c\cdot n^{k},
+\]
+
+\end_inset
+
+lo que se cumple para toda 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Por lo tanto 
+\begin_inset Formula $f=\Omega(n^{k})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Definiciones a partir de límites
 \end_layout
@@ -766,17 +877,51 @@ Factoriales
 \end_layout
 
 \begin_layout Standard
-Se debe tener cuidado sobre cómo interpretar la lista anterior, puesto que
- la notación asintótica puede ocultar constantes muy grandes, lo que puede
+Se debe tener cuidado sobre cómo interpretar la lista anterior, ya que la
+ notación asintótica puede ocultar constantes muy grandes, lo que puede
  dar una impresión equivocada de la verdadera tasa de crecimiento de una
  función.
+ Por ejemplo, supóngase que se tiene que 
+\begin_inset Formula $f(n)=10^{100}n=O(n)$
+\end_inset
+
+ y 
+\begin_inset Formula $g(n)=10n\cdot\log n=O(n\cdot\log n)$
+\end_inset
+
+.
+ A pesar de que la notación asintótica indica que 
+\begin_inset Formula $g$
+\end_inset
+
+ crece más rápido que 
+\begin_inset Formula $f$
+\end_inset
+
+, la realidad es lo opuesto debido a que la constante 
+\begin_inset Formula $10^{100}$
+\end_inset
+
+ (número que se denomina 
+\begin_inset Quotes fls
+\end_inset
+
+googol
+\begin_inset Quotes frs
+\end_inset
+
+) supera por mucho la tasa de crecimiento de 
+\begin_inset Formula $g$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -810,6 +955,74 @@ Comparación gráfica de los órdenes de crecimiento más frecuentemente utiliza
 
 \end_layout
 
+\begin_layout Theorem
+Sean 
+\begin_inset Formula $k,q\in\mathbb{N}$
+\end_inset
+
+ constantes.
+ Se tiene que
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula 
+\begin{align*}
+(\log n)^{k} & =o(n^{q})\\
+n^{k} & =o([1+q]^{n}).
+\end{align*}
+
+\end_inset
+
+Esto es, toda función polinomial crece más rápido que cualquiera logarítmica
+ y toda exponencial crece más rápido que cualquiera polinomial.
+\end_layout
+
+\begin_layout Proof
+Ambas relaciones se pueden demostrar utilizando límites y la regla de L'Hopital.
+ Así, para la primera expresión, se tiene que
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}\dfrac{(\ln n)^{k}}{n^{q}} & =\left(\lim_{n\to\infty}\dfrac{\ln n}{n^{q/k}}\right)^{k}\\
+ & \overset{\text{H}}{=}\left(\lim_{n\to\infty}\dfrac{1/n}{(q/k)\cdot n^{q/k-1}}\right)^{k}\\
+ & =\left(\lim_{n\to\infty}\dfrac{1}{(q/k)\cdot n^{q/k}}\right)^{k}\\
+ & =0.
+\end{align*}
+
+\end_inset
+
+Por lo tanto, 
+\begin_inset Formula $(\log n)^{k}=o(n^{q})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para la segunda expresión, se tiene que 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\lim_{n\to\infty}\dfrac{n^{k}}{(1+q)^{n}} & =\left(\lim_{n\to\infty}\dfrac{n}{(1+q)^{n/k}}\right)^{k}\\
+ & \overset{\text{H}}{=}\left(\lim_{n\to\infty}\dfrac{1}{(n/k)\cdot(1+q)^{n/k-1}}\right)^{k}\\
+ & =0.
+\end{align*}
+
+\end_inset
+
+Por lo tanto, 
+\begin_inset Formula $n^{k}=o([1+q]^{n})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Propiedades aritméticas
 \end_layout
@@ -1307,6 +1520,22 @@ The Algorithm Design Manual
  (2012), Springer.
  Págs.
  34-41.
+\end_layout
+
+\begin_layout Itemize
+Goodrich M.T.
+ & Tamassia R., 
+\begin_inset Quotes fls
+\end_inset
+
+Algorithm Design: Foundations, Analysis and Internet Examples
+\begin_inset Quotes frs
+\end_inset
+
+, 2da ed.
+ (2006), Wikey & Sons Inc.
+ Págs.
+ 13-20.
 \end_layout
 
 \begin_layout Itemize

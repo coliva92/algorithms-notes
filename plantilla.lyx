@@ -6,6 +6,7 @@
 \origin unavailable
 \textclass book
 \begin_preamble
+% Personalización del formato de los títulos
 \usepackage{titlesec}
 \titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
@@ -13,9 +14,11 @@
 \titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
 \titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
 
+% Eliminar el espacio que hay entre cada elemento de una lista
 \usepackage{enumitem}
 \setlist{nolistsep}
 
+% Personalización del pseudocódigo
 \SetKwInOut{In}{Entrada}
 \SetKwInOut{Out}{Salida}
 \SetKw{Throw}{throw}
@@ -30,6 +33,10 @@
 \SetKwComment{Comment}{$\triangleright$ }{}
 \SetFuncSty{textsc}
 \DontPrintSemicolon
+
+% Símbolo para indicar el final de un ejemplo
+\newcommand\xqed[1]{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{#1}}
+\newcommand\exend{\xqed{$\blacklozenge$}}
 \end_preamble
 \use_default_options true
 \begin_modules
