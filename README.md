@@ -15,8 +15,6 @@ Cada capítulo contiene una sección que describe la literatura consultada para 
 Para poder generar los archivos PDF, se necesita tener instalados los siguientes paquetes de Latex:
 
 - [titlesec](https://www.ctan.org/pkg/titlesec)
-- [xpatch](https://www.ctan.org/pkg/xpatch)
-- [identfirst](https://www.ctan.org/pkg/indentfirst)
 
 ### Contenido
 
