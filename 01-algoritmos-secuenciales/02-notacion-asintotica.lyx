@@ -1550,5 +1550,29 @@ literal "false"
 
 \end_layout
 
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "http://web.mit.edu/broder/Public/asymptotics-cheatsheet.pdf"
+target "http://web.mit.edu/broder/Public/asymptotics-cheatsheet.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://people.csail.mit.edu/alinush/6.006-spring-2014/big-oh-with-limits.pdf"
+target "https://people.csail.mit.edu/alinush/6.006-spring-2014/big-oh-with-limits.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
