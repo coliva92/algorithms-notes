@@ -1,0 +1,22 @@
+ANEXOS
+- Límites
+	* no olvides la regla de l'hopital
+- Escritura matemática
+- Piso y techo
+	* demostracion de que la altura de un arbol k-ario es logaritmico
+
+ALGORITMOS
+- Ejemplos de los metodos de resolucion de recurrencias
+- Insertion sort
+- Merge sort
+- Quicksort
+- Heap sort
+- Counting sort
+- Bucket sort
+- Radix sort
+- Algoritmos de ordenamiento
+	* resumen y caracteristicas generales
+	* demostracion de que no es posible ordenar en O(n)
+
+MATEDISC
+- Lógica
