@@ -210,7 +210,7 @@ Denotado como
 \end_inset
 
  para las cuales existen dos constantes 
-\begin_inset Formula $c\in\mathbb{R}^{+}$
+\begin_inset Formula $c\in\mathbb{R}$
 \end_inset
 
  y 
@@ -305,7 +305,7 @@ Denotado como
 \end_inset
 
  para las cuales existen tres constantes 
-\begin_inset Formula $c_{1},c_{2}\in\mathbb{R}^{+}$
+\begin_inset Formula $c_{1},c_{2}\in\mathbb{R}$
 \end_inset
 
  y 
@@ -612,28 +612,24 @@ Para demostrar que
 \begin_inset Formula $f=O(n^{k})$
 \end_inset
 
-, se propone la constante 
-\begin_inset Formula $c=\sum_{i=0}^{k}a_{i}$
-\end_inset
-
-.
- Así, se tiene que 
+, se tiene que 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-a_{k}n^{k}+a_{k-1}n^{k-1}+\dots+a_{1}n+a_{0}\leq c\cdot n^{k},
-\]
+\begin{align*}
+a_{k}n^{k}+a_{k-1}n^{k-1}+\dots+a_{1}n+a_{0} & =(a_{k}+a_{k-1}/n+\dots+a_{1}/n^{k-1}+a_{0}/n^{k})n^{k}\\
+ & \leq(a_{k}+a_{k-1}+\dots+a_{1}+a_{0})n^{k},
+\end{align*}
 
 \end_inset
 
 lo que se cumple para toda 
-\begin_inset Formula $n$
+\begin_inset Formula $n\geq1$
 \end_inset
 
 .
- Por lo tanto 
+ Por lo tanto, 
 \begin_inset Formula $f=O(n^{k})$
 \end_inset
 
@@ -645,28 +641,23 @@ Para demostrar que
 \begin_inset Formula $f=\Omega(n^{k})$
 \end_inset
 
-, se propone la constante 
-\begin_inset Formula $c=1$
-\end_inset
-
-.
- Así, se tiene que 
+, se tiene que 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-a_{k}n^{k}+a_{k-1}n^{k-1}+\dots+a_{1}n+a_{0}\geq c\cdot n^{k},
+(a_{k}+a_{k-1}/n+\dots+a_{1}/n^{k-1}+a_{0}/n^{k})\cdot n^{k}\geq1\cdot n^{k}
 \]
 
 \end_inset
 
 lo que se cumple para toda 
-\begin_inset Formula $n$
+\begin_inset Formula $n\geq1$
 \end_inset
 
 .
- Por lo tanto 
+ Por lo tanto, 
 \begin_inset Formula $f=\Omega(n^{k})$
 \end_inset
 
@@ -822,7 +813,7 @@ Lineales
 Súper lineales
 \emph default
 : 
-\begin_inset Formula $O(n\cdot\log n)$
+\begin_inset Formula $O(n\log n)$
 \end_inset
 
 
@@ -987,8 +978,8 @@ Ambas relaciones se pueden demostrar utilizando límites y la regla de L'Hopital
 \begin_inset Formula 
 \begin{align*}
 \lim_{n\to\infty}\dfrac{(\ln n)^{k}}{n^{q}} & =\left(\lim_{n\to\infty}\dfrac{\ln n}{n^{q/k}}\right)^{k}\\
- & \overset{\text{H}}{=}\left(\lim_{n\to\infty}\dfrac{1/n}{(q/k)\cdot n^{q/k-1}}\right)^{k}\\
- & =\left(\lim_{n\to\infty}\dfrac{1}{(q/k)\cdot n^{q/k}}\right)^{k}\\
+ & \overset{\text{H}}{=}\left(\lim_{n\to\infty}\dfrac{1/n}{(q/k)n^{q/k-1}}\right)^{k}\\
+ & =\left(\lim_{n\to\infty}\dfrac{1}{(q/k)n^{q/k}}\right)^{k}\\
  & =0.
 \end{align*}
 
@@ -1009,7 +1000,7 @@ Para la segunda expresión, se tiene que
 \begin_inset Formula 
 \begin{align*}
 \lim_{n\to\infty}\dfrac{n^{k}}{(1+q)^{n}} & =\left(\lim_{n\to\infty}\dfrac{n}{(1+q)^{n/k}}\right)^{k}\\
- & \overset{\text{H}}{=}\left(\lim_{n\to\infty}\dfrac{1}{(n/k)\cdot(1+q)^{n/k-1}}\right)^{k}\\
+ & \overset{\text{H}}{=}\left(\lim_{n\to\infty}\dfrac{1}{(n/k)(1+q)^{n/k-1}}\right)^{k}\\
  & =0.
 \end{align*}
 

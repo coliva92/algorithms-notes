@@ -962,7 +962,7 @@ Sean
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\log_{b}x^{y}=y\cdot\log_{b}x$
+\begin_inset Formula $\log_{b}x^{y}=y\log_{b}x$
 \end_inset
 
 
@@ -1063,7 +1063,7 @@ b^{\theta} & =x\\
 (b^{\theta})^{y} & =x^{y}\\
 b^{\theta y} & =x^{y}\\
 \theta\cdot y & =\log_{b}x^{y}\\
-y\cdot\log_{b}x & =\log_{b}x^{y}
+y\log_{b}x & =\log_{b}x^{y}
 \end{align*}
 
 \end_inset
@@ -1078,7 +1078,7 @@ b^{\theta} & =x\\
 \sqrt[y]{b^{\theta}} & =\sqrt[y]{x}\\
 b^{\theta/y} & =\sqrt[y]{x}\\
 \dfrac{\theta}{y} & =\log_{b}\sqrt[y]{x}\\
-\dfrac{1}{y}\cdot\log_{b}x & =\log_{b}\sqrt[y]{x}
+\dfrac{1}{y}\log_{b}x & =\log_{b}\sqrt[y]{x}
 \end{align*}
 
 \end_inset
@@ -1091,7 +1091,7 @@ La identidad 5 se obtiene de:
 \begin{align*}
 b^{\theta} & =x\\
 \log_{v}b^{\theta} & =\log_{v}x\\
-\theta\cdot\log_{v}b & =\log_{v}x\\
+\theta\log_{v}b & =\log_{v}x\\
 \theta & =\dfrac{\log_{v}x}{\log_{v}b}\\
 \log_{b}x & =\dfrac{\log_{v}x}{\log_{v}b}
 \end{align*}
@@ -1106,7 +1106,7 @@ La identidad 6 se obtiene de:
 \begin{align*}
 b^{\theta} & =x\\
 \log_{x}b^{\theta} & =1\\
-\theta\cdot\log_{x}b & =1\\
+\theta\log_{x}b & =1\\
 \theta & =\dfrac{1}{\log_{x}b}\\
 \log_{b}x & =\dfrac{1}{\log_{x}b}
 \end{align*}
