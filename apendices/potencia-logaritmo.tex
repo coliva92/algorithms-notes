@@ -1,264 +1,277 @@
-
 \chapter{La Potencia y el Logaritmo}
 
 \section{Potencia}
-\begin{defn}[Potencia]
+
 Sean $x\in\mathbb{R}$ y $n\in\mathbb{N}_{0}$, donde $x$ se denomina
 \emph{base} y $n$ se denomina \emph{exponente}. La $n$-ésima potencia\emph{
 }de $x$, denotada como $x^{n}$, es el producto de $n$ bases $x$.
 Esto es, $x^{n}=x\cdot x\cdot\dots\text{ (}n\text{ veces)}$.
-\end{defn}
+
 \begin{thm}[Leyes de los exponentes]
-\label{laws-of-exp}Sean $x,y\in\mathbb{R}$ y sean $m,n\in\mathbb{N}_{0}$.
-Se tienen las sig. identidades sobre potencias:
-\begin{enumerate}
-\item $x^{0}\triangleq1$
-\item $x^{1}\triangleq x$
-\item $x^{-1}\triangleq1/x$
-\item $x^{m/n}\triangleq\sqrt[n]{x^{m}}$
-\item $x^{m}x^{n}=x^{m+n}$
-\item $x^{m}/x^{n}=x^{m-n}$, donde $x\neq0$
-\item $(x^{m})^{n}=x^{mn}$
-\item $(xy)^{n}=x^{n}y^{n}$
-\item $(x/y)^{n}=x^{n}/y^{n}$, donde $y\neq0$
-\end{enumerate}
+    \label{laws-of-exp}Sean $x,y\in\mathbb{R}$ y sean $m,n\in\mathbb{N}_{0}$.
+    Se tienen las sig. identidades sobre potencias:
+    \begin{enumerate}
+    \begin{multicols}{2}
+        \item $x^{0}\triangleq1$
+        \item $x^{1}\triangleq x$
+        \item $x^{-1}\triangleq1/x$
+        \item $x^{m/n}\triangleq\sqrt[n]{x^{m}}$
+        \item $x^{m}x^{n}=x^{m+n}$
+        \item $x^{m}/x^{n}=x^{m-n}$, donde $x\neq0$
+        \item $(x^{m})^{n}=x^{mn}$
+        \item $(xy)^{n}=x^{n}y^{n}$
+        \item $(x/y)^{n}=x^{n}/y^{n}$, donde $y\neq0$
+    \end{multicols}
+    \end{enumerate}
 \end{thm}
+
 \begin{rem}
-Cuando $x=0$, se tiene que $x^{-1}$ es indefinido.
+    Cuando $x=0$, se tiene que $x^{-1}$ es indefinido.
 \end{rem}
-%
+
+
 \begin{rem}
-Cuando $x=0$, por convención, la identidad $x^{0}=1$ se seguirá
-cumpliendo.
+    Cuando $x=0$, por convención, la identidad $x^{0}=1$ se sigue
+    cumpliendo.
 \end{rem}
-\begin{proof}[Demostración para el teorema \ref{laws-of-exp}]
-Las primeras cuatro identidades se aceptan sin requerir una demostración.
-El resto se pueden demostrar de forma algebraica. Comenzando por la
-identidad 5, ésta se obtiene de:
 
-\[
-x^{m}x^{n}=x\cdot x\cdot\dots\text{ (}m\text{ veces)}\cdot x\cdot x\cdot\dots\text{ (}n\text{ veces)}=x^{m+n}
-\]
-Para la identidad 6 se tienen dos casos:
-\begin{casenv}
-\item Si $m<n$, se tiene que
-\begin{align*}
-\dfrac{x^{m}}{x^{n}} & =\dfrac{x\cdot x\cdot\dots\text{ (}m\text{ veces)}}{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}\\
- & =1\cdot1\cdot\dots\text{ (}m\text{ veces)}\cdot\dfrac{1}{x}\cdot\dfrac{1}{x}\cdot\dots\text{ (}n-m\text{ veces)}\\
- & =x^{-1}\cdot x^{-1}\cdot\dots\text{ (}n-m\text{ veces)}\\
- & =x^{m-n}
-\end{align*}
-\item Si $m\geq n$, se tiene que
-\begin{align*}
-\dfrac{x^{m}}{x^{n}} & =\dfrac{x\cdot x\cdot\dots\text{ (}m\text{ veces)}}{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}\\
- & =1\cdot1\cdot\dots\text{ (}n\text{ veces)}\cdot x\cdot x\cdot\dots\text{ (}m-n\text{ veces)}\\
- & =x^{m-n}
-\end{align*}
-\end{casenv}
-La identidad 7 se obtiene de:
-
-\[
-\left(x^{m}\right)^{n}=\left[x\cdot x\cdot\dots\text{ (}m\text{ veces)}\right]\cdot\left[x\cdot x\cdot\dots\text{ (}m\text{ veces)}\right]\cdot\dots\text{ (}n\text{ veces)}=x^{mn}
-\]
-La identidad 8 se obtiene de:
-
-\begin{align*}
-\left(xy\right)^{n} & =xy\cdot xy\cdot\dots\text{ (}n\text{ veces)}\\
- & =x\cdot x\cdot\dots\text{ (}n\text{ veces)}\cdot y\cdot y\cdot\dots\text{ (}n\text{ veces)}\\
- & =x^{n}y^{n}
-\end{align*}
-Finalmente, la identidad 9 se obtiene de:
-
-\begin{align*}
-\left(\dfrac{x}{y}\right)^{n} & =\dfrac{x}{y}\cdot\dfrac{x}{y}\cdot\dots\text{ (}n\text{ veces)}\\
- & =\dfrac{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}{y\cdot y\cdot\dots\text{ (}n\text{ veces)}}\\
- & =\dfrac{x^{n}}{y^{n}}
-\end{align*}
+\begin{proof}[Demostración para el Teorema \ref{laws-of-exp}]
+    Las primeras cuatro identidades se aceptan sin requerir una demostración.
+    El resto se pueden demostrar de forma algebraica. Comenzando por la
+    identidad 5, ésta se obtiene de
+    
+    \[
+    x^{m}x^{n}=x\cdot x\cdot\dots\text{ (}m\text{ veces)}\cdot x\cdot x\cdot\dots\text{ (}n\text{ veces)}=x^{m+n}
+    \]
+    
+    Para la identidad 6 se tienen dos casos.
+    \begin{casenv}
+        \item Si $m<n$, se tiene que
+        \begin{align*}
+            \dfrac{x^{m}}{x^{n}} &= \dfrac{x\cdot x\cdot\dots\text{ (}m\text{ veces)}}{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}\\
+            &= 1\cdot1\cdot\dots\text{ (}m\text{ veces)}\cdot\dfrac{1}{x}\cdot\dfrac{1}{x}\cdot\dots\text{ (}n-m\text{ veces)}\\
+            &= x^{-1}\cdot x^{-1}\cdot\dots\text{ (}n-m\text{ veces)}\\
+            &= x^{m-n}
+        \end{align*}
+        \item Si $m\geq n$, se tiene que
+        \begin{align*}
+            \dfrac{x^{m}}{x^{n}} &= \dfrac{x\cdot x\cdot\dots\text{ (}m\text{ veces)}}{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}\\
+            &= 1\cdot1\cdot\dots\text{ (}n\text{ veces)}\cdot x\cdot x\cdot\dots\text{ (}m-n\text{ veces)}\\
+            &= x^{m-n}
+        \end{align*}
+    \end{casenv}
+    
+    La identidad 7 se obtiene de
+    
+    \[
+    \left(x^{m}\right)^{n}=\left[x\cdot x\cdot\dots\text{ (}m\text{ veces)}\right]\cdot\left[x\cdot x\cdot\dots\text{ (}m\text{ veces)}\right]\cdot\dots\text{ (}n\text{ veces)}=x^{mn}
+    \]
+    
+    La identidad 8 se obtiene de
+    
+    \begin{align*}
+        \left(xy\right)^{n} &=xy\cdot xy\cdot\dots\text{ (}n\text{ veces)}\\
+        &= x\cdot x\cdot\dots\text{ (}n\text{ veces)}\cdot y\cdot y\cdot\dots\text{ (}n\text{ veces)}\\
+        &= x^{n}y^{n}
+    \end{align*}
+    
+    Finalmente, la identidad 9 se obtiene de
+    
+    \begin{align*}
+        \left(\dfrac{x}{y}\right)^{n} &= \dfrac{x}{y}\cdot\dfrac{x}{y}\cdot\dots\text{ (}n\text{ veces)}\\
+        &= \dfrac{x\cdot x\cdot\dots\text{ (}n\text{ veces)}}{y\cdot y\cdot\dots\text{ (}n\text{ veces)}}\\
+        &= \dfrac{x^{n}}{y^{n}}
+    \end{align*}
 \end{proof}
 
 \section{Logaritmo}
-\begin{defn}[Logaritmo]
+
 Sean $b,x\in\mathbb{R}^{+}$, donde $b>1$ y se denomina \emph{base}.
-El logaritmo de \emph{$x$} con respecto a \emph{$b$, }denotado como
+El logaritmo de $x$ con respecto a $b$, denotado como
 $\log_{b}x$, es la potencia a la que hay que elevar $b$ para obtener
 $x$ como resultado. Esto es, $y=\log_{b}x$ si y sólo si $b^{y}=x$,
 donde $y\in\mathbb{R}$.
-\end{defn}
-%
-\begin{defn}[Logaritmo decimal]
-Se dice que un logaritmo es decimal cuando su base es 10. El logaritmo
-decimal de un número real $x$ se denota como $\log x$. 
-\end{defn}
-%
-\begin{defn}[Logaritmo natural]
-Se dice que un logaritmo es natural cuando su base es la constante
-de Neper $e$. El logaritmo natural de un número real $x$ se denota
-como $\ln x$.
-\end{defn}
-%
-\begin{defn}[Logaritmo binario]
-Se dice que un logaritmo es binario cuando su base es 2. El logaritmo
-binario de un número real $x$ se denotan como $\lg x$.
-\end{defn}
-\begin{prop}
-\label{no-negative-bases}La base de un logaritmo no puede ser negativa.
-\end{prop}
-\begin{proof}
-Supóngase que $y=\log_{b}x$, donde $b$ es negativo. Esto implica
-que $b^{y}=x$ (por la definición del logaritmo). Sin embargo, por
-las leyes de los signos, se tiene que el término $b^{y}$ es positivo
-cuando $y$ es par y negativo cuando $y$ es impar. Esto implica que
-existen valores de $x$ para los cuales $\log_{b}x$ no existe.
-\end{proof}
-\begin{prop}
-\label{no-negative-logarithm}Los números negativos no tienen logaritmo.
-\end{prop}
-\begin{proof}
-Supóngase que $y=\log_{b}x$, donde $x$ es negativo. Esto implica
-que $b^{y}=x$ (por la definición del logaritmo). Sin embargo, como
-consecuencia de la proposición \ref{no-negative-bases}, se tiene
-que $b$ debe ser positiva. Como la potencia de todo número positivo
-siempre resulta en un número positivo (por las leyes de los signos),
-entonces no existe un número $y$ que satisfaga la relación $b^{y}=x$.
-\end{proof}
-\begin{prop}
-Se tiene que $\log_{b}1=0$ para toda $b>1$.
-\end{prop}
-\begin{proof}
-Supóngase que $y=\log_{b}1$, lo que implica que $b^{y}=1$ (por la
-definición del logaritmo). Se tiene entonces lo sig.:
 
-\begin{align*}
-b^{y} & =1\\
-b^{y} & =b^{0}\\
-y & =0\\
-\log_{b}1 & =0
-\end{align*}
-\end{proof}
-\begin{prop}
-Se tiene que $\log_{b}b=1$ para toda $b>1$.
-\end{prop}
-\begin{proof}
-Supóngase que $y=\log_{b}b$, lo que implica que $b^{y}=b$ (por la
-definición del logaritmo). Se tiene entonces lo sig.:
+Cuando la base es 10, el logaritmo se denomina \emph{logaritmo decimal} y se denota 
+como $\log x$. Cuando la base es la constante de Neper $e$, el logaritmo se
+denomina \emph{logaritmo natural} y se denota como $\ln x$. Por último, cuando la 
+base es 2, el logaritmo se denomina \emph{logaritmo binario} y se denota $\lg x$.
 
-\begin{align*}
-b^{y} & =b\\
-b^{y} & =b^{1}\\
-y & =1\\
-\log_{b}b & =1
-\end{align*}
-\end{proof}
 \begin{prop}
-El logaritmo de todo número mayor a 1 es positivo. Esto es, $\log_{b}x>0$
-para toda $x>1$.
+    \label{no-negative-bases}La base de un logaritmo no puede ser negativa.
 \end{prop}
 \begin{proof}
-Supóngase que $y=\log_{b}x$, donde $x>1$. Esto implica que $b^{y}=x$
-(por la definición del logaritmo). De la proposición (\ref{no-negative-bases})
-se tiene que $b$ es positivo. Por lo tanto, para que se satisfaga
-la relación $b^{y}=x$, el valor de $y$ debe ser positivo. 
+    Supóngase que $y=\log_{b}x$, donde $b$ es negativo. Esto implica
+    que $b^{y}=x$ (por la definición del logaritmo). Sin embargo, por
+    las Leyes de los Signos, se tiene que el término $b^{y}$ es positivo
+    cuando $y$ es par y negativo cuando $y$ es impar. Esto implica que
+    existen combinaciones de $b$ y $x$ para los cuales $\log_{b}x$ no existe.
 \end{proof}
-%
+
 \begin{prop}
-El logaritmo de todo número menor a 1 es negativo. Esto es, $\log_{b}x<0$
-para toda $x\in(0,1)$.
+    \label{no-negative-logarithm}Los números negativos no tienen logaritmo.
 \end{prop}
 \begin{proof}
-Supóngase que $y=\log_{b}x$, donde $x\in(0,1)$. Esto implica que
-$b^{y}=x$ (por la definición del logaritmo). De las proposiciones
-(\ref{no-negative-bases}) y (\ref{no-negative-logarithm}) se tiene
-que $b$ y $x$ son ambos positivos. Por lo tanto, para que se satisfaga
-la relación $b^{y}=x$, el valor de $y$ debe ser negativo (por las
-leyes de los exponentes).
+    Supóngase que $y=\log_{b}x$, donde $x$ es negativo. Esto implica
+    que $b^{y}=x$ (por la definición del logaritmo). Sin embargo, como
+    consecuencia de la Proposición \ref{no-negative-bases}, se tiene
+    que $b$ debe ser positiva. Como la potencia de todo número positivo
+    siempre resulta en un número positivo (por las Leyes de los Signos),
+    entonces no existe un número $y$ que satisfaga la relación $b^{y}=x$.
 \end{proof}
+
+
+\begin{prop}
+    Se tiene que $\log_{b}1=0$ para toda $b>1$.
+\end{prop}
+\begin{proof}
+    Supóngase que $y=\log_{b}1$, lo que implica que $b^{y}=1$ (por la
+    definición del logaritmo). Se tiene entonces lo sig.:
+
+    \begin{align*}
+        b^{y} &= 1\\
+        b^{y} &= b^{0}\\
+        y &= 0\\
+        \log_{b}1 &= 0
+    \end{align*}
+\end{proof}
+
+\begin{prop}
+    Se tiene que $\log_{b}b=1$ para toda $b>1$.
+\end{prop}
+\begin{proof}
+    Supóngase que $y=\log_{b}b$, lo que implica que $b^{y}=b$ (por la
+    definición del logaritmo). Se tiene entonces lo sig.:
+
+    \begin{align*}
+        b^{y} &= b\\
+        b^{y} &= b^{1}\\
+        y &= 1\\
+        \log_{b}b &= 1
+    \end{align*}
+\end{proof}
+
+\begin{prop}
+    El logaritmo de todo número mayor a 1 es positivo. Esto es, $\log_{b}x>0$
+    para toda $x>1$.
+\end{prop}
+\begin{proof}
+    Supóngase que $y=\log_{b}x$, donde $x>1$. Esto implica que $b^{y}=x$
+    (por la definición del logaritmo). De la Proposición \ref{no-negative-bases}
+    se tiene que $b$ es positivo. Por lo tanto, para que se satisfaga
+    la relación $b^{y}=x$, el valor de $y$ debe ser positivo. 
+\end{proof}
+
+\begin{prop}
+    El logaritmo de todo número menor a 1 es negativo. Esto es, $\log_{b}x<0$
+    para toda $x\in(0,1)$.
+\end{prop}
+\begin{proof}
+    Supóngase que $y=\log_{b}x$, donde $x\in(0,1)$. Esto implica que
+    $b^{y}=x$ (por la definición del logaritmo). De las proposiciones
+    \ref{no-negative-bases} y \ref{no-negative-logarithm} se tiene que
+    $b$ y $x$ son ambos positivos. Por lo tanto, para que se satisfaga
+    la relación $b^{y}=x$, el valor de $y$ debe ser negativo (por las
+    Leyes de los Exponentes).
+\end{proof}
+
 \begin{thm}[Leyes de los logaritmos]
-Sean $b,v,x,y\in\mathbb{R^{+}}$, donde $b,v>1$. Se tienen las sig.
-identidades sobre logaritmos:
-\begin{enumerate}
-\item $\log_{b}\left(x\cdot y\right)=\log_{b}x+\log_{b}y$
-\item $\log_{b}\left(x/y\right)=\log_{b}x-\log_{b}y$
-\item $\log_{b}x^{y}=y\cdot\log_{b}x$
-\item $\log_{b}\sqrt[y]{x}=1/y\cdot\log_{b}x$
-\item $\log_{b}x=\log_{v}x/\log_{v}b$
-\item $\log_{b}x=1/\log_{x}b$
-\item $x^{\log_{b}y}=y^{\log_{b}x}$
-\end{enumerate}
+    Sean $b,v,x,y\in\mathbb{R^{+}}$, donde $b,v>1$. Se tienen las sig.
+    identidades sobre logaritmos:
+    \begin{enumerate}
+    \begin{multicols}{2}
+        \item $\log_{b}\left(x\cdot y\right)=\log_{b}x+\log_{b}y$
+        \item $\log_{b}\left(x/y\right)=\log_{b}x-\log_{b}y$
+        \item $\log_{b}x^{y}=y\log_{b}x$
+        \item $\log_{b}\sqrt[y]{x}=1/y\cdot\log_{b}x$
+        \item $\log_{b}x=\log_{v}x/\log_{v}b$
+        \item $\log_{b}x=1/\log_{x}b$
+        \item $x^{\log_{b}y}=y^{\log_{b}x}$
+    \end{multicols}
+    \end{enumerate}
 \end{thm}
 \begin{proof}
-Todas las identidades se pueden demostrar algebraicamente. Comenzando
-por la identidad 1, sean $\alpha,\beta\in\mathbb{R}$ tales que $\alpha=b^{x}$
-y $\beta=b^{y}$. Entonces, se tiene que:
+    Todas las identidades se pueden demostrar algebraicamente. Comenzando
+    por la identidad 1, sean $\alpha,\beta\in\mathbb{R}$ tales que $\alpha=b^{x}$
+    y $\beta=b^{y}$. Entonces, se tiene que
 
-\begin{align*}
-\alpha\cdot\beta & =b^{x}b^{y}\\
-\alpha\cdot\beta & =b^{x+y}\\
-\log_{b}(\alpha\cdot\beta) & =x+y\\
-\log_{b}(\alpha\cdot\beta) & =\log_{b}\alpha+\log_{b}\beta
-\end{align*}
-La identidad 2 se origina de una manipulación algebraica similar:
+    \begin{align*}
+        \alpha\beta &= b^{x}b^{y}\\
+        \alpha\beta &= b^{x+y}\\
+        \log_{b}(\alpha\beta) &= x+y\\
+        \log_{b}(\alpha\beta) &= \log_{b}\alpha+\log_{b}\beta
+    \end{align*}
+    
+    La identidad 2 se origina de una manipulación algebraica similar:
+    
+    \begin{align*}
+        \dfrac{\alpha}{\beta} &= \dfrac{b^{x}}{b^{y}}\\
+        \dfrac{\alpha}{\beta} &= b^{x-y}\\
+        \log_{b}\left(\dfrac{\alpha}{\beta}\right) &= x-y\\
+        \log_{b}\left(\dfrac{\alpha}{\beta}\right) &= \log_{b}\alpha-\log_{b}\beta
+    \end{align*}
+    
+    Para la identidad 3, sea $\theta\in\mathbb{R}$ tal que $\theta=\log_{b}x$.
+    Esto implica que $b^{\theta}=x$ (por la definición del logaritmo),
+    por lo que se tiene lo sig.:
 
-\begin{align*}
-\dfrac{\alpha}{\beta} & =\dfrac{b^{x}}{b^{y}}\\
-\dfrac{\alpha}{\beta} & =b^{x-y}\\
-\log_{b}\left(\dfrac{\alpha}{\beta}\right) & =x-y\\
-\log_{b}\left(\dfrac{\alpha}{\beta}\right) & =\log_{b}\alpha-\log_{b}\beta
-\end{align*}
-Para la identidad 3, sea $\theta\in\mathbb{R}$ tal que $\theta=\log_{b}x$.
-Esto implica que $b^{\theta}=x$ (por la definición del logaritmo),
-por lo que se tiene lo sig.:
-
-\begin{align*}
-b^{\theta} & =x\\
-(b^{\theta})^{y} & =x^{y}\\
-b^{\theta y} & =x^{y}\\
-\theta\cdot y & =\log_{b}x^{y}\\
-y\cdot\log_{b}x & =\log_{b}x^{y}
-\end{align*}
-La identidad 4 se obtiene de:
-
-\begin{align*}
-b^{\theta} & =x\\
-\sqrt[y]{b^{\theta}} & =\sqrt[y]{x}\\
-b^{\theta/y} & =\sqrt[y]{x}\\
-\dfrac{\theta}{y} & =\log_{b}\sqrt[y]{x}\\
-\dfrac{1}{y}\cdot\log_{b}x & =\log_{b}\sqrt[y]{x}
-\end{align*}
-La identidad 5 se obtiene de:
-
-\begin{align*}
-b^{\theta} & =x\\
-\log_{v}b^{\theta} & =\log_{v}x\\
-\theta\cdot\log_{v}b & =\log_{v}x\\
-\theta & =\dfrac{\log_{v}x}{\log_{v}b}\\
-\log_{b}x & =\dfrac{\log_{v}x}{\log_{v}b}
-\end{align*}
-La identidad 6 se obtiene de:
-
-\begin{align*}
-b^{\theta} & =x\\
-\log_{x}b^{\theta} & =1\\
-\theta\cdot\log_{x}b & =1\\
-\theta & =\dfrac{1}{\log_{x}b}\\
-\log_{b}x & =\dfrac{1}{\log_{x}b}
-\end{align*}
-Finalmente, para la identidad 7, supóngase que $\alpha=\log_{b}x$
-y $\beta=\log_{b}y$. Esto implica que $b^{\alpha}=x$ y que $b^{\beta}=y$
-(por la definición del logaritmo). Entonces, se tiene que:
-
-\begin{align*}
-x^{\log_{b}y} & =x^{\beta}\\
- & =(b^{\alpha})^{\beta}\\
- & =b^{\alpha\beta}\\
- & =(b^{\beta})^{\alpha}\\
- & =y^{\alpha}\\
- & =y^{\log_{b}x}
-\end{align*}
+    \begin{align*}
+        b^{\theta} &= x\\
+        (b^{\theta})^{y} &= x^{y}\\
+        b^{\theta y} &= x^{y}\\
+        \theta y &= \log_{b}x^{y}\\
+        y\log_{b}x &= \log_{b}x^{y}
+    \end{align*}
+    
+    La identidad 4 se obtiene de
+    
+    \begin{align*}
+        b^{\theta} &= x\\
+        \sqrt[y]{b^{\theta}} &= \sqrt[y]{x}\\
+        b^{\theta/y} &= \sqrt[y]{x}\\
+        \dfrac{\theta}{y} &= \log_{b}\sqrt[y]{x}\\
+        \dfrac{1}{y}\log_{b}x &= \log_{b}\sqrt[y]{x}
+    \end{align*}
+    
+    La identidad 5 se obtiene de
+    
+    \begin{align*}
+        b^{\theta} &= x\\
+        \log_{v}b^{\theta} &= \log_{v}x\\
+        \theta\log_{v}b &= \log_{v}x\\
+        \theta &= \dfrac{\log_{v}x}{\log_{v}b}\\
+        \log_{b}x &= \dfrac{\log_{v}x}{\log_{v}b}
+    \end{align*}
+    
+    La identidad 6 se obtiene de
+    
+    \begin{align*}
+        b^{\theta} &= x\\
+        \log_{x}b^{\theta} &= 1\\
+        \theta\log_{x}b &= 1\\
+        \theta &= \dfrac{1}{\log_{x}b}\\
+        \log_{b}x &= \dfrac{1}{\log_{x}b}
+    \end{align*}
+    
+    Finalmente, para la identidad 7, supóngase que $\alpha=\log_{b}x$
+    y $\beta=\log_{b}y$. Esto implica que $b^{\alpha}=x$ y que $b^{\beta}=y$
+    (por la definición del logaritmo). Entonces, se tiene que
+    
+    \begin{align*}
+        x^{\log_{b}y} & =x^{\beta}\\
+        &= (b^{\alpha})^{\beta}\\
+        &= b^{\alpha\beta}\\
+        &= (b^{\beta})^{\alpha}\\
+        &= y^{\alpha}\\
+        &= y^{\log_{b}x}
+    \end{align*}
 \end{proof}
-\begin{rem}
-Debido a que cambiar la base de cualquier logaritmo altera dicho valor
-en un factor constante, el comportamiento asintótico sigue siendo
-el mismo sin importar la base. Como consecuencia, la base del logaritmo
-suele omitirse al usar notación asintótica.
-\end{rem}
 
+\begin{rem}
+    Por la regla de cambio de base, se tiene que $\log_{v}b\cdot\log_{b}x=\log_{v}x$.
+    En otras palabras, cambiar la base de cualquier logaritmo altera dicho
+    valor en un factor constante, lo que implica que el comportamiento
+    asintótico de cualquier logaritmo es el mismo sin importar la base. Como 
+    consecuencia, la base de un logaritmo suele omitirse al utilizar la notación 
+    asintótica.
+\end{rem}

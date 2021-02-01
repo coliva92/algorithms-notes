@@ -1,12 +1,22 @@
 ANEXOS
-- Límites
-	* no olvides la regla de l'hopital
-- Escritura matemática
 - Piso y techo
 	* demostracion de que la altura de un arbol k-ario es logaritmico
+- Límites
+	* no olvides la regla de l'hopital
+- Formulario de derivadas
+
+METODOS
+- Ejemplos de los metodos de resolucion de recurrencias
+* Análisis de amortización
+* Método de Akra-Bazzi
+
+MATEDISC
+- Lógica
+- Conjuntos
+- Funciones
+- ...
 
 ALGORITMOS
-- Ejemplos de los metodos de resolucion de recurrencias
 - Insertion sort
 - Merge sort
 - Quicksort
@@ -17,6 +27,4 @@ ALGORITMOS
 - Algoritmos de ordenamiento
 	* resumen y caracteristicas generales
 	* demostracion de que no es posible ordenar en O(n)
-
-MATEDISC
-- Lógica
+- ...

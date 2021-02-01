@@ -5,23 +5,37 @@
 
 Un \emph{problema computacional} (o, simplemente, \emph{problema})
 es una relación entre dos conjuntos de entidades, uno de \emph{entrada}
-y otro de \emph{salida}. Un \emph{algoritmo} es una secuencia, finita
-y ordenada, de instrucciones bien definidas que describen el procedimiento
+y otro de \emph{salida}. Por ejemplo, el problema de \textsc{Ordenamiento} se
+define de la sig. manera:
+
+\begin{itemize}
+    \item \emph{Entrada}: una secuencia $A=\{a_1,a_2,\dots,a_n\}$ de $n\in\mathbb{N}$ elementos comparables
+    \item \emph{Salida}: una permutación de la secuencia de entrada, $A'=\{a'_1,a'_2,\dots,a'_n\}$, tal que $a'_1\leq a'_2\leq\dots\leq a'_n$.
+\end{itemize}
+
+Un \emph{algoritmo} es una secuencia finita
+y ordenada de instrucciones bien definidas que describen el procedimiento
 a seguir para transformar la entrada de un problema determinado en
 la salida correspondiente. Se dice que un algoritmo es
+
 \begin{itemize}
-\item finito, porque tiene una cantidad determinada de instrucciones y su
-ejecución termina en una cantidad determinada de tiempo,
-\item ordenado, porque, dadas dos instrucciones cualesquiera, no hay ambigüedad
-sobre cuál se ejecuta primero, y
-\item bien definido, porque no hay ambigüedad sobre la interpretación de
-las instrucciones.
+    \item finito, porque tiene una cantidad determinada de instrucciones y su
+    ejecución termina en una cantidad determinada de tiempo,
+    \item ordenado, porque, dadas dos instrucciones cualesquiera, no hay ambigüedad
+    sobre cuál se ejecuta primero, y
+    \item bien definido, porque no hay ambigüedad sobre la interpretación de
+    las instrucciones.
 \end{itemize}
+
 Un \emph{caso específico} (instance) para algún problema particular
 es cualquier conjunto de valores que satisfacen las características
-de entrada del problema. Los casos específicos pueden agruparse en
+de entrada del problema. Por ejemplo, dos casos específicos para el problema
+de \textsc{Ordenamiento} son las secuencias $\{4,7,5,1\}$ y $\{d,x,j,e\}$. Los casos específicos pueden agruparse en
 diferentes \emph{clases de entrada}, que son todas las diferentes
-formas en las que pueden presentarse los casos específicos.
+formas en las que pueden presentarse los casos específicos. Por ejemplo,
+supóngase que se tiene un algoritmo que admite como entrada dos valores
+numéricos $a,b\in\mathbb{R}$. Este algoritmo tendría tres posibles
+clases de entrada: $a<b$, $a=b$ y $a>b$.
 
 Un algoritmo es \emph{correcto} cuando, para cualquier caso específico,
 el algoritmo termina su ejecución y produce un resultado que cumple
@@ -36,10 +50,11 @@ Un pseudocódigo es una descripción simple, informal y de alto nivel
 de un algoritmo. Comúnmente consiste de estructuras de control de
 flujo, notación matemática y/o prosa en lenguaje natural. Se dice
 que el pseudocódigo es de alto nivel porque omite detalles de implementación
-innecesarios. A diferencia de un lenguaje de programación, el pseudocódigo
-se escribe para que sea entendido por seres humanos, no por computadoras.
+irrelevantes. A diferencia de un lenguaje de programación, el pseudocódigo
+se escribe para que sea leído y entendido por seres humanos, no por
+computadoras.
 
-Finalmente, una \emph{estructura de datos} es un conjunto de procedimientos
+Por último, una \emph{estructura de datos} es un conjunto de procedimientos
 para organizar, acceder y manipular una colección de datos.
 
 \section{Análisis de algoritmos}
@@ -49,11 +64,13 @@ para caracterizar las propiedades particulares de un algoritmo de
 forma independiente a su implementación específica en hardware y/o
 software. En estos apuntes, el análisis consistirá en describir únicamente
 dos características:
+
 \begin{itemize}
-\item La\emph{ exactitud} (correctness); i.e. ¿el algoritmo es correcto?
-\item La\emph{ eficiencia}; i.e. ¿qué tanto crece el tiempo de ejecución
-del algoritmo con respecto al tamaño de la entrada?
+    \item La\emph{ exactitud} (correctness); i.e. ¿el algoritmo es correcto?
+    \item La\emph{ eficiencia}; i.e. ¿qué tanto crece el tiempo de ejecución
+    del algoritmo con respecto al tamaño de la entrada?
 \end{itemize}
+
 Se dice que un algoritmo es \emph{eficiente} cuando su tiempo de ejecución
 crece polinomialmente con respecto al tamaño de la entrada.
 
@@ -62,10 +79,9 @@ crece polinomialmente con respecto al tamaño de la entrada.
 Realmente no existe una definición formal de lo que es un algoritmo;
 la ``definición'' presentada aquí es más bien una lista de las características
 que posee un algoritmo.
-\begin{itemize}
-\item Cormen T.H., Leiserson C.E., Rivest R.L. \& Stein C., ``Introduction
-to Algorithms'', 3ra ed. (2009), MIT Press. Págs. 5-14 y 20-22.
-\item Skiena S.S., ``The Algorithm Design Manual'', 2da ed. (2012), Springer.
-Págs. 3-13.
-\end{itemize}
 
+\begin{itemize}
+    \item \textcite{cormen_introduction_2009}, págs. 5-14 y 20-22.
+    \item \textcite{skiena_algorithm_2011}, págs. 3-13.
+    \item \textcite{goodrich_algorithm_2001}, págs. 4, 7 y 8.
+\end{itemize}

@@ -1,0 +1,167 @@
+\documentclass[letterpaper,spanish]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{tocdepth}{1}
+\usepackage{babel}
+\usepackage[
+    style=authoryear,
+    doi=false,
+    isbn=false,
+    url=false,
+    eprint=false,
+    dashed=false,
+    uniquename=init
+]{biblatex}
+\usepackage{csquotes}
+
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[algochapter,vlined,linesnumbered,ruled]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[
+    unicode=true,
+    pdfusetitle,
+    bookmarks=true,
+    bookmarksnumbered=true,
+    bookmarksopen=false,
+    breaklinks=false,
+    pdfborder={0 0 1},
+    backref=false,
+    colorlinks=false
+]{hyperref}
+
+%% Definición de ambientes de uso matemático
+\providecommand{\casename}{Caso}
+\providecommand{\corollaryname}{Corolario}
+\providecommand{\definitionname}{Definición}
+\providecommand{\examplename}{Ejemplo}
+\providecommand{\lemmaname}{Lema}
+\providecommand{\propositionname}{Proposición}
+\providecommand{\remarkname}{Observación}
+\providecommand{\theoremname}{Teorema}
+
+\theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{defn}{\protect\definitionname}
+    \else
+      \newtheorem{defn}{\protect\definitionname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+      \newtheorem{prop}{\protect\propositionname}
+    \else
+      \newtheorem{prop}{\protect\propositionname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+	    \newtheorem{thm}{\protect\theoremname}
+	  \else
+      \newtheorem{thm}{\protect\theoremname}[chapter]
+    \fi
+\theoremstyle{remark}
+    \ifx\thechapter\undefined
+      \newtheorem{rem}{\protect\remarkname}
+    \else
+      \newtheorem{rem}{\protect\remarkname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+  \newtheorem{cor}{\protect\corollaryname}
+\else
+      \newtheorem{cor}{\protect\corollaryname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+      \newtheorem{lem}{\protect\lemmaname}
+    \else
+      \newtheorem{lem}{\protect\lemmaname}[chapter]
+    \fi
+\theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{example}{\protect\examplename}
+    \else
+      \newtheorem{example}{\protect\examplename}[chapter]
+    \fi
+
+%% Configuración del enumerado de diferentes ambientes matemáticos
+\newlist{casenv}{enumerate}{4}
+\setlist[casenv]{leftmargin=*,align=left,widest={iiii}}
+\setlist[casenv,1]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
+\setlist[casenv,2]{label={{\itshape\ \casename} \roman*.},ref=\roman*}
+\setlist[casenv,3]{label={{\itshape\ \casename\ \alph*.}},ref=\alph*}
+\setlist[casenv,4]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
+
+%% Personalización del formato de los títulos
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\section}[hang]{\bfseries\large}{\thesection\ }{0pt}{}[]
+\titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
+\titleformat{\paragraph}[runin]{\itshape\normalsize}{\theparagraph\ }{0pt}{}[]
+
+%% Eliminar el espacio que hay entre cada elemento de una lista
+\usepackage{enumitem}
+\setlist{nolistsep}
+
+%% Declaración de palabras clave y configuración de estilos del pseudocódigo
+\SetKw{Error}{error}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Not}{not}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Nil}{nil}
+\SetKw{Down}{down to}
+\SetCommentSty{textit}
+\SetKwComment{Comment}{$\triangleright$ }{}
+\SetFuncSty{textsc}
+\DontPrintSemicolon
+
+%% Símbolo para indicar el final de un ejemplo
+\newcommand\xqed[1]{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{#1}}
+\newcommand\exend{\xqed{$\blacksquare$}}
+
+%% Eliminar los encabezados de las páginas de los capítulos
+\renewcommand{\chaptermark}[1]{\markboth{ }{}}
+\renewcommand{\sectionmark}[1]{\markright{ }{}}
+
+%% Se eliminan algunos campos innecesarios de las ref. bibliográficas
+\AtBeginDocument{
+    \AtEveryBibitem{\clearfield{month}}
+    \AtEveryBibitem{\clearfield{day}}
+    \AtEveryBibitem{\clearfield{note}}
+    \AtEveryBibitem{\clearlist{location}}
+    \AtEveryBibitem{\clearfield{eventtitle}}
+    \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{citetitle}{#1}
+    \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1} 
+}
+
+
+\addbibresource{apuntes.bib}
+
+\begin{document}
+    \title{ALGORÍTMICA}
+    \author{Carlos A. Oliva Moreno}
+    \maketitle
+    
+    \tableofcontents{}
+    
+    \part{Algoritmos Secuenciales}
+        \input{secuenciales/conceptos}
+        \input{secuenciales/exactitud}
+        \input{secuenciales/asintotica}
+        \input{secuenciales/eficiencia}
+        \input{secuenciales/recurrencias}
+    
+    \appendix
+        \input{apendices/redaccion}
+        \input{apendices/potencia-logaritmo}
+    
+    \printbibliography[heading=bibintoc]
+\end{document}
