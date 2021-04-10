@@ -7,8 +7,9 @@ Sean $x\in\mathbb{R}$ y $n\in\mathbb{N}_{0}$, donde $x$ se denomina
 }de $x$, denotada como $x^{n}$, es el producto de $n$ bases $x$.
 Esto es, $x^{n}=x\cdot x\cdot\dots\text{ (}n\text{ veces)}$.
 
-\begin{thm}[Leyes de los exponentes]
-    \label{laws-of-exp}Sean $x,y\in\mathbb{R}$ y sean $m,n\in\mathbb{N}_{0}$.
+\begin{thm}[Leyes de los Exponentes]
+    \label{laws-of-exp}
+    Sean $x,y\in\mathbb{R}$ y sean $m,n\in\mathbb{N}_{0}$.
     Se tienen las sig. identidades sobre potencias:
     \begin{enumerate}
     \begin{multicols}{2}
@@ -26,18 +27,17 @@ Esto es, $x^{n}=x\cdot x\cdot\dots\text{ (}n\text{ veces)}$.
 \end{thm}
 
 \begin{rem}
-    Cuando $x=0$, se tiene que $x^{-1}$ es indefinido.
+    Cuando $x=0$, se tiene que $x^{-1}=0^{-1}$ es indefinido.
 \end{rem}
 
-
 \begin{rem}
-    Cuando $x=0$, por convención, la identidad $x^{0}=1$ se sigue
+    Cuando $x=0$, por convención, la identidad $x^{0}=0^0=1$ se sigue
     cumpliendo.
 \end{rem}
 
-\begin{proof}[Demostración para el Teorema \ref{laws-of-exp}]
+\begin{proof}[Demostración para el teorema \ref{laws-of-exp}]
     Las primeras cuatro identidades se aceptan sin requerir una demostración.
-    El resto se pueden demostrar de forma algebraica. Comenzando por la
+    El resto se puede demostrar de forma algebraica. Comenzando por la
     identidad 5, ésta se obtiene de
     
     \[
@@ -86,7 +86,7 @@ Esto es, $x^{n}=x\cdot x\cdot\dots\text{ (}n\text{ veces)}$.
 
 \section{Logaritmo}
 
-Sean $b,x\in\mathbb{R}^{+}$, donde $b>1$ y se denomina \emph{base}.
+Sean $b,x\in\mathbb{R}^{+}$, donde $b\neq 1$ y se denomina \emph{base}.
 El logaritmo de $x$ con respecto a $b$, denotado como
 $\log_{b}x$, es la potencia a la que hay que elevar $b$ para obtener
 $x$ como resultado. Esto es, $y=\log_{b}x$ si y sólo si $b^{y}=x$,
@@ -98,98 +98,59 @@ denomina \emph{logaritmo natural} y se denota como $\ln x$. Por último, cuando 
 base es 2, el logaritmo se denomina \emph{logaritmo binario} y se denota $\lg x$.
 
 \begin{prop}
-    \label{no-negative-bases}La base de un logaritmo no puede ser negativa.
+    La base de un logaritmo no puede ser 0 ni 1.
 \end{prop}
-\begin{proof}
-    Supóngase que $y=\log_{b}x$, donde $b$ es negativo. Esto implica
-    que $b^{y}=x$ (por la definición del logaritmo). Sin embargo, por
-    las Leyes de los Signos, se tiene que el término $b^{y}$ es positivo
-    cuando $y$ es par y negativo cuando $y$ es impar. Esto implica que
-    existen combinaciones de $b$ y $x$ para los cuales $\log_{b}x$ no existe.
-\end{proof}
+
+Dado que $0^y=0$ y $1^y=1$ para cualquier valor de $y$,
+los logaritmos con base 0 y 1 no tienen una solución definida.
 
 \begin{prop}
-    \label{no-negative-logarithm}Los números negativos no tienen logaritmo.
+    \label{no-negative-bases}
+    La base de un logaritmo no puede ser negativa.
 \end{prop}
-\begin{proof}
-    Supóngase que $y=\log_{b}x$, donde $x$ es negativo. Esto implica
-    que $b^{y}=x$ (por la definición del logaritmo). Sin embargo, como
-    consecuencia de la Proposición \ref{no-negative-bases}, se tiene
-    que $b$ debe ser positiva. Como la potencia de todo número positivo
-    siempre resulta en un número positivo (por las Leyes de los Signos),
-    entonces no existe un número $y$ que satisfaga la relación $b^{y}=x$.
-\end{proof}
 
+Dado que la raíz cuadrada de un número negativo resulta en un número complejo, 
+los logaritmos con base negativa no siempre tienen una solución en el plano real.
 
 \begin{prop}
-    Se tiene que $\log_{b}1=0$ para toda $b>1$.
+    \label{no-negative-logarithm}
+    El logaritmo no puede aplicarse sobre números negativos.
 \end{prop}
-\begin{proof}
-    Supóngase que $y=\log_{b}1$, lo que implica que $b^{y}=1$ (por la
-    definición del logaritmo). Se tiene entonces lo sig.:
 
-    \begin{align*}
-        b^{y} &= 1\\
-        b^{y} &= b^{0}\\
-        y &= 0\\
-        \log_{b}1 &= 0
-    \end{align*}
-\end{proof}
+Como todo número positivo elevado a cualquier potencia resulta 
+en un número positivo, los logaritmos (con base positiva) 
+de números negativos no tienen solución.
 
 \begin{prop}
-    Se tiene que $\log_{b}b=1$ para toda $b>1$.
+    Se tiene que $\log_{b}1=0$.
 \end{prop}
-\begin{proof}
-    Supóngase que $y=\log_{b}b$, lo que implica que $b^{y}=b$ (por la
-    definición del logaritmo). Se tiene entonces lo sig.:
 
-    \begin{align*}
-        b^{y} &= b\\
-        b^{y} &= b^{1}\\
-        y &= 1\\
-        \log_{b}b &= 1
-    \end{align*}
-\end{proof}
+Lo anterior es consecuencia directa del hecho de que $b^0=1$ 
+para toda $b\neq 0$.
 
 \begin{prop}
-    El logaritmo de todo número mayor a 1 es positivo. Esto es, $\log_{b}x>0$
-    para toda $x>1$.
+    Se tiene que $\log_{b}b=1$.
 \end{prop}
-\begin{proof}
-    Supóngase que $y=\log_{b}x$, donde $x>1$. Esto implica que $b^{y}=x$
-    (por la definición del logaritmo). De la Proposición \ref{no-negative-bases}
-    se tiene que $b$ es positivo. Por lo tanto, para que se satisfaga
-    la relación $b^{y}=x$, el valor de $y$ debe ser positivo. 
-\end{proof}
 
-\begin{prop}
-    El logaritmo de todo número menor a 1 es negativo. Esto es, $\log_{b}x<0$
-    para toda $x\in(0,1)$.
-\end{prop}
-\begin{proof}
-    Supóngase que $y=\log_{b}x$, donde $x\in(0,1)$. Esto implica que
-    $b^{y}=x$ (por la definición del logaritmo). De las proposiciones
-    \ref{no-negative-bases} y \ref{no-negative-logarithm} se tiene que
-    $b$ y $x$ son ambos positivos. Por lo tanto, para que se satisfaga
-    la relación $b^{y}=x$, el valor de $y$ debe ser negativo (por las
-    Leyes de los Exponentes).
-\end{proof}
+Lo anterior se deriva directamente del hecho de que
+$b^1=b$ para cualquier $b$.
 
-\begin{thm}[Leyes de los logaritmos]
-    Sean $b,v,x,y\in\mathbb{R^{+}}$, donde $b,v>1$. Se tienen las sig.
+\begin{thm}[Leyes de los Logaritmos]
+    Sean $b,v,x,y\in\mathbb{R^{+}}$, donde $b,v\neq 1$. Se tienen las sig.
     identidades sobre logaritmos:
     \begin{enumerate}
     \begin{multicols}{2}
-        \item $\log_{b}\left(x\cdot y\right)=\log_{b}x+\log_{b}y$
+        \item $\log_{b}\left(x y\right)=\log_{b}x+\log_{b}y$
         \item $\log_{b}\left(x/y\right)=\log_{b}x-\log_{b}y$
         \item $\log_{b}x^{y}=y\log_{b}x$
         \item $\log_{b}\sqrt[y]{x}=1/y\cdot\log_{b}x$
-        \item $\log_{b}x=\log_{v}x/\log_{v}b$
-        \item $\log_{b}x=1/\log_{x}b$
+        \item $\log_{b}x=\log_{v}x/\log_{v}b$ (Cambio de base)
+        \item $\log_{b}x=1/\log_{x}b$ (Cambio de base)
         \item $x^{\log_{b}y}=y^{\log_{b}x}$
     \end{multicols}
     \end{enumerate}
 \end{thm}
+
 \begin{proof}
     Todas las identidades se pueden demostrar algebraicamente. Comenzando
     por la identidad 1, sean $\alpha,\beta\in\mathbb{R}$ tales que $\alpha=b^{x}$
@@ -243,13 +204,12 @@ base es 2, el logaritmo se denomina \emph{logaritmo binario} y se denota $\lg x$
         \log_{b}x &= \dfrac{\log_{v}x}{\log_{v}b}
     \end{align*}
     
-    La identidad 6 se obtiene de
+    La identidad 6 se obtiene a partir de la manipulación anterior, suponiendo
+    que $v=x\neq 1$.
     
     \begin{align*}
-        b^{\theta} &= x\\
-        \log_{x}b^{\theta} &= 1\\
-        \theta\log_{x}b &= 1\\
-        \theta &= \dfrac{1}{\log_{x}b}\\
+        \log_{b}x &= \dfrac{\log_{v}x}{\log_{v}b}\\
+        \log_{b}x &= \dfrac{\log_{x}x}{\log_{x}b}\\
         \log_{b}x &= \dfrac{1}{\log_{x}b}
     \end{align*}
     
@@ -258,19 +218,15 @@ base es 2, el logaritmo se denomina \emph{logaritmo binario} y se denota $\lg x$
     (por la definición del logaritmo). Entonces, se tiene que
     
     \begin{align*}
-        x^{\log_{b}y} & =x^{\beta}\\
-        &= (b^{\alpha})^{\beta}\\
-        &= b^{\alpha\beta}\\
-        &= (b^{\beta})^{\alpha}\\
-        &= y^{\alpha}\\
-        &= y^{\log_{b}x}
+        x^{\log_{b}y} & =x^{\beta} = (b^{\alpha})^{\beta}= b^{\alpha\beta}
+        = (b^{\beta})^{\alpha}= y^{\alpha}= y^{\log_{b}x}
     \end{align*}
 \end{proof}
 
 \begin{rem}
     Por la regla de cambio de base, se tiene que $\log_{v}b\cdot\log_{b}x=\log_{v}x$.
-    En otras palabras, cambiar la base de cualquier logaritmo altera dicho
-    valor en un factor constante, lo que implica que el comportamiento
+    En otras palabras, ya que $b$ y $v$ son constantes conocidas, cambiar la base de cualquier 
+    logaritmo altera dicho valor en un factor constante. Esto implica que el comportamiento
     asintótico de cualquier logaritmo es el mismo sin importar la base. Como 
     consecuencia, la base de un logaritmo suele omitirse al utilizar la notación 
     asintótica.

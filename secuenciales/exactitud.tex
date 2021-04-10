@@ -1,8 +1,8 @@
-\chapter{Análisis de la Exactitud de un Algoritmo}
+\chapter{Análisis de la Corrección de un Algoritmo}
 
 El primer paso al analizar un algoritmo es determinar si éste es correcto
 o incorrecto. El procedimiento que se sigue para llevar a cabo esta
-tarea se denomina \emph{análisis de la exactitud de un algoritmo}.
+tarea se denomina \emph{análisis de la corrección de un algoritmo}.
 
 \section{Contraejemplo}
 
@@ -13,30 +13,30 @@ de salida del problema.
 
 Para producir un contraejemplo, se deben explorar todas las clases
 de entrada posibles. Se recomienda comenzar por aquellas que representen
-las situaciones más complicadas o inconvenientes para el algoritmo. Por ejemplo, si
-se trata de un algoritmo voraz, se puede proponer un caso donde todos
+los casos más difíciles o con mayor desventaja para el algoritmo. Por ejemplo, si
+se trata de un algoritmo voraz, se recomienda experimentar con casos donde todos
 los valores están empatados. Para otros tipos de algoritmos, se pueden
 proponer casos que contengan mezclados valores de frontera de extremos
-opuestos. Por ejemplo, casos con valores muy grandes y muy pequeños,
+opuestos; i.e. casos con valores muy grandes y muy pequeños,
 muy cerca y muy lejos, muchos y muy pocos, etc.
 
 El contraejemplo debe ser lo más simple y pequeño posible; idealmente,
 la razón de por qué el algoritmo es incorrecto debe ser inmediatamente
 clara. Así, una vez encontrado un contraejemplo, se recomienda simplificarlo
-tanto como sea posible. Además, el contraejemplo debe presentarse
+tanto como sea posible. El contraejemplo también debe presentarse
 junto con el resultado incorrecto que produjo el algoritmo y el resultado
 correcto que debió producir.
 
 Es importante destacar que, si no se logra encontrar un contraejemplo
 para un algoritmo determinado, esto no implica que dicho algoritmo
-es correcto; aún es necesario demostrar su exactitud.
+es correcto; aún es necesario demostrar que es correcto.
 
 \section{La invariante de lazo}
 
 Una \emph{invariante de lazo} (loop invariant; abreviado como IL) es una proposición
 lógica que se cumple inmediatamente antes e inmediatamente después
 de cada iteración de un bucle o algoritmo iterativo determinado. La
-IL siempre se define en función del número de iteraciones.
+IL siempre se define en función de cada iteración $i$.
 
 Para producir una IL, se recomienda primero hacer
 una ``prueba de escritorio'' del bucle; i.e. ejecutar cada paso
@@ -79,11 +79,12 @@ es un problema mal definido, pues no queda claro a qué se refiere
 exactamente con ``la mejor ruta''. Otro ejemplo, decir ``encontrar
 la ruta más corta entre dos puntos en un mapa que además requiera
 menos del doble de los giros a la izquierda de los que son mínimamente
-necesarios'', es un problema bien definido pero muy difícil de resolver
-pues la salida consiste de cumplir varios objetivos intermedios. 
+necesarios'', es un problema bien definido pero muy difícil de resolver,
+pues la salida requiere que primero se resuelvan varios problemas más pequeños.
 
 En cuanto a las características de entrada, típicamente entre más
-restrictivas sean, menor es la dificultad para resolver el problema.
+restrictivas sean (i.e. entre más específica sea la entrada), menor es la dificultad para 
+resolver el problema.
 Por ende, se recomienda comenzar por diseñar un algoritmo correcto
 que admita entradas de características muy particulares y después
 extenderlo a entradas más generales. Por ejemplo, en lugar de trabajar
@@ -91,7 +92,7 @@ con grafos generales, se puede trabajar primero con árboles.
 
 \subsection{Analizar la complejidad computacional del problema}
 
-Se recomienda analizar la complejidad computacional del problema al
+De ser posible, se recomienda analizar la complejidad computacional del problema al
 mismo tiempo que se diseña un algoritmo para resolverlo. De esta forma,
 cualquier descubrimiento o avance que se obtenga por un lado podría
 aprovecharse después para avanzar en el otro. Además, al final se
@@ -113,6 +114,7 @@ problema.
 
 \section*{Notas bibliográficas}
 
+Material consultado:
 \begin{itemize}
     \item \textcite{cormen_introduction_2009}, págs. 18-20. 
     \item \textcite{skiena_algorithm_2011}, págs. 11-16.

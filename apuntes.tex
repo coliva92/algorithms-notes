@@ -1,9 +1,10 @@
-\documentclass[letterpaper,spanish]{book}
+\documentclass[letterpaper]{book}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \setcounter{tocdepth}{1}
-\usepackage{babel}
+\usepackage[spanish]{babel}
+\decimalpoint
 \usepackage[
     style=authoryear,
     doi=false,
@@ -24,6 +25,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{multicol}
+\usepackage{caption}
 \usepackage[
     unicode=true,
     pdfusetitle,
@@ -38,56 +40,24 @@
 
 %% Definición de ambientes de uso matemático
 \providecommand{\casename}{Caso}
-\providecommand{\corollaryname}{Corolario}
 \providecommand{\definitionname}{Definición}
 \providecommand{\examplename}{Ejemplo}
-\providecommand{\lemmaname}{Lema}
 \providecommand{\propositionname}{Proposición}
-\providecommand{\remarkname}{Observación}
 \providecommand{\theoremname}{Teorema}
+\providecommand{\lemmaname}{Lema}
+\providecommand{\corollaryname}{Corolario}
+\providecommand{\remarkname}{Observación}
 
 \theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{defn}{\protect\definitionname}
-    \else
-      \newtheorem{defn}{\protect\definitionname}[chapter]
-    \fi
+\newtheorem{defn}{\protect\definitionname}[chapter]
+\newtheorem{expl}{\protect\examplename}[chapter]
 \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{prop}{\protect\propositionname}
-    \else
-      \newtheorem{prop}{\protect\propositionname}[chapter]
-    \fi
-\theoremstyle{plain}
-    \ifx\thechapter\undefined
-	    \newtheorem{thm}{\protect\theoremname}
-	  \else
-      \newtheorem{thm}{\protect\theoremname}[chapter]
-    \fi
+\newtheorem{prop}{\protect\propositionname}[chapter]
+\newtheorem{thm}{\protect\theoremname}[chapter]
+\newtheorem{lem}{\protect\lemmaname}[chapter]
+\newtheorem{cor}{\protect\corollaryname}[chapter]
 \theoremstyle{remark}
-    \ifx\thechapter\undefined
-      \newtheorem{rem}{\protect\remarkname}
-    \else
-      \newtheorem{rem}{\protect\remarkname}[chapter]
-    \fi
-\theoremstyle{plain}
-    \ifx\thechapter\undefined
-  \newtheorem{cor}{\protect\corollaryname}
-\else
-      \newtheorem{cor}{\protect\corollaryname}[chapter]
-    \fi
-\theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{lem}{\protect\lemmaname}
-    \else
-      \newtheorem{lem}{\protect\lemmaname}[chapter]
-    \fi
-\theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{example}{\protect\examplename}
-    \else
-      \newtheorem{example}{\protect\examplename}[chapter]
-    \fi
+\newtheorem{rem}{\protect\remarkname}[chapter]
 
 %% Configuración del enumerado de diferentes ambientes matemáticos
 \newlist{casenv}{enumerate}{4}
@@ -99,7 +69,7 @@
 
 %% Personalización del formato de los títulos
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\bfseries\centering\large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
+\titleformat{\chapter}[display]{\bfseries\centering\Large}{\normalsize{\chaptertitlename\ \thechapter}}{0.5ex}{}[]
 \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
 \titleformat{\section}[hang]{\bfseries\large}{\thesection\ }{0pt}{}[]
 \titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection\ }{0pt}{}[]
@@ -125,7 +95,7 @@
 
 %% Símbolo para indicar el final de un ejemplo
 \newcommand\xqed[1]{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{#1}}
-\newcommand\exend{\xqed{$\blacksquare$}}
+\newcommand\exend{\xqed{$\square$}}
 
 %% Eliminar los encabezados de las páginas de los capítulos
 \renewcommand{\chaptermark}[1]{\markboth{ }{}}
@@ -146,7 +116,15 @@
 \addbibresource{apuntes.bib}
 
 \begin{document}
-    \title{ALGORÍTMICA}
+    %% Se ajustan los tamaños de los márgenes de la hoja para aprovechar mejor
+    %% el espacio sin reducir la comodidad de lectura
+    \setlength{\oddsidemargin}{0pt}
+    \setlength{\marginparwidth}{160pt}
+    \setlength{\topmargin}{0pt}
+    \setlength{\textheight}{595pt}
+    \setlength{\evensidemargin}{124pt}
+
+    \title{\textbf{Apuntes sobre Algorítmica}}
     \author{Carlos A. Oliva Moreno}
     \maketitle
     
@@ -159,6 +137,7 @@
         \input{secuenciales/eficiencia}
         \input{secuenciales/recurrencias}
     
+    \part{Apéndices}
     \appendix
         \input{apendices/redaccion}
         \input{apendices/potencia-logaritmo}

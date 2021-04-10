@@ -3,12 +3,11 @@ ANEXOS
 	* demostracion de que la altura de un arbol k-ario es logaritmico
 - Límites
 	* no olvides la regla de l'hopital
-- Formulario de derivadas
+- Formulario de derivadas e integrales
 
 METODOS
-- Ejemplos de los metodos de resolucion de recurrencias
+- Complejidad computacional
 * Análisis de amortización
-* Método de Akra-Bazzi
 
 MATEDISC
 - Lógica
@@ -27,4 +26,5 @@ ALGORITMOS
 - Algoritmos de ordenamiento
 	* resumen y caracteristicas generales
 	* demostracion de que no es posible ordenar en O(n)
-- ...
+- Programación dinámica
+- Algoritmos para grafos
