@@ -1,0 +1,113 @@
+\chapter{El logaritmo}
+
+Sea \(x\in\mathbb{R}\) mayor a cero y denominado \emph{argumento} y sea \(b\in\mathbb{R}\) distinto de 1 y denominado \emph{base}.
+El \emph{logaritmo} de \(x\) con respecto a \(b\), denotado como \(\log_{b}x\), es la potencia a la que hay que elevar \(b\) para obtener \(x\) como resultado; esto es, \(y=\log_{b}x\) si y sólo si \(b^{y}=x\), donde \(y\in\mathbb{R}\).
+
+\begin{table}[h]
+  \caption{Diferentes tipos de logaritmos, su base y su notación correspondiente.}
+  \begin{center}
+    \begin{tabular}{ccc}
+      \toprule
+      Tipo de logaritmo & Base & Notación \\
+      \midrule
+      Decimal & 10 & \(\log{x}\) \\
+      Natural & \(e\) & \(\ln{x}\) \\
+      Binario & 2 & \(\lg{x}\) \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{prop}
+  La base de un logaritmo no puede ser 0 ni 1.
+\end{prop}
+  
+Debido a que \(0^x=0\) para toda \(x>0\) y debido a que \(1^x=1\) para toda \(x\), los logaritmos con base 0 y 1 no tienen una solución definida.
+
+\begin{prop}
+  La base de un logaritmo no puede ser negativa.
+\end{prop}
+
+De lo contrario, dependiendo del argumento del logaritmo, la solución podría ser un número complejo.
+
+\begin{prop}
+  El argumento de un logaritmo no puede ser negativo.
+\end{prop}
+
+Debido a que todo número positivo elevado a cualquier potencia siempre resulta en un número positivo, el logaritmo (con base positiva) de un número negativo no tendría solución.
+
+\section{Leyes de los logaritmos}
+
+Sean \(b,v,x,y\in\mathbb{R}\), donde los valores \(x\) y \(y\) son mayores a cero y los valores \(b\) y \(v\) son distintos de 1. Se tienen las sig. identidades: \marginnote{La identidad 7 se conoce como la ley de cambio de base. Esta ley implica que \(\log_v{x}=\log_v{b}\cdot\log_b{x}\); esto es, para cambiar la base de un logaritmo, basta con multiplicarlo por un factor constante. Debido a esto, no importa la base de un logaritmo, su comportamiento asintótico siempre será el mismo y es por esta razón que la base del logaritmo suele omitirse al utilizar la notación asintótica.}
+
+\begin{enumerate}
+  \begin{multicols}{2}
+    \item \(\log_b{1}=0\)
+    \item \(\log_b{b}=1\)
+    \item \(\log_b(xy)=\log_b{x}+\log_b{y}\)
+    \item \(\log_b(x/y)=\log_b{x}-\log_b{y}\)
+    \item \(\log_bx^y=y\log_b{x}\)
+    \item \(\log_b\sqrt[y]{x}=1/y\cdot\log_b{x}\)
+    \item \(\log_b{x}=\log_v{x}/\log_v{b}\)
+    \item \(\log_b{x}=1/\log_x{b}\), si \(x\neq 1\)
+    \item \(x^{\log_b{y}}=y^{\log_b{x}}\)
+  \end{multicols}
+\end{enumerate}
+
+Las identidades anteriores se justifican de las manipulaciones algebraicas que se presentan a continuación. Considérese que \(p,q\in\mathbb{R}\) tales que \(x=b^p\) y \(y=b^q\), lo que implica que \(p=\log_b{x}\) \& \(q=\log_b{y}\) (por la definición del logaritmo):
+
+\begin{flalign}
+  \text{Es consecuencia directa del hecho que } b^0=1\text{ para cualquier }b.
+\end{flalign}
+
+\begin{flalign}
+  \text{Es consecuencia directa del hecho que } b^1=b\text{ para cualquier }b.
+\end{flalign}
+
+\begin{align}
+  xy &= b^pb^q &&\\
+  xy &= b^{p+q} \nonumber&&\\
+  \log_b(xy) &= p+q \nonumber&&\\
+  \log_b(xy) &= \log_b{x}+\log_b{y} \nonumber
+\end{align}
+
+\begin{align}
+  x/y &= b^p/b^q &&\\
+  x/y &= b^{p-q} \nonumber&&\\
+  \log_b(x/y) &= p-q \nonumber&&\\
+  \log_b(x/y) &= \log_b{x}-\log_b{y} \nonumber
+\end{align}
+
+\begin{align}
+  x &= b^p &&\\
+  x^y &= (b^p)^y \nonumber&&\\
+  x^y &= b^{py} \nonumber&&\\
+  \log_b{x^y} &= py \nonumber&&\\
+  \log_b{x^y} &= y\log_b{x} \nonumber
+\end{align}
+
+\begin{align}
+  x &= b^p &&\\
+  \sqrt[y]{x} &= \sqrt[y]{b^p} \nonumber&&\\
+  \sqrt[y]{x} &= b^{p/y} \nonumber&&\\
+  \log_b \sqrt[y]{x} &= p/y \nonumber&&\\
+  \log_b \sqrt[y]{x} &= 1/y\cdot \log_b{x} \nonumber
+\end{align}
+
+\begin{align}
+  b^p &= x &\\
+  \log_v{b^p} &= \log_v{x} \nonumber&&\\
+  p\log_v{b} &= \log_v{x} \nonumber&&\\
+  p &= \dfrac{\log_v{x}}{\log_v{b}} \nonumber&&\\
+  \log_b{x} &= \log_v{x}/\log_v{b} \nonumber
+\end{align}
+
+\begin{align}
+  \log_b{x} &= \dfrac{\log_v{x}}{\log_v{b}} &&\\
+  \log_b{x} &= \dfrac{\log_x{x}}{\log_x{b}} \nonumber&&\\
+  \log_b{x} &= \dfrac{1}{\log_x{b}} \nonumber
+\end{align}
+
+\begin{align}
+  x^{\log_b{y}}=x^q=(b^p)^q=b^{pq}=(b^q)p=y^p=y^{\log_b{x}}
+\end{align}

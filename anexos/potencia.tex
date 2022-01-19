@@ -1,0 +1,60 @@
+\chapter{La potencia}
+
+Sea \(x\in\mathbb{R}\) distinto de cero y denominado \emph{base} y sea \(n\in\mathbb{N}\) denominado \emph{exponente}. 
+La \emph{n-ésima potencia} de \(x\), denotada como \(x^n\), es el producto de \(n\) bases \(x\); esto es, \(x^n\triangleq x\cdot x\cdot\dots(n\text{ veces})\).
+
+\section{Leyes de los exponentes}
+
+Sean \(x,y\in\mathbb{R}\) distintos de cero y sean \(m,n\in\mathbb{N}\).
+Se tienen las sig. identidades:
+\begin{enumerate}
+  \begin{multicols}{2}
+    \item \(x^{0}\triangleq1\)
+    \item \(x^{1}\triangleq x\)
+    \item \(x^{-1}\triangleq1/x\)
+    \item \(x^{m/n}\triangleq\sqrt[n]{x^{m}}\)
+    \item \(x^{m}x^{n}=x^{m+n}\)
+    \item \(x^{m}/x^{n}=x^{m-n}\)
+    \item \((x^{m})^{n}=x^{mn}\)
+    \item \((xy)^{n}=x^{n}y^{n}\)
+    \item \((x/y)^{n}=x^{n}/y^{n}\)
+  \end{multicols}
+\end{enumerate}
+
+Las identidades anteriores se justifican de las sig. manipulaciones algebraicas:
+
+\begin{flalign}\tag{5}
+  x^mx^n &= x\cdot x\cdot\dots (m\text{ veces})\cdot x\cdot x\dots (n\text{ veces}) &&\\
+  &= x^{m+n}\nonumber
+\end{flalign}
+
+\begin{flalign}\tag{6}
+  \text{\textit{Caso 1}} &: \text{ Si }m>n\text{, entonces} \nonumber&&\\
+  x^m/x^n &= \dfrac{x\cdot x\cdot\dots (m\text{ veces})}{x\cdot x\cdot\dots (n\text{ veces})} \nonumber&&\\
+  &= 1\cdot 1\cdot\dots(n\text{ veces})\cdot x\cdot x\cdot\dots(m-n\text{ veces}) \nonumber&&\\
+  &=x^{m-n} \nonumber&&\\
+  \text{\textit{Caso 2}} &: \text{ Si }m=n\text{, entonces} \nonumber&&\\
+  x^m/x^n &=1\cdot 1\cdot\dots (m=n\text{ veces}) \nonumber&&\\
+  &=x^0 \nonumber&&\\
+  &=x^{m-n}\nonumber&&\\
+  \text{\textit{Caso 3}} &: \text{ Si }m<n\text{, entonces} \nonumber&&\\
+  x^m/x^n &=1\cdot 1\cdot\dots(m\text{ veces})\cdot 1/x\cdot 1/x\cdot\dots(n-m\text{ veces}) \nonumber&&\\
+  &=1/x^{n-m} \nonumber&&\\
+  &=x^{m-n} \nonumber
+\end{flalign}
+
+\begin{flalign}\tag{7}
+  (x^m)^n &= [x\cdot x\cdot\dots (m\text{ veces})]\cdot[x\cdot x\cdot\dots (m\text{ veces})]\dots[n\text{ veces}] &&\\
+  &= x^{mn}\nonumber
+\end{flalign}
+
+\begin{flalign}\tag{8}
+  (xy)^n &= xy\cdot xy\cdot\dots (n\text{ veces}) &&\\
+  &= x\cdot x\cdot\dots (n\text{ veces})\cdot y\cdot y\cdot\dots (n\text{ veces}) \nonumber&&\\
+  &= x^ny^n\nonumber
+\end{flalign}
+
+\begin{flalign}\tag{9}
+  (x/y)^n &= \dfrac{x}{y}\cdot\dfrac{x}{y}\cdot\dots (n\text{ veces}) &&\\
+  &= x^n/y^n\nonumber
+\end{flalign}
