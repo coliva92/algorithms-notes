@@ -1,87 +1,40 @@
+\chapter{Conceptos fundamentales}
 
-\chapter{Conceptos Fundamentales}
-
-\section{Problemas y algoritmos}
-
-Un \emph{problema computacional} (abreviado como \emph{problema})
-es una relación entre dos conjuntos de entidades, uno de \emph{entrada}
-y otro de \emph{salida}. Por ejemplo, el problema de \textsc{Ordenamiento} se
-define de la sig. manera:
-
+Un \emph{problema computacional} es una relación entre dos valores o colecciones de valores: uno de \emph{entrada} (input) y otro de \emph{salida} (output). Por ej., el problema de \textsc{Ordenamiento} se define formalmente de la sig. manera:
 \begin{itemize}
-    \item \emph{Entrada}: una secuencia $A=\{a_1,a_2,\dots,a_n\}$ de $n\in\mathbb{N}$ elementos comparables
-    \item \emph{Salida}: una permutación de la secuencia de entrada, $A'=\{a'_1,a'_2,\dots,a'_n\}$, tal que $a'_1\leq a'_2\leq\dots\leq a'_n$.
+  \item \emph{Entrada}: una secuencia de \(n\in\mathbb{N}\) elementos comparables, \(A=\{a_1,a_2,\dots,a_n\}\).
+  \item \emph{Salida}: una permutación de la secuencia de entrada, \(A'=\{a'_1,a'_2,\dots,a'_n\}\), tal que \(a'_1\leq a'_2\leq\dots\leq a'_n\).
 \end{itemize}
 
-Un \emph{algoritmo} es una secuencia finita
-y ordenada de instrucciones bien definidas que describen el procedimiento
-a seguir para transformar la entrada de un problema determinado en
-la salida correspondiente. Se dice que un algoritmo es:
+Un \emph{caso específico} (instance) para un problema computacional determinado es cualquier valor o colección de valores que satisfacen la descripción de la entrada del problema. 
+Por ej., dos casos específicos para el problema de \textsc{Ordenamiento} son las secuencias \(\{4,7,5,1\}\) y \(\{d,x,j,e\}\).
+
+Informalmente\marginnote{Realmente no existe una definición formal y uniforme sobre qué es un algoritmo.}, un \emph{algoritmo} es un procedimiento inambiguo para transformar la entrada de un problema computacional determinado a la salida correspondiente.
+Se dice que un algoritmo es \emph{correcto} cuando, para todo caso específico, termina su ejecución y produce un resultado que cumple la descripción de la salida del problema.
+Más formalmente, un algoritmo es \emph{totalmente correcto} si y solo si satisface las sig. condiciones: \marginnote{Casi siempre es trivial demostrar la terminación de un algoritmo, por lo que, en la práctica, esta parte suele omitirse y únicamente se demuestra la corrección parcial del algoritmo.}
+\begin{enumerate}
+  \item \emph{Terminación}: el algoritmo termina su ejecución para todo caso específico.
+  \item \emph{Correctitud parcial}: dado un caso específico determinado, si el algoritmo termina su ejecución, entonces produce un resultado que satisface la descripción de la salida del problema.
+\end{enumerate}
+Se dice que un algoritmo correcto \emph{resuelve} el problema en cuestión.
+
+Una \emph{estructura de datos} es una colección de reglas y procedimientos para organizar, accesar y manipular una colección de datos.
+
+Por último, \marginnote{Hay muchas otras características que podrían ser de interés, dependiendo de la aplicación del algoritmo que se está analizando. Por ej., una característica frecuentemente estudiada es el orden de crecimiento de la cantidad de memoria ocupada por el algoritmo con respecto al tamaño de la entrada.} el \emph{análisis de algoritmos} es la colección de técnicas y herramientas matemáticas que se usan para caracterizar las propiedades particulares de un algoritmo determinado de forma independiente a su implementación en hardware y/o software. 
+Por ahora, el análisis de un algoritmo consistirá de describir únicamente dos características:
 
 \begin{itemize}
-    \item Finito, porque tiene una cantidad determinada de instrucciones y su
-    ejecución termina en una cantidad determinada de tiempo.
-    \item Ordenado, porque, dadas dos instrucciones cualesquiera, no hay ambigüedad
-    sobre cuál se ejecuta primero.
-    \item Bien definido, porque no hay ambigüedad sobre la interpretación de
-    las instrucciones.
+  \item La \emph{corrección}; esto es, ¿el algoritmo es correcto?
+  \item La \emph{eficiencia}; esto es, ¿cuál es el orden de crecimiento del 
+  tiempo de ejecución del algoritmo con respecto al tamaño de la entrada?
 \end{itemize}
+Se dice que un algoritmo es \emph{eficiente} si el orden de crecimiento
+de su tiempo de ejecución es polinomial.
 
-Un \emph{caso específico} (instance) para algún problema particular
-es cualquier conjunto de valores particulares que satisfacen las características
-de entrada del problema. Por ejemplo, dos casos específicos para el problema
-de \textsc{Ordenamiento} son las secuencias $\{4,7,5,1\}$ y $\{d,x,j,e\}$. Los casos específicos pueden agruparse en
-diferentes \emph{clases de entrada}, que son todas las diferentes
-formas en las que pueden presentarse los casos específicos. Por ejemplo,
-supóngase que se tiene un algoritmo que admite como entrada dos valores
-numéricos $a,b\in\mathbb{R}$. Este algoritmo tendría tres posibles
-clases de entrada: $a<b$, $a=b$ y $a>b$.
 
-Un algoritmo es \emph{correcto} cuando, para cualquier caso específico,
-el algoritmo termina su ejecución y produce un resultado que cumple
-las características de salida del problema. Se dice que un algoritmo
-correcto \emph{resuelve} el problema en cuestión. Un algoritmo es
-\emph{incorrecto} cuando existe al menos un caso específico para el
-cual el algoritmo no termina su ejecución o termina con un resultado
-que no cumple las características de salida. 
-
-Los algoritmos suelen presentarse en forma de un \emph{pseudocódigo}.
-Un pseudocódigo es una descripción simple, informal y de alto nivel
-de un algoritmo. Comúnmente consiste de estructuras de control de
-flujo, notación matemática y/o prosa en lenguaje natural. Se dice
-que el pseudocódigo es de alto nivel porque omite detalles de implementación
-innecesarios. A diferencia de un lenguaje de programación, el pseudocódigo
-se escribe para que sea leído y comprendido por seres humanos, no por
-computadoras.
-
-Por último, una \emph{estructura de datos} es un conjunto de procedimientos
-para organizar, acceder y manipular una colección de datos.
-
-\section{Análisis de algoritmos}
-
-El \emph{análisis de algoritmos} es el conjunto de técnicas matemáticas
-para caracterizar las propiedades particulares de un algoritmo de
-forma independiente a su implementación específica en hardware y/o
-software. En estos apuntes, el análisis consistirá en describir únicamente
-dos características:
+\section*{Literatura consultada}
 
 \begin{itemize}
-    \item La \emph{corrección}; i.e. ¿el algoritmo es correcto?
-    \item La \emph{eficiencia}; i.e. ¿qué tanto crece el tiempo de ejecución
-    del algoritmo con respecto al tamaño de la entrada?
-\end{itemize}
-Se dice que un algoritmo es \emph{eficiente} cuando su tiempo de ejecución
-crece polinomialmente con respecto al tamaño de la entrada.
-
-\section*{Notas bibliográficas}
-
-Realmente no existe una definición formal de lo que es un algoritmo;
-la ``definición'' presentada aquí es más bien una lista de las características
-que posee un algoritmo.
-
-Material consultado: 
-\begin{itemize}
-    \item \textcite{cormen_introduction_2009}, págs. 5-14 y 20-22.
-    \item \textcite{skiena_algorithm_2011}, págs. 3-13.
-    \item \textcite{goodrich_algorithm_2001}, págs. 4, 7 y 8.
+  \item \textcite{cormen_introduction_2009}, págs. 5-14 y 20-22.
+  \item \textcite{skiena_algorithm_2011}, págs. 3-13.
 \end{itemize}
