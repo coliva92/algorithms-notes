@@ -1,0 +1,50 @@
+\chapter{Análisis de la corrección de un algoritmo}
+
+El primer paso al analizar un algoritmo es determinar si este es correcto o incorrecto. 
+El procedimiento que se sigue para llevar a cabo esta tarea se denomina \emph{análisis de la corrección de un algoritmo}.
+
+\section{El contraejemplo}
+
+Para \marginnote{Si no se encuentra un contraejemplo para un algoritmo determinado, esto no implica que dicho algoritmo es correcto.} demostrar que un algoritmo es incorrecto, basta con producir un \emph{contraejemplo}, esto es, un caso específico para el cual el algoritmo no termina su ejecución o no produce un resultado que cumple las características de salida del problema. \marginnote{Se recomienda buscar un contraejemplo para un algoritmo antes de hacer la demostración de su corrección.}
+Para encontrar pronto un contraejemplo, se recomienda experimentar con los casos específicos más complicados para el algoritmo; por ej., aquellos que contengan valores empatados o que mezclen valores de frontera de extremos opuestos. \marginnote{La demostración de la corrección de un algoritmo debe explicar no solo por qué el algoritmo es correcto, sino también por qué no es incorrecto.}
+El contraejemplo debe ser lo más simple y pequeño posible, idealmente la razón de por qué el algoritmo es incorrecto debe ser inmediatamente clara. 
+Así, una vez encontrado un contraejemplo, se recomienda simplificarlo tanto como sea posible.
+El contraejemplo también debe presentarse junto con el resultado incorrecto que produjo el algoritmo y el resultado correcto que debió producir.
+
+% Una demostración matemática apropiada consta de tres cosas: una declaración precisa sobre lo que se desea demostrar, una colección de suposiciones (esto es, afirmaciones que se considera que son verdaderas) y una cadena de razonamientos que parten de las suposiciones y terminan en lo que se desea demostrar.
+
+\section{La invariante de lazo}
+
+Una \emph{invariante de lazo} (loop invariant) es una proposición lógica que se cumple inmediatamente antes e inmediatamente después de cada iteración de un bucle o algoritmo iterativo determinado. 
+La invariante se define en función de cada iteración \(i\).
+
+Demostrar que una invariantes de lazo se cumple para cualquier iteración es un procedimiento análogo a una demostración por inducción y consta de los sig. pasos: 
+\begin{enumerate}
+  \item \emph{Inicialización}: se determina cuál es el estado en que se encuentra el algoritmo antes de ejecutar la primera iteración y se demuestra que la invariante de lazo se cumple bajo estas condiciones.
+  \item \emph{Mantenimiento}: se supone que la invariante de lazo se cumple antes de comenzar alguna iteración genérica \(i\) y se determina el estado en que se encuentra el algoritmo como consecuencia de ello. 
+  Después, se ejecuta la iteración \(i\) y se demuestra que la invariante de lazo se cumple antes de comenzar la iteración \(i+1\).
+  \item \emph{Finalización}: se determina cuál es el estado al salir del bucle y se utiliza la invariante de lazo para demostrar que el algoritmo es correcto o para caracterizar alguna propiedad particular de este. 
+\end{enumerate}
+
+\section{Recomendaciones para el diseño de algoritmos correctos}
+
+\paragraph*{Definir la salida del problema correctamente.}{
+  Las características de salida no deben ser ambiguas y deben describir exactamente cómo determinar si el resultado es correcto.
+  Tampoco deben constar de objetivos compuestos (esto es, múltiples objetivos que deben alcanzarse al mismo tiempo).
+}
+
+\paragraph*{Típicamente, entre más restrictivas sean las características de entrada, menor es la dificultad para resolver el problema.}{
+  Se recomienda comenzar por diseñar un algoritmo correcto que admita entradas con características muy particulares y después extenderlo a entradas más generales. 
+}
+
+\paragraph*{Analizar la complejidad computacional del problema al mismo tiempo que se diseña un algoritmo para resolverlo.}{
+  De esta forma, cualquier descubrimiento o avance que se obtenga para uno podría aprovecharse después para avanzar en el otro.
+  Además, al final se obtendría uno de dos posibles resultados: ya sea se llega a la construcción de un algoritmo correcto o se caracteriza la complejidad computacional del problema.
+}
+
+\paragraph*{Modelar el problema de forma adecuada}{
+  Las entidades y sus respectivas interacciones en la vida real que constituyen el problema a resolver deben describirse en términos de alguna estructura abstracta ya conocida (cadenas, grafos, conjuntos, entre otros) y sus operaciones correspondientes.
+  Sin embargo, las características de estas entidades no siempre se alinean perfectamente con las de la estructura elegida para representarlas.
+  En estos casos, se recomienda ignorar temporalmente aquellos detalles que no encajen y decidir más adelante, después de trabajar un tiempo con esa estructura, si dichos detalles son realmente esenciales o no para resolver el problema.
+}
+\marginnote{\textbf{Literatura consultada}: \textcite{cormen_introduction_2009}, págs. 18-20; \textcite{skiena_algorithm_2011}, págs. 11-16}
