@@ -14,7 +14,9 @@ Se dice que un algoritmo correcto \emph{resuelve} el problema en cuestión.
 
 Una \emph{estructura de datos} es una colección de reglas y procedimientos para organizar, accesar y manipular una colección de datos.
 
-Por último, \marginnote{Hay muchas otras características que podrían ser de interés, dependiendo de la aplicación del algoritmo que se está analizando. Por ej., una característica frecuentemente estudiada es el orden de crecimiento de la cantidad de memoria ocupada por el algoritmo con respecto al tamaño de la entrada.} el \emph{análisis de algoritmos} es la colección de técnicas y herramientas matemáticas que se usan para caracterizar las propiedades particulares de un algoritmo determinado de forma independiente a su implementación en hardware y/o software. 
+\marginnote[1\baselineskip]{Hay muchas otras características que podrían ser de interés, dependiendo de la aplicación del algoritmo que se está analizando. Por ej., una característica frecuentemente estudiada es el orden de crecimiento de la cantidad de memoria ocupada por el algoritmo con respecto al tamaño de la entrada.}
+
+Por último, el \emph{análisis de algoritmos} es la colección de técnicas y herramientas matemáticas que se usan para caracterizar las propiedades particulares de un algoritmo determinado de forma independiente a su implementación en hardware y/o software. 
 Principalmente, el análisis de un algoritmo consistirá de describir únicamente dos características:
 
 \begin{itemize}
@@ -22,6 +24,9 @@ Principalmente, el análisis de un algoritmo consistirá de describir únicament
   \item La \emph{eficiencia}; esto es, ¿cuál es el orden de crecimiento del 
   tiempo de ejecución del algoritmo con respecto al tamaño de la entrada?
 \end{itemize}
-Se dice que un algoritmo es \emph{eficiente} \marginnote{\textbf{Literatura consultada}: \textcite{cormen_introduction_2009}, págs. 5-14 y 20-22; \textcite{skiena_algorithm_2012}, págs. 3-13.} si el orden de crecimiento
+Se dice que un algoritmo es \emph{eficiente} si el orden de crecimiento
 de su tiempo de ejecución es polinomial. 
-El propósito siempre es diseñar algoritmos correctos y eficientes.
+Todo problema computacional puede resolverse por medio de un algoritmo de fuerza bruta (esto es, probando todas las posibles combinaciones).
+Entonces, el objetivo es diseñar algoritmos que no solo sean correctos, sino también lo más eficientes posible.
+
+\marginnote[-2\baselineskip]{\textbf{Literatura consultada}: \textcite{cormen_introduction_2009}, págs. 5-14 y 20-22; \textcite{skiena_algorithm_2012}, págs. 3-13.}
