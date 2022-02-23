@@ -1,0 +1,34 @@
+\chapter{Conceptos fundamentales}
+
+Un \textbf{problema computacional} es una relación entre dos valores o conjuntos de valores: uno de \textbf{entrada} y otro de \textbf{salida}. 
+Por ej., el problema de \textsc{Ordenamiento} se define formalmente de la sig. manera:
+\begin{itemize}
+  \item \emph{Entrada}: una secuencia de \(n\in\mathbb{N}\) elementos comparables, \(A=\{a_1,a_2,\dots,a_n\}\).
+  \item \emph{Salida}: una permutación de la secuencia de entrada, \(A'=\{a'_1,a'_2,\dots,a'_n\}\), tal que \(a'_1\leq a'_2\leq\dots\leq a'_n\).
+\end{itemize}
+Un \textbf{caso específico} para un problema computacional determinado es cualquier valor o conjunto de valores que satisfacen la descripción de la entrada del problema.
+Por ej., dos casos específicos para el problema de \textsc{Ordenamiento} son las secuencias \(\{4,7,5,1\}\) y \(\{d,x,j,e\}\).
+
+Un \textbf{algoritmo} es un procedimiento inambiguo para transformar la entrada de un problema computacional determinado a la salida correspondiente.
+Un algoritmo es \textbf{correcto} si y solo si, para todo caso específico, el algoritmo termina su ejecución y produce un resultado que cumple la descripción de la salida del problema.
+Un algoritmo \textbf{resuelve} el problema en cuestión si y solo si es correcto.
+
+Una \textbf{estructura de datos} es una colección de reglas y procedimientos para organizar, accesar y manipular un conjunto de datos.
+
+Por último, el \textbf{análisis de algoritmos} es la colección de técnicas y herramientas matemáticas que se usan para caracterizar las propiedades particulares de un algoritmo determinado de forma independiente a su implementación en hardware y/o software. 
+El análisis de un algoritmo consiste en determinar al menos dos características:
+\begin{itemize}
+  \item La \textbf{corrección}: ¿el algoritmo es correcto?
+  \item La \textbf{eficiencia}: ¿cuál es el \emph{orden de crecimiento} del 
+  tiempo de ejecución del algoritmo con respecto al tamaño de la entrada?
+\end{itemize}
+Un algoritmo es \textbf{eficiente} si y solo si el orden de crecimiento
+de su tiempo de ejecución es polinomial.
+Todo problema computacional puede resolverse por medio de un algoritmo de fuerza bruta.
+Entonces, el objetivo es diseñar algoritmos que no solo sean correctos, sino que también sean lo más eficientes posible.
+\marginnote[-15\baselineskip]{%
+  Dependiendo de la aplicación y tipo del algoritmo que se está analizando, hay otras características que también podrían ser de interés determinar de dicho algoritmo.
+  Por ej., una característica frecuentemente estudiada es el orden de crecimiento de la cantidad de memoria ocupada por el algoritmo con respecto al tamaño de la entrada.
+}
+
+\marginnote[-2\baselineskip]{\textbf{Literatura consultada}: \textcite{cormen_introduction_2009}, pp. 5-14 y 20-22; \textcite{skiena_algorithm_2012}, pp. 3-13.}
