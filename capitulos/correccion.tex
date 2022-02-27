@@ -5,28 +5,33 @@ El procedimiento que se sigue para llevar a cabo esta tarea se denomina \textbf{
 
 \section{El contraejemplo}
 
-\marginnote[0.5\baselineskip]{Si no se encuentra un contraejemplo para un algoritmo determinado, esto no implica que dicho algoritmo es correcto.}
+\marginnote[0.5\baselineskip]{Se recomienda buscar un contraejemplo para un algoritmo antes de hacer la demostración de su corrección.}
 
-\marginnote[1.5\baselineskip]{Se recomienda buscar un contraejemplo para un algoritmo antes de hacer la demostración de su corrección.}
+\marginnote[1.5\baselineskip]{Si no se encuentra un contraejemplo para un algoritmo determinado, esto no implica que dicho algoritmo es correcto.}
 
 \marginnote[1.5\baselineskip]{La demostración de la corrección de un algoritmo debe explicar no solo por qué el algoritmo es correcto, sino también por qué no es incorrecto.}
 
-Para demostrar que un algoritmo es incorrecto, basta con producir un \textbf{contraejemplo}, esto es, un caso específico para el cual el algoritmo no termina su ejecución o no produce un resultado que cumple las características de salida del problema.
-Para encontrar más fácilmente un contraejemplo, se recomienda experimentar con los casos específicos más complicados para el algoritmo; por ej., aquellos que contengan valores empatados o que mezclen valores de frontera de extremos opuestos.
-El contraejemplo debe ser lo más simple y pequeño posible, idealmente la razón de por qué el algoritmo es incorrecto debe ser inmediatamente clara. 
+Para demostrar que un algoritmo determinado es incorrecto, basta con producir un \textbf{contraejemplo}; esto es, un caso específico para el cual el algoritmo no termina su ejecución o no produce un resultado que cumple las características de salida del problema. 
+Para encontrar un contraejemplo, se recomienda experimentar primero con los casos específicos más complicados para el algoritmo; p. ej., aquellos que contengan valores empatados o que mezclen valores de frontera de extremos opuestos. 
+El contraejemplo debe ser lo más simple y pequeño posible; idealmente la razón de por qué el algoritmo es incorrecto debe ser inmediatamente clara. 
 Así, una vez encontrado un contraejemplo, se recomienda simplificarlo tanto como sea posible y presentarlo junto con el resultado incorrecto que produjo el algoritmo y el resultado correcto que debió producir.
 
-\section{La invariante de bucle}
+\section{La invariante de lazo}
 
-Una \textbf{invariante de bucle} es una proposición lógica que se cumple inmediatamente antes de cada iteración de un bucle determinado. 
+\marginnote[0.5\baselineskip]{%
+  Estrictamente hablando, en la finalización se debería demostrar que la invariante se sigue cumpliendo cuando la condición de paro del bucle es falsa.
+  Sin embargo, obsérvese que en el mantenimiento se demuestra no solo que la invariante se cumple inmediatamente antes de cada iteración, sino que también se sigue cumpliendo inmediatamente \emph{después} de cada iteración, incluyendo la \emph{última}.
+  Es por eso que en la finalización se puede suponer que la invariante se sigue cumpliendo al terminar la ejecución del bucle.
+}
+
+Una \textbf{invariante de lazo} es una proposición lógica que se cumple inmediatamente antes de cada iteración y al finalizar la ejecución de un bucle determinado.
 La invariante se define en función de cada iteración \(i\).
-
-Demostrar que una invariante de bucle se cumple para todas las iteraciones es un procedimiento análogo a una demostración por inducción y consta de los sig. pasos: 
+Demostrar que una invariante de lazo se cumple para todas las iteraciones es un procedimiento análogo a una demostración por inducción y consta de los sig. pasos: 
 \begin{enumerate}
-  \item \emph{Inicialización}: se determina el estado en que se encuentra el algoritmo antes de ejecutar la primera iteración y se demuestra que la invariante de bucle se cumple bajo estas condiciones.
-  \item \emph{Mantenimiento}: se supone que la invariante de bucle se cumple antes de comenzar alguna iteración genérica \(j\) y se determina el estado en que se encuentra el algoritmo como consecuencia de ello. 
+  \item \textbf{Inicialización}: se determina el estado en que se encuentra el algoritmo antes de ejecutar la primera iteración y se demuestra que la invariante se cumple bajo estas condiciones.
+  \item \textbf{Mantenimiento}: se supone que la invariante se cumple antes de comenzar alguna iteración arbitraria \(j\) y se determina el estado en que se encuentra el algoritmo como consecuencia de ello. 
   Después, se ejecuta la iteración \(j\) y se demuestra que la invariante se cumple antes de comenzar la iteración \(j+1\).
-  \item \emph{Finalización}: se determina cuál es el estado del algoritmo al salir del bucle y se utiliza la invariante de bucle para demostrar que el algoritmo es correcto o para caracterizar alguna propiedad particular del mismo. 
+  \item \textbf{Finalización}: se determina cuál es el estado del algoritmo al salir del bucle y se utiliza junto con la invariante para demostrar que el algoritmo es correcto o para caracterizar alguna propiedad particular del mismo. 
 \end{enumerate}
 
 \section{Recomendaciones para el diseño de algoritmos correctos}

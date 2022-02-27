@@ -6,29 +6,29 @@ Por ej., el problema de \textsc{Ordenamiento} se define formalmente de la sig. m
   \item \emph{Entrada}: una secuencia de \(n\in\mathbb{N}\) elementos comparables, \(A=\{a_1,a_2,\dots,a_n\}\).
   \item \emph{Salida}: una permutación de la secuencia de entrada, \(A'=\{a'_1,a'_2,\dots,a'_n\}\), tal que \(a'_1\leq a'_2\leq\dots\leq a'_n\).
 \end{itemize}
+
 Un \textbf{caso específico} para un problema computacional determinado es cualquier valor o conjunto de valores que satisfacen la descripción de la entrada del problema.
 Por ej., dos casos específicos para el problema de \textsc{Ordenamiento} son las secuencias \(\{4,7,5,1\}\) y \(\{d,x,j,e\}\).
+% Los casos específicos de un algoritmo determinado pueden categorizarse en varias \textbf{clases de entrada} que representan todas las diferentes formas en que puede presentarse la entrada de dicho algoritmo.
+% P. ej., un algoritmo que admite como entrada dos números, \(a\) y \(b\), tendría tres clases de entrada: \(a<b\), \(a=b\) y \(a>b\).
 
-Un \textbf{algoritmo} es un procedimiento inambiguo para transformar la entrada de un problema computacional determinado a la salida correspondiente.
-Un algoritmo es \textbf{correcto} si y solo si, para todo caso específico, el algoritmo termina su ejecución y produce un resultado que cumple la descripción de la salida del problema.
-Un algoritmo \textbf{resuelve} el problema en cuestión si y solo si es correcto.
+Un \textbf{algoritmo} es una secuencia de instrucciones inambiguas para transformar la entrada de un problema computacional determinado a la salida correspondiente.
+Un algoritmo es \textbf{correcto} si y solo si, para cada caso específico, el algoritmo termina su ejecución y produce un resultado que cumple la descripción de la salida del problema.
+Se dice que un algoritmo \textbf{resuelve} el problema en cuestión si y solo si es correcto.
 
 Una \textbf{estructura de datos} es una colección de reglas y procedimientos para organizar, accesar y manipular un conjunto de datos.
 
-Por último, el \textbf{análisis de algoritmos} es la colección de técnicas y herramientas matemáticas que se usan para caracterizar las propiedades particulares de un algoritmo determinado de forma independiente a su implementación en hardware y/o software. 
+\marginnote[1.0\baselineskip]{%
+  Dependiendo de la aplicación y el tipo de algoritmo que se está analizando, existen muchas otras características que también podrían ser de interés analizarlas.
+  Por ej., una característica frecuentemente estudiada es el orden de crecimiento de la cantidad de memoria requerida por el algoritmo con respecto al tamaño de la entrada.
+}
+El \textbf{análisis de algoritmos} es la colección de técnicas matemáticas que se usan para caracterizar las propiedades particulares de un algoritmo determinado de forma independiente a su implementación en hardware y/o software. 
 El análisis de un algoritmo consiste en determinar al menos dos características:
 \begin{itemize}
   \item La \textbf{corrección}: ¿el algoritmo es correcto?
   \item La \textbf{eficiencia}: ¿cuál es el \emph{orden de crecimiento} del 
-  tiempo de ejecución del algoritmo con respecto al tamaño de la entrada?
+  \emph{tiempo de ejecución} del algoritmo con respecto al \emph{tamaño de su entrada}?
 \end{itemize}
-Un algoritmo es \textbf{eficiente} si y solo si el orden de crecimiento
-de su tiempo de ejecución es polinomial.
-Casi todo problema computacional puede resolverse por medio de un algoritmo de fuerza bruta.
-Es por esto que el objetivo es diseñar algoritmos que no solo sean correctos, sino que también sean lo más eficientes posible.
-\marginnote[-15\baselineskip]{%
-  Dependiendo de la aplicación y tipo del algoritmo que se está analizando, hay otras características que también podrían ser de interés determinar de dicho algoritmo.
-  Por ej., una característica frecuentemente estudiada es el orden de crecimiento de la cantidad de memoria ocupada por el algoritmo con respecto al tamaño de la entrada.
-}
+Un algoritmo es \textbf{eficiente} si y solo si su orden de crecimiento es polinomial.
 
-\marginnote[-2\baselineskip]{\textbf{Literatura consultada}: \textcite{cormen_introduction_2009}, pp. 5-14 y 20-22; \textcite{skiena_algorithm_2012}, pp. 3-13.}
+\marginnote[-1\baselineskip]{\textbf{Literatura consultada}: \textcite{cormen_introduction_2009}, pp. 5-14 y 20-22; \textcite{skiena_algorithm_2012}, pp. 3-13.}
