@@ -12,7 +12,7 @@
   autocite=footnote,    %% Inserta las ref. en el margen con \autocite
   style=authoryear,     %% Orden en que aparece la info. en la bibliografía
   uniquename=init,      %% Usa iniciales para distinguir apellidos repetidos
-  maxcitenames=1,       %% Se cita solo el primer autor
+  maxcitenames=2,       %% Se citan a lo más dos autores
   mincitenames=1,
   doi=false,            %% Ignora estos campos del archivo .bib
   isbn=false,
@@ -49,7 +49,7 @@
 \providecommand{\theoremname}{Teorema}
 \providecommand{\lemmaname}{Lema}
 \providecommand{\corollaryname}{Corolario}
-\providecommand{\remarkname}{Observación}
+\providecommand{\remarkname}{Escolio}
 \theoremstyle{definition}
 \newtheorem{defn}{\protect\definitionname}
 \newtheorem{expl}{\protect\examplename}
@@ -71,7 +71,7 @@
 
 %% Símbolo para indicar el final de un ejemplo
 \newcommand\xqed[1]{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{#1}}
-\newcommand\exend{\xqed{$\blacklozenge}}
+\newcommand\exend{\xqed{\(\blacklozenge\)}}
 
 
 %% Configuración para colocar automáticamente hipervínculos en el PDF
