@@ -19,9 +19,7 @@ Así, una vez encontrado un contraejemplo, se recomienda simplificarlo tanto com
 \section{La invariante de lazo}
 
 \marginnote[0.5\baselineskip]{%
-  Estrictamente hablando, en la finalización se debería demostrar que la invariante se sigue cumpliendo cuando la condición de paro del bucle es falsa.
-  Sin embargo, obsérvese que en el mantenimiento se demuestra no solo que la invariante se cumple inmediatamente antes de cada iteración, sino que también se sigue cumpliendo inmediatamente \emph{después} de cada iteración, incluyendo la \emph{última}.
-  Es por eso que en la finalización se puede suponer que la invariante se sigue cumpliendo al terminar la ejecución del bucle.
+  La diferencia entre la invariante de lazo e inducción es que el primer método es una aplicación especializada del segundo.
 }
 
 Una \textbf{invariante de lazo} es una proposición lógica que se cumple inmediatamente antes de cada iteración y al finalizar la ejecución de un bucle determinado.
@@ -33,6 +31,12 @@ Demostrar que una invariante de lazo se cumple para todas las iteraciones es un 
   Después, se ejecuta la iteración \(j\) y se demuestra que la invariante se cumple antes de comenzar la iteración \(j+1\).
   \item \textbf{Finalización}: se determina cuál es el estado del algoritmo al salir del bucle y se utiliza junto con la invariante para demostrar que el algoritmo es correcto o para caracterizar alguna propiedad particular del mismo. 
 \end{enumerate}
+
+\marginnote[-3.5\baselineskip]{%
+  Estrictamente hablando, en la finalización se debería demostrar que la invariante se sigue cumpliendo cuando la condición de paro del bucle es falsa.
+  Sin embargo, obsérvese que en el mantenimiento se demuestra no solo que la invariante se cumple inmediatamente antes de cada iteración, sino que también se sigue cumpliendo inmediatamente \emph{después} de cada iteración, incluyendo la \emph{última}.
+  Es por eso que en la finalización se puede suponer que la invariante se sigue cumpliendo al terminar la ejecución del bucle.
+}
 
 \section{Recomendaciones para el diseño de algoritmos correctos}
 
