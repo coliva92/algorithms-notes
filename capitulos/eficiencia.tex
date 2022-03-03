@@ -2,38 +2,26 @@
 
 Después de demostrar que un algoritmo es correcto, el sig. paso es caracterizar su tiempo de ejecución. 
 El procedimiento que se sigue para realizar esta tarea se denomina \textbf{análisis de la eficiencia de un algoritmo}. 
-En este contexto, el \emph{tiempo de ejecución} de un algoritmo se define como la cantidad total de instrucciones que se ejecutan en función del \emph{tamaño de la entrada}. 
+En este contexto, el \textbf{tiempo de ejecución} de un algoritmo se define como la cantidad total de instrucciones que se ejecutan en función del \textbf{tamaño de la entrada}. 
 El significado de ``tamaño de la entrada'' depende del contexto del problema que se está tratando.
-P. ej., si la entrada es un arreglo, el tamaño es el número de elementos en dicho arreglo, pero si la entrada es un grafo, entonces el tamaño es el número de vértices y el número de aristas. 
+P. ej., si la entrada es un arreglo, el tamaño es el número de elementos que contiene, pero si la entrada es un grafo, entonces el tamaño es el número de vértices y el número de aristas. 
 
 \section{El modelo de cómputo RAM}
 
 Un \textbf{modelo de cómputo} es una representación simplificada de alguna tecnología de cómputo particular y funge como una ``máquina abstracta'' donde se puede simular mentalmente la ejecución de un algoritmo para analizar su eficiencia. 
-El modelo debe ser lo suficientemente simple para facilitar el análisis y lo suficientemente cercano a la tecnología que representa para que refleje lo más fielmente posible el comportamiento que tendría el algoritmo de ser implementado en dicha tecnología. Existen varios modelos de cómputo, pero el más utilizado para analizar algoritmos secuenciales es el \textbf{modelo RAM} (Random Access Machine). 
+El modelo debe ser lo suficientemente simple para facilitar el análisis y lo suficientemente cercano a la tecnología que representa para que refleje lo más fielmente posible el comportamiento que tendría el algoritmo de ser implementado en dicha tecnología. 
+Existen varios modelos de cómputo, pero el más utilizado para analizar algoritmos secuenciales es el \textbf{modelo RAM} (Random Access Machine). 
 
-El modelo RAM consta de una unidad de procesamiento central y de una unidad de memoria de acceso aleatorio, conectados por algún medio.
-La memoria es conceptualmente idéntica a un arreglo; cada casilla puede referenciarse por medio de una \emph{dirección} única y puede almacenar exactamente una \emph{palabra} binaria de tamaño fijo.
-Se supone que la palabra es suficientemente larga para representar cualquier valor primitivo, pero también se supone que su longitud está acotada por una constante (de lo contrario, se podría procesar una cantidad irrealísticamente grande de datos en tiempo constante).
-También se cuenta con una cantidad constante de \emph{registros}, que son casillas de memoria reservadas que se utilizan para controlar el flujo del programa y almacenar resultados intermedios.
-Finalmente, se supone que la entrada del programa se proporciona ya almacenada en la memoria y que la salida debe escribirse también en la memoria.
-\newpage
-
-El \textbf{ciclo de máquina} del modelo RAM consta de tres pasos: 
-\begin{enumerate}
-  \item Se lee algún dato de la memoria. 
-  \item Se ejecuta alguna instrucción sobre ese dato.
-  \item Se escribe el resultado en la memoria. 
-\end{enumerate}
-Cada ciclo de máquina se ejecuta en una cantidad constante de tiempo.
-
-En términos prácticos, al simular la ejecución de un algoritmo en
-el modelo RAM, se deben seguir las sig. suposiciones:
+Para definir formalmente el modelo RAM, se deberían describir los componentes que lo conforman y las instrucciones primitivas que pueden ejecutarse en él. 
+Sin embargo, en el análisis básico de algoritmos no es necesario tanto formalismo.
+Así, para simular la ejecución de un algoritmo en el modelo RAM, es suficiente seguir las sig. suposiciones:
 \begin{itemize}
-  \item Las instrucciones del algoritmo pueden ejecutarse únicamente de forma secuencial (ya que solo se cuenta con un procesador). 
-  \item Todas las operaciones lógicas, aritméticas y de comparación se ejecutan en tiempo constante, con la excepción del exponente, el factorial, la raíz y el logaritmo.
+  \item Las instrucciones del algoritmo pueden ejecutarse únicamente de forma secuencial.
+  \item Todas las operaciones, lógicas, aritméticas, de comparación y de bit a bit se ejecutan en tiempo constante, con la excepción del exponente, el factorial, la raíz y el logaritmo.
   \item Se cuenta con una cantidad infinita de memoria. 
-  \item Todos los accesos a la memoria (ya sea por medio de una variable, un índice o un puntero) se ejecutan en tiempo constante. 
-  \item Invocar una sub-rutina requiere tiempo constante, pero el tiempo requerido para ejecutarla depende del tamaño de su entrada.
+  \item Todos los accesos a la memoria (ya sea por medio de una variable, un índice o un puntero) se ejecutan en tiempo constante; no se hace distinción entre si un dato se encuentra en la memoria caché, en la memoria RAM, en el disco duro, etc.
+  \item La \emph{palabra binaria} siempre es suficientemente larga para representar cualquier valor numérico, pero su longitud también está acotada por una constante (de lo contrario se podría procesar una cantidad irrealísticamente grande de datos con una sola instrucción primitiva).
+  \item Invocar una sub-rutina toma tiempo constante, pero el tiempo requerido para ejecutarla depende del tamaño de su entrada.
 \end{itemize}
 
 \section{Los casos de entrada}
@@ -50,12 +38,15 @@ En ocasiones, también se estudia el caso promedio; p. ej., cuando dicho caso oc
 
 \section{Procedimiento general del análisis}
 
-El análisis de la eficiencia de un algoritmo consiste en multiplicar
-el tiempo de ejecución de cada instrucción (suponiendo que se ejecuta
-en el modelo RAM) por el número de veces que se ejecuta (dada una
-entrada genérica de tamaño arbitrariamente grande y perteneciente a uno de los casos descritos anteriormente). 
-Al final, se suman estos productos y se obtiene como resultado una función \(T:\mathbb{N}\to\mathbb{N}\) que caracteriza el tiempo de ejecución el algoritmo en proporción al tamaño de la entrada. 
-Esta función se suele expresar por medio de su \emph{orden de crecimiento asintótico}.
+En términos generales, el análisis de la eficiencia de un algoritmo consta de los sig. pasos:
+\begin{enumerate}
+  \item Suponiendo que el algoritmo se ejecuta en el modelo RAM, se determina el tiempo de ejecución, \(t_i\), de cada instrucción individual \(i\) que compone el algoritmo.
+  \item Suponiendo que se proporcionó una entrada genérica de tamaño arbitrariamente grande y perteneciente a alguno de los casos descritos anteriormente, se determina cuántas veces, \(c_i\), se ejecuta cada instrucción del algoritmo.
+  \item El tiempo de ejecución del algoritmo se calcula como \(\sum_i c_it_i\).
+\end{enumerate}
+
+El tiempo de ejecución de un algoritmo normalmente se expresa como una función \(T:\mathbb{N}\to\mathbb{N}\).
+Esta función se suele expresarse por medio de su \emph{orden de crecimiento asintótico}.
 
 \marginnote[-1\baselineskip]{%
   \textbf{Literatura consultada}: \textcite{cormen_2009}, pp. 23-29; \textcite{skiena_2012}, pp. 31-34.

@@ -1,13 +1,13 @@
 \chapter{La notación asintótica}
 
-\begin{marginfigure}[11\baselineskip]
+\begin{marginfigure}
   \includegraphics[width=\linewidth]{figuras/big-o}
-  \caption{Interpretación gráfica de la notación asintótica. La notación \(f=O(g)\) implica que \(g\) es una cota superior para \(f\).}
+  \caption{Interpretación gráfica de la notación asintótica. La notación \(f=O(g)\) implica que \(g\) es una cota superior para \(f\); esto es, \(g\) crece más rápido que \(f\) a partir de cierto valor de \(n\).}
 \end{marginfigure}
 
 \begin{marginfigure}
   \includegraphics[width=\linewidth]{figuras/big-omega}
-  \caption{La notación \(f=\Omega(g)\) implica que \(g\) es una cota inferior para \(f\).}
+  \caption{La notación \(f=\Omega(g)\) implica que \(g\) es una cota inferior para \(f\); esto es, \(g\) crece más lento que \(f\) a partir de cierto valor de \(n\).}
 \end{marginfigure}
 
 \begin{marginfigure}
@@ -15,33 +15,38 @@
   \caption{La notación \(f=\Theta(g)\) implica que \(g\) acota a \(f\) por arriba y por abajo.}
 \end{marginfigure}
 
-La \textbf{notación asintótica} es una notación matemática que se utiliza para caracterizar el \emph{orden de crecimiento} de una función; esto es, qué tan rápido crece dicha función suponiendo que la variable independiente incrementa indefinidamente.
+La \textbf{notación asintótica} es una notación matemática que se utiliza para caracterizar el \textbf{orden de crecimiento} de una función; esto es, para describir qué tan rápido crece dicha función suponiendo que la variable independiente incrementa indefinidamente.
 La noción básica de esta notación es que, dada una expresión algebraica, los términos de mayor grado crecen más rápido que aquellos de menor grado y, por ende, el efecto que estos últimos tienen sobre el valor de la función es despreciable cuando la variable es arbitrariamente grande. 
 En el análisis de la eficiencia de un algoritmo, la notación asintótica se utiliza para describir el tiempo de ejecución del algoritmo.
-La notación asintótica también se utiliza para comparar el desempeño relativo de dos o más algoritmos alternativos para un mismo problema.
+También se utiliza para comparar el desempeño relativo de varios algoritmos alternativos para un mismo problema.
 
 \section{Definiciones}
 
 Sea \(n\in\mathbb{N}\) y sean \(f:\mathbb{N}\to\mathbb{R}\) y \(g:\mathbb{N}\to\mathbb{R}\) dos funciones \emph{asintóticamente no-negativas}; esto es, siempre se tiene que \(f(n)\geq 0\) y \(g(n)\geq 0\) a partir de algún valor determinado de \(n\). 
 
-La notación \textbf{O-grande}, que se escribe \(f=O(g)\), indica que \(g\) es una cota superior para \(f\); esto es, \(g\) crece más rápido que \(f\) a partir de cierto valor de \(n\).
-Formalmente, \(O(g)\) denota el conjunto de todas aquellas funciones \(f\) para las cuales existen dos constantes, \(c\in\mathbb{R}^+\) y \(n_0\in\mathbb{N}\), tales que \(0\leq f(n)\leq cg(n)\) para toda \(n\geq n_0\). 
+\begin{defn}[\textbf{O-grande}]
+  Denotado como \(O(g)\), es el conjunto de todas aquellas funciones \(f\) para las cuales existen dos constantes, \(c\in\mathbb{R}^+\) y \(n_0\in\mathbb{N}\), tales que \(0\leq f(n)\leq cg(n)\) para toda \(n\leq n_0\).
+\end{defn}
 
-La notación \textbf{\(\boldsymbol{\Omega}\)-grande}, que se escribe \(f=\Omega(g)\), indica que \(g\) es una cota inferior para \(f\); esto es, \(f\) crece más rápido que \(g\) a partir de cierto valor de \(n\).
-Formalmente, \(\Omega(g)\) denota el conjunto de todas aquellas funciones para las cuales existen dos constantes, \(c\) y \(n_0\), tales que \(0\leq cg(n)\leq f(n)\) para toda \(n\geq n_0\).
+\begin{defn}[\(\boldsymbol{\Omega}\)\textbf{-grande}]
+  Denotado como \(\Omega(g)\), es el conjunto de todas aquellas funciones para las cuales existen dos constantes, \(c\) y \(n_0\), tales que \(0\leq cg(n)\leq f(n)\) para toda \(n\geq n_0\).
+\end{defn}
 
-La notación \textbf{\(\boldsymbol{\Theta}\)-grande}, que se escribe \(f=\Theta(g)\), indica que \(g\) acota a \(f\) por arriba y por abajo a partir de cierto valor de \(n\).
-Formalmente, \(\Theta(g)\) denota el conjunto de todas aquellas funciones para las cuales existen tres constantes, \(c_1,c_2\in\mathbb{R}^+\) y \(n_0\), tales que \(0\leq c_1 g(n)\leq f(n)\leq c_2 g(n)\) para toda \(n\geq n_0\).
+\begin{defn}[\(\boldsymbol{\Theta}\)\textbf{-grande}]
+  Denotado como \(\Theta(g)\), es el conjunto de todas aquellas funciones para las cuales existen tres constantes, \(c_1,c_2\in\mathbb{R}^+\) y \(n_0\), tales que \(0\leq c_1 g(n)\leq f(n)\leq c_2 g(n)\) para toda \(n\geq n_0\).
+\end{defn}
 
 \begin{prop}
   Se tiene q. \(f=\Theta(g)\) si y solo si \(f=O(g)\) y \(f=\Omega(g)\).
 \end{prop}
 
-La notación \textbf{o-chica}, que se escribe \(f=o(g)\), indica que \(g\) es una cota superior holgada para \(f\).
-Esto es, \(o(g)\) denota el conjunto de todas las funciones \(f\) que cumplen que, para toda constante \(c\), existe una constante \(n_0\) tal que \(0\leq f(n)<cg(n)\) para toda \(n\leq n_0\).
+\begin{defn}[\textbf{o-chica}]
+  Denotado como \(o(g)\), es el conjunto de todas aquellas funciones \(f\) para las cuales se cumple que, para toda constante \(c\), existe una constante \(n_0\) tal que \(0\leq f(n)<cg(n)\) para toda \(n\leq n_0\).
+\end{defn}
 
-La notación \textbf{\(\boldsymbol{\omega}\)-chica}, que se escribe \(f=\omega(g)\), indica que \(g\) es una cota inferior holgada para \(f\).
-Esto es, \(\omega(g)\) denota el conjunto de todas las funciones \(f\) que cumplen que, para toda constante \(c\), existe una constante \(n_0\) tal que \(0\leq cg(n)<f(n)\) para toda \(n\geq n_0\).
+\begin{defn}[\(\boldsymbol{\omega}\)\textbf{-chica}]
+  Denotado como \(\omega(g)\), es el conjunto de todas aquellas funciones \(f\) para las cuales se cumple que, para toda constante \(c\), existe una constante \(n_0\) tal que \(0\leq cg(n)<f(n)\) para toda \(n\geq n_0\).
+\end{defn}
 
 \begin{prop}
   Si \(f=o(g)\), entonces \(f=O(g)\).
@@ -100,6 +105,10 @@ Algunos conjuntos de la notación asintótica poseen la propiedad de \textbf{ref
 Específicamente: \(f=\Theta(f)\), \(f=O(f)\) y \(f=\Omega(f)\). 
 Esto se cumple porque \(f(n)=f(n)\) para toda \(n\).
 
+\marginnote[-2\baselineskip]{%
+  Cabe mencionar que, dado que $\Theta$-grande posee las propiedades de reflexividad, transitividad y simetría, este conjunto es, de hecho, una \emph{relación de equivalencia}.
+}
+
 El conjunto $\Theta$-grande posee la propiedad de \textbf{simetría}.
 Así mismo, algunos otros conjuntos poseen la propiedad de \textbf{simetría traspuesta}.
 Esto es:
@@ -109,15 +118,11 @@ Esto es:
   \item \(f=o(g)\) si y sólo si \(g=\omega(f)\).
 \end{itemize}
 
-\marginnote[-4.5\baselineskip]{%
-  Cabe mencionar que, dado que $\Theta$-grande posee las propiedades de reflexividad, transitividad y simetría, este conjunto es, de hecho, una \emph{relación de equivalencia}.
-}
-
 Por último, la notación asintótica carece de la propiedad de \textbf{tricotomía}, que es la propiedad de los números reales donde, dados dos números $a$ y $b$, siempre se cumple exactamente una de las sig. posibilidades: $a<b$, $a=b$ o $a>b$. 
 La notación asintótica carece de esta propiedad porque se puede dar el caso donde no se cumple que \(f=O(g)\) ni que \(f=\Omega(g)\).
 Por ejemplo, el comportamiento asintótico de las funciones \(f(n)=n\) y \(g(n)=n^{1+\sin{n}}\) no se puede comparar porque el exponente $1+\sin{n}$ oscila entre 0 y 2, tomando todos los valores intermedios.
 
-\section{Ordenes de crecimiento frecuentes}
+\section{Ordenes de crecimiento comúnes}
 
 A continuación se presentan los órdenes de crecimiento que se observan con mayor frecuencia en las ciencias de la computación, listados de aquél que crece más lento al que crece más rápido.
 
@@ -138,7 +143,7 @@ A continuación se presentan los órdenes de crecimiento que se observan con may
 Se debe tener cuidado sobre cómo interpretar la lista anterior, ya que la notación asintótica puede ocultar constantes muy grandes y dejar una impresión equivocada de la tasa de crecimiento de una función comparada con otra. 
 Por ejemplo, supóngase que se tiene \(f(n)=10^{100}n=O(n)\) y \(g(n)=10n\cdot\log n=O(n\log n)\). 
 A pesar de que la notación asintótica indica que \(g\) crece más rápido que \(f\), en realidad se trata de lo opuesto, porque la constante \(10^{100}\) supera por mucho la tasa de crecimiento de \(g\).
-Como regla general, si la notación asintótica indica que una función crece más rápido que otra, esto debe interpretarse como que es verdad únicamente para valores muy grandes de \(n\).
+Como regla general, si la notación asintótica indica que una función crece más rápido que otra, esto debe entenderse como que es verdad únicamente para valores muy grandes de \(n\).
 
 \section{Operaciones aritméticas con la notación asintótica}
 
@@ -189,6 +194,6 @@ Esto es:
 \end{aligned}
 \]
 
-\marginnote[-2.5\baselineskip]{%
+\marginnote[-2\baselineskip]{%
   \textbf{Literatura consultada}: \textcite{cormen_2009}, pp. 43-52; \textcite{skiena_2012} pp. 34-41.
 }
