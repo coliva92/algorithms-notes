@@ -38,15 +38,17 @@ En ocasiones, también se estudia el caso promedio; p. ej., cuando dicho caso oc
 
 \section{Procedimiento general del análisis}
 
-En términos generales, el análisis de la eficiencia de un algoritmo consta de los sig. pasos:
-\begin{enumerate}
-  \item Suponiendo que el algoritmo se ejecuta en el modelo RAM, se determina el tiempo de ejecución, \(t_i\), de cada instrucción individual \(i\) que compone el algoritmo.
-  \item Suponiendo que se proporcionó una entrada genérica de tamaño arbitrariamente grande y perteneciente a alguno de los casos descritos anteriormente, se determina cuántas veces, \(c_i\), se ejecuta cada instrucción del algoritmo.
-  \item El tiempo de ejecución del algoritmo se calcula como \(\sum_i c_it_i\).
-\end{enumerate}
+En términos generales, el tiempo de ejecución de un algoritmo se calcula como:
+\[
+  \sum_ic_it_i
+\]
+donde
+\begin{itemize}
+  \item \(t_i\) es el tiempo de ejecución requerido por cada instrucción individual \(i\) que compone el algoritmo, suponiendo que se ejecuta en el modelo RAM.
+  \item \(c_i\) es el número de veces que se ejecuta cada instrucción \(i\), suponiendo que se proporcionó una entrada genérica de tamaño arbitrariamente grande y perteneciente a alguno de los casos descritos anteriormente.
+\end{itemize}
 
-El tiempo de ejecución de un algoritmo normalmente se expresa como una función \(T:\mathbb{N}\to\mathbb{N}\).
-Esta función se suele expresarse por medio de su \emph{orden de crecimiento asintótico}.
+El tiempo de ejecución de un algoritmo normalmente se expresa como una función \(T:\mathbb{N}\to\mathbb{N}\), la cual a su vez suele expresarse por medio de su \emph{orden de crecimiento asintótico}.
 
 \marginnote[-1\baselineskip]{%
   \textbf{Literatura consultada}: \textcite{cormen_2009}, pp. 23-29; \textcite{skiena_2012}, pp. 31-34.

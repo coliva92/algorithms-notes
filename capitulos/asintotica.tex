@@ -22,7 +22,7 @@ También se utiliza para comparar el desempeño relativo de varios algoritmos al
 
 \section{Definiciones}
 
-Sea \(n\in\mathbb{N}\) y sean \(f:\mathbb{N}\to\mathbb{R}\) y \(g:\mathbb{N}\to\mathbb{R}\) dos funciones \emph{asintóticamente no-negativas}; esto es, siempre se tiene que \(f(n)\geq 0\) y \(g(n)\geq 0\) a partir de algún valor determinado de \(n\). 
+Sea \(n\in\mathbb{N}\) y sean \(f:\mathbb{N}\to\mathbb{R}\) y \(g:\mathbb{N}\to\mathbb{R}\) dos funciones \textbf{asintóticamente positivas}; esto es, siempre se tiene que \(f(n)\geq 0\) y \(g(n)\geq 0\) a partir de algún valor determinado de \(n\). 
 
 \begin{defn}[\textbf{O-grande}]
   Denotado como \(O(g)\), es el conjunto de todas aquellas funciones \(f\) para las cuales existen dos constantes, \(c\in\mathbb{R}^+\) y \(n_0\in\mathbb{N}\), tales que \(0\leq f(n)\leq cg(n)\) para toda \(n\leq n_0\).
@@ -71,8 +71,7 @@ Sea \(n\in\mathbb{N}\) y sean \(f:\mathbb{N}\to\mathbb{R}\) y \(g:\mathbb{N}\to\
 
 La notación asintótica se puede utilizar para comparar dos funciones y decidir cuál crece más rápido. 
 Una forma intuitiva de verlo es trazando las analogías mostradas en la Tabla \ref{tab:func-comp}. 
-Esto es posible gracias a que muchas de las propiedades de comparación de los números reales también aplican en la notación asintótica. 
-Estas propiedades se describen a continuación, suponiendo que \(f\) y \(g\) son \emph{asintóticamente positivas}.
+Esto es posible gracias a que muchas de las propiedades de comparación de los números reales también aplican en la notación asintótica.
 
 \begin{table}
   \label{tab:func-comp}
