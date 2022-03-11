@@ -15,14 +15,7 @@
   \caption{La notación \(f=\Theta(g)\) implica que \(g\) acota a \(f\) por arriba y por abajo.}
 \end{marginfigure}
 
-La \textbf{notación asintótica} es una notación matemática que se utiliza para caracterizar el \textbf{orden de crecimiento} de una función; esto es, para describir qué tan rápido crece dicha función suponiendo que la variable independiente incrementa indefinidamente.
-La noción básica de esta notación es que, dada una expresión algebraica, los términos de mayor grado crecen más rápido que aquellos de menor grado y, por ende, el efecto que estos últimos tienen sobre el valor de la función es despreciable cuando la variable es arbitrariamente grande. 
-En el análisis de la eficiencia de un algoritmo, la notación asintótica se utiliza para describir el tiempo de ejecución del algoritmo.
-También se utiliza para comparar el desempeño relativo de varios algoritmos alternativos para un mismo problema.
-
-\section{Definiciones}
-
-Sea \(n\in\mathbb{N}\) y sean \(f:\mathbb{N}\to\mathbb{R}\) y \(g:\mathbb{N}\to\mathbb{R}\) dos funciones \textbf{asintóticamente positivas}; esto es, siempre se tiene que \(f(n)\geq 0\) y \(g(n)\geq 0\) a partir de algún valor determinado de \(n\). 
+Sea \(n\in\mathbb{N}\) y sean \(f:\mathbb{N}\to\mathbb{R}\) y \(g:\mathbb{N}\to\mathbb{R}\) dos funciones \textbf{asintóticamente no-negativas}; esto es, siempre se tiene que \(f(n)\geq 0\) y \(g(n)\geq 0\) a partir de algún valor determinado de \(n\). 
 
 \begin{defn}[\textbf{O-grande}]
   Denotado como \(O(g)\), es el conjunto de todas aquellas funciones \(f\) para las cuales existen dos constantes, \(c\in\mathbb{R}^+\) y \(n_0\in\mathbb{N}\), tales que \(0\leq f(n)\leq cg(n)\) para toda \(n\leq n_0\).
@@ -67,11 +60,10 @@ Sea \(n\in\mathbb{N}\) y sean \(f:\mathbb{N}\to\mathbb{R}\) y \(g:\mathbb{N}\to\
   \]
 \end{prop}
 
+\newpage
 \section{Comparación de funciones por medio de la notación asintótica}
 
-La notación asintótica se puede utilizar para comparar dos funciones y decidir cuál crece más rápido. 
-Una forma intuitiva de verlo es trazando las analogías mostradas en la Tabla \ref{tab:func-comp}. 
-Esto es posible gracias a que muchas de las propiedades de comparación de los números reales también aplican en la notación asintótica.
+La notación asintótica se puede utilizar para comparar dos funciones y decidir cuál crece más rápido.
 
 \begin{table}
   \label{tab:func-comp}
@@ -90,40 +82,40 @@ Esto es posible gracias a que muchas de las propiedades de comparación de los n
   \end{tabular}
 \end{table}
 
-Todos los conjuntos de la notación asintótica poseen la propiedad de \textbf{transitividad}.
-Esto es, sea \(h:\mathbb{N}\to\mathbb{R}\) una función asintóticamente positiva, se tiene que:
-\begin{itemize}
-  \item Si \(f=O(g)\) y \(g=O(h)\), entonces \(f=O(h)\).
-  \item Si \(f=\Omega(g)\) y \(g=\Omega(h)\), entonces \(f=\Omega(h)\).
-  \item Si \(f=\Theta(g)\) y \(g=\Theta(h)\), entonces \(f=\Theta(h)\).
-  \item Si \(f=o(g)\) y \(g=o(h)\), entonces \(f=o(h)\).
-  \item Si \(f=\omega(g)\) y \(g=\omega(h)\), entonces \(f=\omega(h)\).
-\end{itemize}
+\paragraph{Transitividad} 
+  Sea \(h:\mathbb{N}\to\mathbb{R}\) una función asintóticamente positiva.
+  \begin{itemize}
+    \item Si \(f=O(g)\) y \(g=O(h)\), entonces \(f=O(h)\).
+    \item Si \(f=\Omega(g)\) y \(g=\Omega(h)\), entonces \(f=\Omega(h)\).
+    \item Si \(f=\Theta(g)\) y \(g=\Theta(h)\), entonces \(f=\Theta(h)\).
+    \item Si \(f=o(g)\) y \(g=o(h)\), entonces \(f=o(h)\).
+    \item Si \(f=\omega(g)\) y \(g=\omega(h)\), entonces \(f=\omega(h)\).
+  \end{itemize}
 
-Algunos conjuntos de la notación asintótica poseen la propiedad de \textbf{reflexividad}. 
-Específicamente: \(f=\Theta(f)\), \(f=O(f)\) y \(f=\Omega(f)\). 
-Esto se cumple porque \(f(n)=f(n)\) para toda \(n\).
+\paragraph{Reflexividad} 
+  Se tiene que \(f=\Theta(f)\), \(f=O(f)\) y \(f=\Omega(f)\). 
+  Esto se cumple porque \(f(n)=f(n)\) para toda \(n\).
 
-\marginnote[-2\baselineskip]{%
-  Cabe mencionar que, dado que $\Theta$-grande posee las propiedades de reflexividad, transitividad y simetría, este conjunto es, de hecho, una \emph{relación de equivalencia}.
+\paragraph{Simetría y simetría traspuesta}
+  \begin{itemize}
+    \item \(f=\Theta(g)\) si y sólo si \(g=\Theta(f)\)
+    \item \(f=O(g)\) si y sólo si \(g=\Omega(f)\).
+    \item \(f=o(g)\) si y sólo si \(g=\omega(f)\).
+  \end{itemize}
+
+\paragraph{Carencia de tricotomía} 
+  La tricotomía es la propiedad de los números reales donde, dados dos números, \(a\) y \(b\), siempre se cumple necesariamente una de las sig. posibilidades: \(a<b\), \(a=b\) o \(a>b\).
+  Puede llegar a ocurrir que no se cumple que \(f=O(g)\) ni que \(f=\Omega(g)\).
+  P. ej., el comportamiento asintótico de las funciones \(f(n)=n\) y \(g(n)=n^{1+\sin{n}}\) no se puede comparar porque el exponente \(1+\sin{n}\) oscila entre 0 y 2, tomando todos los valores intermedios y, como consecuencia, ninguna función consistentemente acota a la otra.
+
+\marginnote[-14\baselineskip]{%
+  Cabe mencionar que, dado que \(\Theta\)-grande posee las propiedades de reflexividad, transitividad y simetría, este conjunto es, de hecho, una \textbf{relación de equivalencia}.
 }
 
-El conjunto $\Theta$-grande posee la propiedad de \textbf{simetría}.
-Así mismo, algunos otros conjuntos poseen la propiedad de \textbf{simetría traspuesta}.
-Esto es:
-\begin{itemize}
-  \item \(f=\Theta(g)\) si y sólo si \(g=\Theta(f)\)
-  \item \(f=O(g)\) si y sólo si \(g=\Omega(f)\).
-  \item \(f=o(g)\) si y sólo si \(g=\omega(f)\).
-\end{itemize}
-
-Por último, la notación asintótica carece de la propiedad de \textbf{tricotomía}, que es la propiedad de los números reales donde, dados dos números $a$ y $b$, siempre se cumple exactamente una de las sig. posibilidades: $a<b$, $a=b$ o $a>b$. 
-La notación asintótica carece de esta propiedad porque se puede dar el caso donde no se cumple que \(f=O(g)\) ni que \(f=\Omega(g)\).
-Por ejemplo, el comportamiento asintótico de las funciones \(f(n)=n\) y \(g(n)=n^{1+\sin{n}}\) no se puede comparar porque el exponente $1+\sin{n}$ oscila entre 0 y 2, tomando todos los valores intermedios.
-
+\newpage
 \section{Ordenes de crecimiento comúnes}
 
-A continuación se presentan los órdenes de crecimiento que se observan con mayor frecuencia en las ciencias de la computación, listados de aquél que crece más lento al que crece más rápido.
+Listados de aquél que crece más lento al que crece más rápido.
 
 \begin{enumerate}
   \begin{multicols}{2}
@@ -139,59 +131,52 @@ A continuación se presentan los órdenes de crecimiento que se observan con may
   \end{multicols}
 \end{enumerate}
 
-Se debe tener cuidado sobre cómo interpretar la lista anterior, ya que la notación asintótica puede ocultar constantes muy grandes y dejar una impresión equivocada de la tasa de crecimiento de una función comparada con otra. 
-Por ejemplo, supóngase que se tiene \(f(n)=10^{100}n=O(n)\) y \(g(n)=10n\cdot\log n=O(n\log n)\). 
-A pesar de que la notación asintótica indica que \(g\) crece más rápido que \(f\), en realidad se trata de lo opuesto, porque la constante \(10^{100}\) supera por mucho la tasa de crecimiento de \(g\).
-Como regla general, si la notación asintótica indica que una función crece más rápido que otra, esto debe entenderse como que es verdad únicamente para valores muy grandes de \(n\).
+No se debe confiar ciegamente en la lista anterior, ya que la notación asintótica puede ocultar constantes muy grandes y dejar una impresión equivocada del orden de crecimiento de una función comparada con otra.
+P. ej., \(f(n)=10^{100}n=O(n)\) y \(g(n)=10n\cdot\log n=O(n\log n)\). 
+A pesar de que la notación asintótica indica que \(g\) crece más rápido que \(f\), en realidad se trata de lo opuesto porque la constante \(10^{100}\) supera por mucho el orden de crecimiento de \(g\)
 
 \section{Operaciones aritméticas con la notación asintótica}
 
-El comportamiento asintótico de la suma de dos funciones está determinada por la función de mayor orden de crecimiento. 
-Esto es:
-\[
-\begin{aligned}
-    O(f)+O(g) &= O(\max\{f,g\})\\
-    \Omega(f)+\Omega(g) &= \Omega(\max\{f,g\})\\
-    \Theta(f)+\Theta(g) &= \Theta(\max\{f,g\})
-\end{aligned}
-\qquad
-\begin{aligned}
-    o(f)+o(g) &= o(\max\{f,g\})\\
-    \omega(f)+\omega(g) &= \omega(\max\{f,g\})
-\end{aligned}
-\]
+\paragraph{Adición}
+  \[
+  \begin{aligned}
+      O(f)+O(g) &= O(\max\{f,g\})\\
+      \Omega(f)+\Omega(g) &= \Omega(\max\{f,g\})\\
+      \Theta(f)+\Theta(g) &= \Theta(\max\{f,g\})
+  \end{aligned}
+  \qquad
+  \begin{aligned}
+      o(f)+o(g) &= o(\max\{f,g\})\\
+      \omega(f)+\omega(g) &= \omega(\max\{f,g\})
+  \end{aligned}
+  \]
 
-La multiplicación entre una función y una constante no afecta el
-comportamiento asintótico de dicha función. 
-Esto es:
-\[
-\begin{aligned}
-    O(cf) &= O(f)\\
-    \Omega(cf) &= \Omega(f)\\
-    \Theta(cf) &= \Theta(f)
-\end{aligned}
-\qquad
-\begin{aligned}
-    o(cf) &= o(f)\\
-    \omega(cf) &= \omega(f)
-\end{aligned}
-\]
+\paragraph{Multiplicación}
+  \[
+  \begin{aligned}
+      O(cf) &= O(f)\\
+      \Omega(cf) &= \Omega(f)\\
+      \Theta(cf) &= \Theta(f)
+  \end{aligned}
+  \qquad
+  \begin{aligned}
+      o(cf) &= o(f)\\
+      \omega(cf) &= \omega(f)
+  \end{aligned}
+  \]
 
-Cuando dos funciones se multiplican, ambas contribuyen por igual al
-comportamiento asintótico de la función resultante. 
-Esto es:
-\[
-\begin{aligned}
-    O(f)\cdot O(g) &= O(f\cdot g)\\
-    \Omega(f)\cdot\Omega(g) &= \Omega(f\cdot g)\\
-    \Theta(f)\cdot\Theta(g) &= \Theta(f\cdot g)
-\end{aligned}
-\qquad
-\begin{aligned}
-    o(f)\cdot o(g) &= o(f\cdot g)\\
-    \omega(f)\cdot\omega(g) &= \omega(f\cdot g)
-\end{aligned}
-\]
+  \[
+  \begin{aligned}
+      O(f)\cdot O(g) &= O(f\cdot g)\\
+      \Omega(f)\cdot\Omega(g) &= \Omega(f\cdot g)\\
+      \Theta(f)\cdot\Theta(g) &= \Theta(f\cdot g)
+  \end{aligned}
+  \qquad
+  \begin{aligned}
+      o(f)\cdot o(g) &= o(f\cdot g)\\
+      \omega(f)\cdot\omega(g) &= \omega(f\cdot g)
+  \end{aligned}
+  \]
 
 \marginnote[-2\baselineskip]{%
   \textbf{Literatura consultada}: \textcite{cormen_2009}, pp. 43-52; \textcite{skiena_2012} pp. 34-41.

@@ -1,0 +1,182 @@
+\chapter{Lógica formal}
+
+\section{Los conectores lógicos}
+
+Sean \(P\) y \(Q\) dos proposiciones.
+
+\begin{table}[h]
+  \caption{%
+    La tabla de verdad que define formalmente cada uno de los conectores lógicos básicos que se explican aquí.
+  }
+  \label{tab:logical_connectors}
+  \begin{centering}
+    \begin{tabular}{c c c c c c c}
+      \toprule
+        \(P\) & \(Q\) & \(\neg P\) & \(P\land Q\) & \(P\lor Q\) & \(P\to Q\) & 
+        \(P\leftrightarrow Q\) \\
+      \midrule
+        \(T\) & \(T\) & \(F\) & \(T\) & \(T\) & \(T\) & \(T\) \\
+        \(T\) & \(F\) & & \(F\) & \(T\) & \(F\) & \(F\) \\
+        \(F\) & \(T\) & \(T\) & \(F\) & \(T\) & \(T\) & \(F\) \\
+        \(F\) & \(F\) & & \(F\) & \(F\) & \(T\) & \(T\) \\
+      \bottomrule
+    \end{tabular}
+  \par\end{centering}
+\end{table}
+
+\marginnote[1.5\baselineskip]{%
+  La hipótesis y conclusión también se conocen como \textbf{antecedente} y \textbf{consecuente} y como \textbf{hipótesis} y \textbf{tesis}, respectivamente. 
+  Así mismo, la recíproca y la contrarecíproca también se conocen como el \textbf{converso} y el \textbf{inverso}, respectivamente.
+  Por otro lado, la condicional vacíamente verdadera también se denomina \textbf{verdadera por defecto}.
+}
+
+Dada una proposición \(P\to Q\):
+\begin{itemize}
+  \item La \textbf{hipótesis} es \(P\).
+  \item La \textbf{conclusión} es \(Q\).
+  \item La \textbf{recíproca} es \(Q\to P\).
+  \item La \textbf{contrarecíproca} es \(\neg P\to\neg Q\).
+  \item La condicional \textbf{no} es conmutativa; \(P\to Q\) \textbf{no} es lo mismo que \(Q\to P\).
+  \item Se dice que una condicional es \textbf{vacíamente verdadera} cuando es verdadera debido a que la hipótesis es falsa.
+\end{itemize}
+
+
+\section{La tautología y la contradicción}
+
+Para demostrar que una proposición compuesta determinada es una tautología o una contradicción, se construye su tabla de verdad y se verifica que todos los renglones tengan el mismo valor de verdad; esto es, todos sean verdaderos (para la tautología) o todos falsos (para la contradicción).
+\newpage
+
+
+\section{La implicación lógica}
+
+Hay varias formas de demostrar que \(A\Rightarrow B\):
+\begin{itemize}
+  \item Demostrar que la proposición \(A\to B\) es una tautología, por medio de su tabla de verdad.
+  \item Construir las tablas de verdad de \(A\) y \(B\) y verificar que, en cada renglón donde \(A\) es verdadero, \(B\) también lo sea.
+  \item Suponer que \(A\) es verdadero y demostrar que eso conlleva a que \(B\) también lo sea.
+  \item Partiendo de \(A\), usar las \emph{reglas de inferencia} para llegar hasta \(B\).
+\end{itemize}
+
+
+
+\section {La equivalencia lógica}
+
+Hay varias formas de demostrar que \(A\Leftrightarrow B\):
+\begin{itemize}
+  \item Demostrar que la proposición \(A\leftrightarrow B\) es una tautología, por medio de su tabla de verdad.
+  \item Construir las tablas de verdad de \(A\) y \(B\) y verificar que, en cada renglón, ambas tablas tienen exactamente el mismo valor de verdad.
+  \item Suponer que \(A\) es verdadero y demostrar que eso conlleva a que \(B\) también lo sea.
+  Luego, suponer que \(B\) es verdadero y demostrar que eso conlleva que \(A\) también lo sea.
+  \item Partiendo de \(A\) o de \(B\), usar las \emph{equivalencias lógicas básicas} para llegar hasta \(B\) o \(A\), respectivamente.
+\end{itemize}
+\newpage
+
+
+
+\section{Equivalencias lógicas básicas}
+
+Sean \(P,Q,R\) y \(S\) proposiciones y sea \(\theta\) una tautología y \(\varphi\) una contradicción.
+\begin{multicols}{2}
+  \emph{Leyes de identidad}
+  \[
+    \begin{aligned}
+      P &\Leftrightarrow P \\
+      P\land\theta &\Leftrightarrow P \\
+      P\lor\varphi &\Leftrightarrow P
+    \end{aligned}
+  \]
+  \emph{Leyes de indepotencia}
+  \[
+    \begin{aligned}
+      P\land P &\Leftrightarrow P \\
+      P\lor P &\Leftrightarrow P
+    \end{aligned}
+  \]
+  \emph{Conmutatividad}
+  \[
+    \begin{aligned}
+      P\land Q &\Leftrightarrow Q\land P \\
+      P\lor Q &\Leftrightarrow Q\lor P \\
+      P\leftrightarrow Q &\Leftrightarrow Q\leftrightarrow P
+    \end{aligned}
+  \]
+  \emph{Asociatividad}
+  \[
+    \begin{aligned}
+      (P\land Q)\land R &\Leftrightarrow P\land(Q\land R) \\
+      (P\lor Q)\lor R &\Leftrightarrow P\lor(Q\lor R)
+    \end{aligned}
+  \]
+  \emph{Distributividad}
+  \[
+    \begin{aligned}
+      P\land(Q\lor R) &\Leftrightarrow (P\land Q)\lor(P\land R) \\
+      P\lor(Q\land R) &\Leftrightarrow (P\lor Q)\land(P\lor R)
+    \end{aligned}
+  \]
+  \emph{Leyes de negación}
+  \[
+    \begin{aligned}
+      \neg\theta &\Leftrightarrow \varphi \\
+      \neg\varphi &\Leftrightarrow \theta \\
+      P\land\neg P &\Leftrightarrow \varphi \\
+      P\lor\neg P &\Leftrightarrow \theta
+    \end{aligned}
+  \]
+  \emph{Doble negación}
+  \[
+    \neg\neg P \Leftrightarrow P
+  \]
+  \emph{Leyes de DeMorgan}
+  \[
+    \begin{aligned}
+      \neg(P\land Q) &\Leftrightarrow \neg P\lor\neg Q \\
+      \neg(P\lor Q) &\Leftrightarrow \neg P\land\neg Q
+    \end{aligned}
+  \]
+  \emph{Leyes de absorción}
+  \[
+    \begin{aligned}
+      P\land(P\lor Q) &\Leftrightarrow P \\
+      P\lor(P\land Q) &\Leftrightarrow P
+    \end{aligned}
+  \]
+  \emph{División en casos}
+  \[
+    (P\lor Q)\to R \Leftrightarrow (P\to R)\land(Q\to R) 
+  \]
+  \emph{Condicional-Disyuntiva}
+  \[
+    P\to Q \Leftrightarrow \neg P\lor Q
+  \]
+  \emph{Negación de la condicional}
+  \[
+    \neg(P\to Q) \Leftrightarrow P\land\neg Q
+  \]
+  \emph{Contrapositiva}
+  \[
+    P\to Q\Leftrightarrow\neg Q\to\neg P
+  \]
+  \emph{Recíproca-Contrarecíproca}
+  \[
+    Q\to P \Leftrightarrow \neg P\to\neg Q
+  \]
+  \emph{Bicondicional-Condicional}
+  \[
+    P\leftrightarrow Q \Leftrightarrow (P\to Q)\land(Q\to P)
+  \]
+  \emph{Negación de la bicondicional}
+  \[
+    \neg(P\leftrightarrow Q)\Leftrightarrow (P\land\neg Q)\lor(Q\land\neg P)
+  \]
+  \emph{Leyes de la cota universal}
+  \[
+    \begin{aligned}
+      P\land\varphi &\Leftrightarrow\varphi \\
+      P\lor\theta &\Leftrightarrow\theta
+    \end{aligned}
+  \]
+\end{multicols}
+\marginnote[-1.5\baselineskip]{%
+  \textbf{Literatura consultada}: \textcite{bloch_2011} pp. 3-12 y 15-22; \textcite{epp_2004} pp. 1-15 y 17-25
+}

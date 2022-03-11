@@ -1,64 +1,20 @@
-\chapter{Recurrencias y los métodos para resolverlas}
-
-Una \textbf{recurrencia} es una función expresada en términos de sí misma, pero con una entrada más pequeña. 
-Las recurrencias se presentan comúnmente durante el análisis de la eficiencia de un algoritmo. 
-La \textbf{forma cerrada} de una recurrencia es una función equivalente, pero expresada sin recursividad. 
-Para resolver una recurrencia, se debe encontrar su forma cerrada.
-
-\marginnote[1\baselineskip]{%
-  Cabe mencionar que el tamaño de los subproblemas no necesariamente es siempre una fracción del problema original; una recurrencia puede reducir el tamaño de la entrada de diferentes formas.
-}
-
-En el contexto de los algoritmos \emph{divide y vencerás}, las recurrencias tienen la sig. forma general: 
-\[
-  T(n)=\begin{cases}
-    \sum_{i=1}^pT(n_i)+f(n)+g(n) & \text{si }n>b\\
-    h(n) & \text{si } n=b
-  \end{cases}
-\]
-donde
-
-\begin{itemize}
-  \item \(b\in\mathbb{N}\) es la \textbf{condición de paro}; esto es, el valor que debe tener \(n\) para entrar al \textbf{caso base} de la recurrencia.
-  \item \(p\in\mathbb{N}\) es la cantidad de subproblemas en que se divide la entrada en cada llamada recursiva.
-  \item \(n_i\in\mathbb{N}\), tal que \(n_i<n\), es el tamaño de la entrada
-  para el subproblema \(i\).
-  \item \(f:\mathbb{N}\to\mathbb{N}\) es el tiempo de ejecución requerido para dividir la entrada en \(p\) subproblemas.
-  \item \(g:\mathbb{N}\to\mathbb{N}\) es el tiempo de ejecución requerido para combinar las soluciones de los \(p\) subproblemas.
-  \item \(h:\mathbb{N}\to\mathbb{N}\) es el tiempo de ejecución requerido para resolver el caso base de la recurrencia; esto es, cuando la entrada es lo suficientemente pequeña para resolver el problema sin necesidad de dividirlo en subproblemas. 
-\end{itemize}
-
-Sin embargo, en la práctica, las recurrencias se escriben de una forma más simple.
-Primero, el caso base de un algoritmo por lo general se alcanza cuando \(n\) es de un tamaño pequeño determinado que puede procesarse en tiempo constante; es decir, lo más común es que \(h(n)=\Theta(1)\).
-Debido a esto, \(h(n)\) suele omitirse.
-Segundo, lo más común es que un algoritmo requiera tiempo constante únicamente para dividir el problema o para combinar las soluciones parciales; es decir, ya sea \(f(n)=\Theta(1)\) o \(g(n)=\Theta(1)\), pero no ambos al mismo tiempo.
-Además, rara vez ocurre que ambas acciones requieren cada una un tiempo mayor a \(\Theta(1)\).
-Debido a esto, suele escribirse solo una función, \(f(n)\), en lugar de dos.
-Así, las recurrencias comúnmente se escriben simplemente como
-\[
-  T(n)=\sum_{i=1}^pT(n_i)+f(n).
-\]
-
-Finalmente, los pisos y los techos también suelen omitirse en las recurrencias y, en cambio, suele suponerse que \(n\) siempre es lo suficientemente grande para dividirlo en partes enteras.
-Así, en lugar de escribir \(T(\lceil n/2 \rceil)+T(\lfloor n/2 \rfloor)\), simplemente se escribe \(2T(n/2)\).
-A pesar de que hacer esto puede cambiar la solución exacta de la recurrencia, generalmente solo lo hace en un factor constante y el comportamiento asintótico de la recurrencia no cambia.
+\chapter{Métodos para resolver recurrencias}
 
 \section{El método del árbol recursivo}
 
 El método del árbol recursivo es un método gráfico e informal para resolver recurrencias y consiste en dibujar un árbol donde cada nodo representa el tiempo requerido para resolver un subproblema.
-Al sumar el valor de todos los nodos del árbol, se puede obtener la forma cerrada de la recurrencia. 
+Al sumar el valor de todos los nodos del árbol, se puede obtener la solución de la recurrencia.
 Antes de estudiar el método en sí, es importante recordar algunos conceptos sobre árboles.
 
 Sea \(k\in\mathbb{N}\), un \textbf{árbol} \(\boldsymbol{k}\)\textbf{-ario} es un árbol enraizado donde cada nodo tiene a lo más \(k\) hijos. 
 Un árbol \(k\)-ario \textbf{lleno} es aquél donde cada nodo es una hoja o tiene exactamente \(k\) hijos. 
-La \textbf{profundidad} de un nodo es la distancia más corta entre dicho nodo 
-y la raíz. 
+La \textbf{profundidad} de un nodo es la distancia más corta entre dicho nodo y la raíz. 
 Por definición, la raíz tiene una profundidad de 0.
 Un árbol \(k\)-ario \textbf{completo} es un árbol lleno donde todas las hojas tienen la misma profundidad.
 En un árbol \(k\)-ario completo, el número de nodos a profundidad \(d\) está dado por \(k^d\).
 La \textbf{altura} de un árbol es la profundidad más grande de todos los nodos.
-Así, la altura de un árbol \(k\)-ario completo con \(n\) hojas está dado por \(\log_k{n}\).
-Finalmente, el número de nodos internos en un árbol \(k\)-ario completo de altura \(h\) está dado por
+Así, la altura de un árbol \(k\)-ario completo de \(n\) hojas está dado por \(\log_k{n}\).
+El número de nodos internos en un árbol \(k\)-ario completo de altura \(h\) está dado por
 \[
   1+k+k^2+\dots+k^{h-1} = 
   \sum_{d=0}^{h-1}k^d =
@@ -66,25 +22,22 @@ Finalmente, el número de nodos internos en un árbol \(k\)-ario completo de alt
   \dfrac{k^h-1}{k-1}.
 \]
 
+\newpage
 El método del árbol recursivo consta de los sig. pasos:
-
-% \marginnote[1.5\baselineskip]{%
-%   Las expresiones obtenidas en los pasos 2, 3 y 4 se definen en función de \(n\) y la expresión obtenida en el paso 5 normalmente consta de una sumatoria que debe resolverse para obtener la forma cerrada.
-% }
 
 \begin{enumerate}
   \item Se dibuja el árbol recursivo de la recurrencia cumpliendo con las sig. características:
   \begin{itemize}
-    \item La raíz contiene la expresión \(f(n)\).
-    \item Cada nodo interno contiene la expresión \(f(n_i)\).
-    \item Cada hoja contiene la expresión \(h(n)\), q. casi siempre es \(\Theta(1)\).
-    \item Cada nodo interno tiene \(p\) hijos.
+    \item La raíz contiene la expresión \(f(n)\) que representa el tiempo de ejecución requerido por la división y/o la combinación.
+    \item Cada nodo interno contiene la expresión \(f(n_i)\), donde \(n_i<n\) es el tamaño del subproblema \(i\).
+    \item Cada hoja contiene el tiempo de ejecución requerido por el caso base, que casi siempre es \(\Theta(1)\).
+    \item Cada nodo interno tiene una cantidad de hijos equivalente al número de subproblemas en que se divide la entrada de cada llamada recursiva.
   \end{itemize}
   \item Se calcula la altura del árbol; esto es, la ruta más larga que sigue el algoritmo en el árbol para llegar al caso base.
   \item Se calcula la cantidad de hojas; esto es, el número de nodos en el nivel más profundo.
   \item Se suman los valores de todos los nodos por cada nivel.
   \item Se suman los resultados de todos los niveles, obtenidos en el paso anterior.
-  \item Se resuelve la expresión resultante para obtener la forma cerrada.
+  \item Se resuelve la expresión resultante. %para obtener la forma cerrada.
 \end{enumerate}
 
 \begin{figure*}[t]
@@ -93,12 +46,11 @@ El método del árbol recursivo consta de los sig. pasos:
   \label{fig:recursion_tree}
 \end{figure*}
 
+\newpage
+
 \begin{expl}
-  Considérese la recurrencia \(T(n)=3T(n/4)+\Theta(n^2)\). 
-  Antes de comenzar, se debe sustituir \(\Theta(n^2)\) por \(cn^2\), donde \(c\in\mathbb{R}^+\) es una constante. 
-  Así, se simplifica la recurrencia como \(T(n)=3T(n/4)+cn^2\). 
-  El sig. paso es dibujar el árbol recursivo, el cual se muestra en la Figura \ref{fig:recursion_tree}.
-  
+  Considérese la recurrencia \(T(n)=3T(n/4)+cn^2\). 
+  Se debe dibujar el árbol recursivo, el cual se muestra en la Figura \ref{fig:recursion_tree}.
   Después, se debe calcular la altura del árbol. 
   Dado que el valor de \(n\) se reduce en un factor de \(1/4\) en cada nivel, la altura es el número de niveles que deben de recorrerse hasta llegar a 1. Así, la altura \(h\) puede calcularse como
   \[
@@ -110,8 +62,8 @@ El método del árbol recursivo consta de los sig. pasos:
     \end{aligned}
   \]
   
-  Luego, se debe calcular el número de hojas; esto es, el número de nodos en el nivel más profundo.
-  Dado que cada nodo tiene exactamente 3 hijos Esto está dado por
+  Luego, se debe calcular el número de hojas.
+  Dado que cada nodo tiene exactamente 3 hijos, el número de hojas está dado por
   \[
     3^h = 3^{\log_4{n}} = n^{\log_4{3}}.
   \]
@@ -132,6 +84,9 @@ El método del árbol recursivo consta de los sig. pasos:
   \end{align*}
 	\exend
 \end{expl}
+\newpage
+
+
 
 \section{El método de sustitución}
 
@@ -139,7 +94,7 @@ El método de sustitución es un método formal que consiste en resolver una rec
 Específicamente, este método consta de los sig. pasos:
 \begin{enumerate}
   \item Se propone una cota asintótica como la solución tentativa de la recurrencia.
-  \item Se utiliza inducción para demostrar que la recurrencia sí cumple con la cota propuesta y para encontrar las constantes de dicha cota.
+  \item Se utiliza inducción para demostrar que la recurrencia cumple con la cota propuesta y para encontrar las constantes de dicha cota.
 \end{enumerate}
 Este método se puede utilizar para calcular tanto una cota superior como una inferior.
 
@@ -160,11 +115,8 @@ Este método se puede utilizar para calcular tanto una cota superior como una in
   la cota propuesta se cumple de \emph{forma exacta}.
   Es incorrecto aplicar la notación asintótica en el paso inductivo para deshacerse de constantes o términos problemáticos.
 }
-\paragraph{Cuando la cota propuesta es correcta pero la inducción no converge a ella.}
-{%
-  En lugar de proponer una cota más holgada, se puede proponer una nueva hipótesis inductiva, cuya única diferencia con la hipótesis original es que se resta un término de grado menor a la cota propuesta.
-}
 
+\newpage
 \begin{expl}
   \label{ex:recurrence_substitution}
   Considérese la recurrencia \(T(n)=2T(\lfloor n/2 \rfloor)+n\) y supóngase que se propone \(O(n\lg{n})\) como la solución tentativa. 
@@ -202,6 +154,7 @@ Este método se puede utilizar para calcular tanto una cota superior como una in
   \end{description}
 \end{expl}
 
+\newpage
 \begin{expl}
     Considérese ahora la recurrencia \(T(n)=T(\lfloor n/2\rfloor)+T(\lceil n/2\rceil)+1\) y supóngase que se propone \(O(n)\) como la solución tentativa. 
     Se busca demostrar que \(T(n)\leq cn\) para alguna \(c>0\).
@@ -211,7 +164,7 @@ Este método se puede utilizar para calcular tanto una cota superior como una in
       Esto sugiere que la solución propuesta no es correcta.
       En este ejemplo, se ve que el término \(+1\) impide que la igualdad se cumpla de forma exacta.
       En lugar de proponer una cota más holgada, se propone une nueva hipótesis inductiva.
-      \item[Nueva H.I.] Supóngase que \(T(\lfloor n/2\rfloor)\leq c\lfloor n/2\rfloor-d\) y que \(T(\lceil n/2\rceil)\leq c\lceil n/2\rceil-d\), donde \(d\in\mathbb{R}^+\).
+      \item[Nueva H.I.] Supóngase que \(T(\lfloor n/2\rfloor)\leq c\lfloor n/2\rfloor-d\) y que \(T(\lceil n/2\rceil)\leq c\lceil n/2\rceil-d\), donde \(d\in\mathbb{R}\) tal que \(d\geq 0\).
       \item[Paso inductivo] Sustituyendo la hipótesis inductiva en la recurrencia original, se tiene lo sig.:
       \begin{align*}
         T(n) &\leq c\lfloor n/2\rfloor-d+c\lceil n/2\rceil-d+1\\
@@ -233,9 +186,9 @@ Este método se puede utilizar para calcular tanto una cota superior como una in
     \end{description}
 \end{expl}
 
-\section{El Teorema Maestro}
 
-Un método para resolver recurrencias consiste simplemente en aplicar el sig. teorema.
+\newpage
+\section{El Teorema Maestro}
 
 \begin{thm}[\textbf{Teorema Maestro}]
   Sean \(a,b,n\in\mathbb{N}\), donde \(a\) y \(b\) son constantes y \(b>1\), sea \(f:\mathbb{N}\to\mathbb{N}\) una función asintóticamente positiva y sea \(c=\log_{b}a\). 
@@ -243,7 +196,7 @@ Un método para resolver recurrencias consiste simplemente en aplicar el sig. te
   \begin{enumerate}
     \item Si \(f(n)=O(n^{c-\varepsilon})\) para alguna constante real $\varepsilon>0$, entonces \(T(n)=\Theta(n^{c})\).
     \item Si \(f(n)=\Theta(n^c)\), entonces \(T(n)=\Theta(n^{c}\log{n})\).
-    \item Si \(f(n)=\Omega(n^{c+\varepsilon})\) y si, además, \(af(n/b)\leq kf(n)\) para alguna constante real \(k<1\) y para todo valor de \(n\) mayor que algún umbral, entonces \(T(n)=\Theta(f(n))\).
+    \item Si \(f(n)=\Omega(n^{c+\varepsilon})\) y si, además, \(af(n/b)\leq kf(n)\) para alguna constante real \(k<1\) y para todo valor de \(n\) mayor que algún umbral, entonces \(T=\Theta(f)\).
   \end{enumerate}
 \end{thm}
 
@@ -251,61 +204,18 @@ Un método para resolver recurrencias consiste simplemente en aplicar el sig. te
   En el Teorema Maestro, el término \(n/b\) de la recurrencia \(T(n)\) también puede interpretarse como \(\lceil n/b\rceil\) o \(\lfloor n/b\rfloor\).
 \end{rem}
 
-Intuitivamente, la recurrencia \(T(n)\) sobre la que puede aplicarse el Teorema Maestro describe un algoritmo que divide el problema en \(a\) subproblemas \emph{del mismo tamaño}, donde, en cada subproblema, el tamaño de la entrada se reduce en un factor de \(1/b\), y donde se requiere \(f(n)\) tiempo de ejecución para dividir el problema y/o combinar las soluciones parciales.
-Así, la función \(n^c\), descrita en el Teorema Maestro, representa el número de hojas en el árbol recursivo que representa a esta recurrencia.
+El Torema Maestro solo puede aplicarse a recurrencias que dividen el problema en \(a\) subproblemas \emph{del mismo tamaño}, y donde, en cada subproblema, el tamaño de la entrada se reduce en un factor de \(1/b\).
+La función \(f(n)\) representa el tiempo de ejecución para dividir el problema y/o combinar las soluciones parciales de los subproblemas.
+La función \(n^c\) representa el número de hojas en el árbol recursivo de la recurrencia.
 
-El Teorema Maestro indica que, comparando \(n^c\) con \(f(n)\), la función que crece más rápido acota el tiempo de ejecución del algoritmo en cuestión.
-En el caso 1, se tiene que \(n^c\) crece más rápido; esto es, el tiempo requerido para resolver cada subproblema eventualmente supera el tiempo requerido por la división y/o combinación.
-Por ende, en este caso \(n^c\) acota la solución de la recurrencia.
-En el caso 3, se tiene lo opuesto; \(f(n)\) crece más rápido que \(n^c\).
-Para aplicar este caso, \(f(n)\) debe además satisfacer lo que se conoce como
-la \textbf{condición de regularidad}.
-Por último, en el caso 2, se tiene que ambas funciones, \(f(n)\) y \(n^c\), tienen el mismo orden de crecimiento y, por ende, la solución es dicho orden multiplicado por un factor logarítmico que representa la altura del árbol recursivo.
-
-\begin{expl}
-  Sea $T(n)=9T(n/3)+n$. Aplicando el Teorema Maestro, se tiene que \(a=9\), 
-  \(b=3\) y \(f(n)=n\). 
-  Así, se obtiene \(n^c=n^{\log_{3}{9}}=n^2\). 
-  Dado que \(f(n)=O(n^{2-\varepsilon})\), donde \(\varepsilon=1\), se puede aplicar el caso 1, lo que resulta en que \(T(n)=\Theta(n^2)\). \exend
-\end{expl}
-
-\begin{expl}
-  Sea \(T(n)=T(2n/3)+1\). 
-  Aplicando el Teorema Maestro, se tiene que \(a=1\), \(b=3/2\) y \(f(n)=1\). 
-  Así, se obtiene \(n^c=n^{\log_{3/2}{1}}=n^0=1\).
-  Dado que \(f(n)=n^c=1\), se puede aplicar el caso 2, lo que resulta en \(T(n)=\Theta(\log{n})\). \exend
-\end{expl}
-
-\begin{expl}
-  Sea \(T(n)=3T(n/4)+n\lg{n}\). 
-  Aplicando el Teorema Maestro, se tiene que \(a=3\), \(b=4\) y \(f(n)=n\lg{n}\). 
-  Así, se obtiene \(n^c=n^{\log_{4}{3}}=O(n^{0.793})\). 
-  Dado que \(f(n)=\Omega(n^{\log_{4}{3}+\varepsilon})\), donde \(\varepsilon\approx 0.2\), se puede aplicar el caso 3 si se demuestra 
-  que \(af(n/b)\leq kf(n)\), donde \(k<1\). 
-  Para ello, se tiene que \(3(n/4)\lg(n/4)\leq (3/4)n\lg{n}\) para valores suficientemente grandes de \(n\). 
-  Como consecuencia, se puede aplicar el caso 3, lo que resulta en \(T(n)=\Theta(n\log n)\). \exend
-\end{expl}
-
-\begin{expl}
-  Sea \(T(n)=2T(n/2)+n\lg{n}\). 
-  El Teorema Maestro no se puede aplicar a esta recurrencia a pesar de tener la forma apropiada. 
-  Si se maneja que \(a=2\), \(b=2\) y \(f(n)=n\lg{n}\), se obtendría \(n^c=n^{\log_{2}{2}}=n\).
-  Dado que \(f(n)\) es asintóticamente más grande que \(n^c\), se podría pensar que se puede aplicar el caso 3, pero no es así debido a que \(f(n)\) no es
-  mayor que \(n^c\) en un factor polinomial. \exend
-\end{expl}
-
-\section{Cambio de variable}
-
-En ocasiones, se puede aplicar álgebra para transformar una recurrencia en alguna otra cuya solución ya se conoce, eliminando la necesidad de recurrir a cualquiera de los métodos anteriores.
-
-\begin{expl}
-  Sea \(T(n)=2T(\lfloor \sqrt{n} \rfloor)+\lg{n}\). Esta recurrencia se 
-  puede simplificar con un cambio de variable. 
-  Proponiendo que \(m=\lg{n}\), se tiene que \(T(2^m)=2T(2^{m/2})+m\). 
-  Si además se propone una función \(S(m)=T(2^m)\), se obtiene la recurrencia \(S(m)=2S(m/2)+m\), que es idéntica a la recurrencia resuelta en el ejemplo \ref{ex:recurrence_substitution}, por lo que la solución es la misma para ambas. 
-  Entonces, \(S(m)=O(m\lg m)\). 
-  Cambiando de regreso \(S(m)\) por \(T(n)\), se obtiene \(T(n)=O(\lg{n}\cdot\lg\lg{n})\). \exend
-\end{expl}
+Intuitivamente, el Teorema Maestro indica que, comparando \(n^c\) con \(f(n)\), la función que crece más rápido es la solución de la recurrencia.
+\begin{itemize}
+  \item \textit{Caso 1}: \(n^c\) crece más rápido; esto es, el tiempo requerido para resolver cada subproblema eventualmente supera el tiempo requerido por la división y/o combinación.
+  \item \textit{Caso 2}: ambas funciones, \(f(n)\) y \(n^c\), tienen la misma tasa de crecimiento.
+  En este caso, la solución es el orden de crecimiento de estas funciones, multiplicado por un factor logarítmico que representa la altura del árbol recursivo (ya que cada nivel del árbol requiere el mismo tiempo de ejecución).
+  \item \textit{Caso 3}: \(f(n)\) crece más rápido que \(n^c\). 
+  Si \(f(n)\), además, cumple con la \textbf{condición de regularidad}, entonces esta función es la solución de la recurrencia.
+\end{itemize}
 
 \section{Notas bibliográficas}
 

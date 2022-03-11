@@ -1,63 +1,54 @@
-\chapter{Análisis de la corrección de un algoritmo}
-
-El primer paso al analizar un algoritmo es determinar si este es correcto o incorrecto. 
-El procedimiento que se sigue para llevar a cabo esta tarea se denomina \textbf{análisis de la corrección de un algoritmo}.
+\chapter{La corrección de un algoritmo}
 
 \section{El contraejemplo}
 
 \marginnote[0.5\baselineskip]{Se recomienda buscar un contraejemplo para un algoritmo antes de hacer la demostración de su corrección.}
 
-\marginnote[1.5\baselineskip]{Si no se encuentra un contraejemplo para un algoritmo determinado, esto no implica que dicho algoritmo es correcto.}
+\marginnote[0.5\baselineskip]{Si no se encuentra un contraejemplo para un algoritmo determinado, esto no implica que dicho algoritmo es correcto.}
 
-\marginnote[1.5\baselineskip]{La demostración de la corrección de un algoritmo debe explicar no solo por qué el algoritmo es correcto, sino también por qué no es incorrecto.}
+\marginnote[0.5\baselineskip]{La demostración de la corrección de un algoritmo debe explicar no solo por qué el algoritmo es correcto, sino también por qué no es incorrecto.}
 
-Para demostrar que un algoritmo determinado es incorrecto, basta con producir un \textbf{contraejemplo}; esto es, un caso específico para el cual el algoritmo no termina su ejecución o no produce un resultado que cumple las características de salida del problema. 
-Para encontrar un contraejemplo, se recomienda experimentar primero con los casos específicos más complicados para el algoritmo; p. ej., aquellos que contengan valores empatados o que mezclen valores de frontera de extremos opuestos. 
+Para demostrar que un algoritmo determinado es incorrecto, solo se requiere producir un \textbf{contraejemplo}; esto es, un caso específico para el cual el algoritmo no termina su ejecución o no produce un resultado que cumple las características de salida del problema.
+Para encontrar un contraejemplo, se recomienda comenzar por los casos más desafiantes para el algoritmo; p. ej., aquellos que contengan valores empatados o que contengan mezclados valores de frontera de extremos opuestas.
 El contraejemplo debe ser lo más simple y pequeño posible; idealmente la razón de por qué el algoritmo es incorrecto debe ser inmediatamente clara. 
-Así, una vez encontrado un contraejemplo, se recomienda simplificarlo tanto como sea posible y presentarlo junto con el resultado incorrecto que produjo el algoritmo y el resultado correcto que debió producir.
+Finalmente, debe presentarse junto con el resultado incorrecto que produjo el algoritmo y el resultado correcto que debió producir.
 
 \section{La invariante de lazo}
 
-\marginnote[0.5\baselineskip]{%
-  La diferencia entre la invariante de lazo e inducción es que el primer método es una aplicación especializada del segundo.
-}
-
 Una \textbf{invariante de lazo} es una proposición lógica que se cumple inmediatamente antes de cada iteración y al finalizar la ejecución de un bucle determinado.
 La invariante se define en función de cada iteración \(i\).
-Demostrar que una invariante de lazo se cumple para todas las iteraciones es un procedimiento análogo a una demostración por inducción y consta de los sig. pasos: 
+Una demostración por invariante de lazo consta de los sig. pasos:
+
+\marginnote[1.5\baselineskip]{%
+  Estrictamente hablando, en la finalización se debería demostrar que la invariante se sigue cumpliendo cuando la condición de paro del bucle es falsa.
+  Sin embargo, obsérvese que, en el mantenimiento, se demuestra no solo que la invariante se cumple inmediatamente antes de cada iteración, sino que también se sigue cumpliendo inmediatamente \emph{después} de cada iteración, incluyendo la \emph{última}.
+  Es por eso que, en la finalización, se puede suponer que la invariante se sigue cumpliendo al terminar la ejecución del bucle.
+}
+
+
 \begin{enumerate}
   \item \textbf{Inicialización}: se determina el estado en que se encuentra el algoritmo antes de ejecutar la primera iteración y se demuestra que la invariante se cumple bajo estas condiciones.
-  \item \textbf{Mantenimiento}: se supone que la invariante se cumple antes de comenzar alguna iteración arbitraria \(j\) y se determina el estado en que se encuentra el algoritmo como consecuencia de ello. 
-  Después, se ejecuta la iteración \(j\) y se demuestra que la invariante se cumple antes de comenzar la iteración \(j+1\).
+  \item \textbf{Mantenimiento}: se supone que la invariante se cumple antes de comenzar alguna iteración arbitraria \(i\) y se determina el estado en que se encuentra el algoritmo como consecuencia de ello. 
+  Después, se ejecuta la iteración \(i\) y se demuestra que la invariante se cumple antes de comenzar la iteración \(i+1\).
   \item \textbf{Finalización}: se determina cuál es el estado del algoritmo al salir del bucle y se utiliza junto con la invariante para demostrar que el algoritmo es correcto o para caracterizar alguna propiedad particular del mismo. 
 \end{enumerate}
 
-\marginnote[-3.8\baselineskip]{%
-  Estrictamente hablando, en la finalización se debería demostrar que la invariante se sigue cumpliendo cuando la condición de paro del bucle es falsa.
-  Sin embargo, obsérvese que en el mantenimiento se demuestra no solo que la invariante se cumple inmediatamente antes de cada iteración, sino que también se sigue cumpliendo inmediatamente \emph{después} de cada iteración, incluyendo la \emph{última}.
-  Es por eso que en la finalización se puede suponer que la invariante se sigue cumpliendo al terminar la ejecución del bucle.
-}
+\newpage
+\section{Consejos para el diseño de algoritmos}
 
-\section{Recomendaciones para el diseño de algoritmos correctos}
-
-\paragraph*{Definir la salida del problema correctamente.}{%
+\paragraph{Definir la salida del problema correctamente.}
   Las características de salida no deben ser ambiguas y deben describir cómo determinar de forma inequívoca si el resultado es correcto.
-  Tampoco deben constar de objetivos compuestos, esto es, de múltiples objetivos que deben alcanzarse al mismo tiempo.
-}
-
-\paragraph*{Típicamente, entre más restrictivas sean las características de entrada, menor es la dificultad para resolver el problema.}{
-  Se recomienda comenzar por diseñar un algoritmo correcto que admita entradas con características muy particulares y después extenderlo a entradas más generales. 
-}
-
-\paragraph*{Analizar la complejidad computacional del problema al mismo tiempo que se diseña un algoritmo para resolverlo.}{
-  De esta forma, cualquier descubrimiento o avance que se obtenga en uno podría aprovecharse después para avanzar en el otro.
+  Tampoco deben constar de objetivos compuestos.
+\paragraph{Típicamente, entre más restrictivas sean las características de entrada, menor es la dificultad para resolver el problema.} 
+  Se recomienda comenzar por diseñar un algoritmo correcto que admita entradas con características muy particulares y después extenderlo a entradas más generales.
+\paragraph{Analizar la complejidad computacional del problema al mismo tiempo que se diseña un algoritmo para resolverlo.} 
+  Esto tiene varias ventajas.
+  Cualquier descubrimiento o avance que se obtenga en uno podría aprovecharse después para avanzar en el otro.
   Además, al final se obtendría uno de dos posibles resultados: ya sea se llega a la construcción de un algoritmo correcto y eficiente o se caracteriza la complejidad computacional del problema.
-}
-
-\paragraph*{Modelar el problema de forma adecuada}{
-  Las entidades y sus respectivas interacciones que constituyen el problema a resolver en la vida real deben describirse en términos de alguna \emph{estructura abstracta} ya conocida (como son las cadenas, los grafos, los conjuntos, entre otros) y sus operaciones correspondientes.
-  Sin embargo, las características de estas entidades reales no siempre se alinean perfectamente con las de la estructura elegida para representarlas.
+  Alternativamente, si se descubre que el problema es NP-D o NP-C, entonces se pueden emplear algoritmos no exactos (heurísticas, metaheurísticas, algo. de aproximación, algo. aleatorios, etc.) para abordar el problema.
+\paragraph{Modelar el problema de forma adecuada.}
+  Las entidades que constituyen un problema en la vida real, y sus respectivas interacciones, suelen modelarse por medio de alguna \emph{estructura abstracta} ya conocida (cadenas, grafos, conjuntos, etc.).
+  Sin embargo, las características de estas entidades no siempre se alinean perfectamente con las de la estructura elegida.
   En estos casos, se recomienda ignorar temporalmente aquellos detalles que no encajen y decidir más adelante, después de trabajar un tiempo con esa estructura, si dichos detalles son realmente esenciales o no para resolver el problema.
-}
 
 \marginnote[-1\baselineskip]{\textbf{Literatura consultada}: \textcite{cormen_2009}, pp. 18-20; \textcite{skiena_2012}, pp. 11-16}.
