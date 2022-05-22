@@ -1,6 +1,6 @@
 \chapter{El logaritmo}
 
-Sean \(x,b\in\mathbb{R}^+\), donde \(x\) se denomina \textbf{argumento}, y \(b\neq 1\) y se denomina \textbf{base}.
+Sean \(x,b\in\mathbb{R}^+\), donde \(x\) se denomina \textbf{argumento} y \(b\neq 1\) y se denomina \textbf{base}.
 El \textbf{logaritmo} de \(x\) con respecto a \(b\), denotado como \(\log_{b}x\), es la potencia a la que hay que elevar \(b\) para obtener \(x\) como resultado; esto es, \(y=\log_{b}x\) si y sólo si \(b^{y}=x\), donde \(y\in\mathbb{R}\).
 
 \begin{table}[h]
@@ -38,11 +38,12 @@ Debido a que todo número positivo elevado a cualquier potencia siempre resulta 
 
 \section{Leyes de los logaritmos}
 
+\marginnote[0.5\baselineskip]{%
+  La identidad 7 se conoce como la ley de cambio de base. Esta ley implica que \(\log_v{x}=\log_v{b}\cdot\log_b{x}\); esto es, para cambiar la base de un logaritmo, basta con multiplicarlo por un factor constante. Debido a esto, no importa la base de un logaritmo, su comportamiento asintótico siempre será el mismo y es por esta razón que la base del logaritmo suele omitirse al utilizar la notación asintótica.
+}
+
 Sean \(x,y,b,v\in\mathbb{R}^+\), donde \(b\) y \(v\) son distintos de 1.
 Se tienen las sig. identidades:
-
-\marginnote[1\baselineskip]{La identidad 7 se conoce como la ley de cambio de base. Esta ley implica que \(\log_v{x}=\log_v{b}\cdot\log_b{x}\); esto es, para cambiar la base de un logaritmo, basta con multiplicarlo por un factor constante. Debido a esto, no importa la base de un logaritmo, su comportamiento asintótico siempre será el mismo y es por esta razón que la base del logaritmo suele omitirse al utilizar la notación asintótica.}
-
 \begin{enumerate}
   \begin{multicols}{2}
     \item \(\log_b{1}=0\)
@@ -57,7 +58,8 @@ Se tienen las sig. identidades:
   \end{multicols}
 \end{enumerate}
 
-Las identidades anteriores se justifican de las manipulaciones algebraicas que se presentan a continuación. Considérese que \(p,q\in\mathbb{R}\) tales que \(x=b^p\) y \(y=b^q\), lo que implica que \(p=\log_b{x}\) \& \(q=\log_b{y}\) (por la definición del logaritmo):
+\newpage
+Las identidades anteriores se justifican de las manipulaciones algebraicas que se presentan a continuación. Considérese que \(p,q\in\mathbb{R}\) tales que \(x=b^p\) y \(y=b^q\), lo que implica que \(p=\log_b{x}\) y que \(q=\log_b{y}\) (por la definición del logaritmo):
 \begin{flalign}
   \text{Es consecuencia directa del hecho que } b^0=1\text{ para cualquier }b.
 \end{flalign}

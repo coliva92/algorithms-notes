@@ -26,6 +26,12 @@
 \DeclareOptionX[tufte]<common>{debug}{\setboolean{@tufte@debug}{true}}
 
 %%
+% `titleonly' -- omite la fecha de creación en el título
+
+\newboolean{@tufte@fulltitle}\setboolean{@tufte@fulltitle}{true}
+\DeclareOptionX[tufte]<common>{titleonly}{\setboolean{@tufte@fulltitle}{false}}
+
+%%
 % `nofonts' option -- doesn't load any fonts
 % `fonts' option -- tries to load fonts
 \newboolean{@tufte@loadfonts}\setboolean{@tufte@loadfonts}{true}
@@ -1568,12 +1574,20 @@
     \let\@@date\@empty
     \ifthenelse{\boolean{@tufte@sfsidenotes}}{%
       \gdef\@@title{\sffamily\LARGE\allcaps{\@title}\par}%
-      \gdef\@@author{\sffamily\Large\allcaps{\@author}\par}%
-      \gdef\@@date{\sffamily\Large\allcaps{\@date}\par}%
+      \ifthenelse{\boolean{@tufte@fulltitle}}{%
+        \gdef\@@author{\sffamily\Large\allcaps{\@author}\par}%
+        \gdef\@@date{\sffamily\Large\allcaps{\@date}\par}%
+      }{%
+        %% noop
+      }
     }{%
       \gdef\@@title{\LARGE\itshape\@title\par}%
-      \gdef\@@author{\Large\itshape\@author\par}%
-      \gdef\@@date{\Large\itshape\@date\par}%
+      \ifthenelse{\boolean{@tufte@fulltitle}}{%
+        \gdef\@@author{\Large\itshape\@author\par}%
+        \gdef\@@date{\Large\itshape\@date\par}%
+      }{%
+        %% noop
+      }
     }%
     \@@title
     \@@author
